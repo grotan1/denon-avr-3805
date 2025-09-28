@@ -2,7 +2,7 @@
   "name": "Denon AVR-3805",
   "version": "1.0.19",
   "hacs": "1.6.0",
-  "icon": "mdi:home",
+  "icon": "mdi:amplifier",
   "domains": [
     "binary_sensor",
     "sensor",

@@ -31,7 +31,7 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     @property
     def icon(self):
         """Return the icon of the media player."""
-        return "mdi:home"
+        return "mdi:amplifier"
 
     @property
     def state(self):
