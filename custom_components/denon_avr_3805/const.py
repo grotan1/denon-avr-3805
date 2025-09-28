@@ -9,7 +9,7 @@ ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/grotan1/denon-avr-3805/issues"
 
 # Icons
-ICON = "mdi:audio-video"
+ICON = "mdi:speaker"
 
 # Device classes
 BINARY_SENSOR_DEVICE_CLASS = "connectivity"
