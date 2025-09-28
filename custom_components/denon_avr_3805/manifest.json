@@ -6,6 +6,8 @@
   "issue_tracker": "https://github.com/grotan1/denon-avr-3805/issues",
   "dependencies": [],
   "config_flow": true,
-  "codeowners": ["@grotan1"],
+  "codeowners": [
+    "@grotan1"
+  ],
   "requirements": []
 }

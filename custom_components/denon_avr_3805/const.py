@@ -18,7 +18,8 @@ BINARY_SENSOR_DEVICE_CLASS = "connectivity"
 BINARY_SENSOR = "binary_sensor"
 SENSOR = "sensor"
 SWITCH = "switch"
-PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH]
+MEDIA_PLAYER = "media_player"
+PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH, MEDIA_PLAYER]
 
 
 # Configuration and options

@@ -21,6 +21,7 @@
 | `binary_sensor` | Shows connectivity status of the AVR.                                     |
 | `sensor`        | Shows volume level and current input.                                     |
 | `switch`        | Controls power and mute functions.                                       |
+| `media_player`  | Full media player control with volume, sources, and power.                |
 
 ## Configuration
 
