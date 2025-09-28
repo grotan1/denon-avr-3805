@@ -1,6 +1,6 @@
 {
   "name": "Denon AVR-3805",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "hacs": "1.6.0",
   "domains": [
     "binary_sensor",
