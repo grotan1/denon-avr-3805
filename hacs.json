@@ -1,6 +1,6 @@
 {
   "name": "Denon AVR-3805",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "hacs": "1.6.0",
   "icon": "mdi:home",
   "domains": [
