@@ -52,7 +52,11 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def is_on(self):
         """Return true if the AVR is on."""
-        return self.coordinator.data.get("power") == "PWON"
+        power_status = self.coordinator.data.get("power")
+        if power_status and isinstance(power_status, str):
+            # Handle different power response formats
+            return power_status in ["PWON", "ON", "ZM ON"]
+        return False
 
 
 class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
@@ -90,4 +94,8 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def is_on(self):
         """Return true if the AVR is muted."""
-        return self.coordinator.data.get("mute") == "MUON"
+        mute_status = self.coordinator.data.get("mute")
+        if mute_status and isinstance(mute_status, str):
+            # Handle different mute response formats
+            return mute_status in ["MUON", "ON"]
+        return False

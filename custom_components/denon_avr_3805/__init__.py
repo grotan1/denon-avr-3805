@@ -85,22 +85,52 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             await self.api.connect()
             data = {}
             try:
-                data["power"] = await self.api.async_get_power_status()
-            except Exception:
+                power_status = await self.api.async_get_power_status()
+                if not power_status:
+                    # Try alternative power query
+                    power_status = await self.api.async_get_power_alt()
+                data["power"] = power_status
+                _LOGGER.debug("Power status query returned: %s", power_status)
+            except Exception as e:
+                _LOGGER.debug("Power status query failed: %s", e)
                 data["power"] = None
+
+            # Small delay between queries to avoid overwhelming the AVR
+            await asyncio.sleep(0.1)
+
             try:
-                data["volume"] = await self.api.async_get_volume()
-            except Exception:
+                volume_status = await self.api.async_get_volume()
+                if not volume_status:
+                    # Try alternative volume query
+                    volume_status = await self.api.async_get_volume_alt()
+                data["volume"] = volume_status
+                _LOGGER.debug("Volume status query returned: %s", volume_status)
+            except Exception as e:
+                _LOGGER.debug("Volume status query failed: %s", e)
                 data["volume"] = None
+
+            await asyncio.sleep(0.1)
+
             try:
-                data["mute"] = await self.api.async_get_mute_status()
-            except Exception:
+                mute_status = await self.api.async_get_mute_status()
+                data["mute"] = mute_status
+                _LOGGER.debug("Mute status query returned: %s", mute_status)
+            except Exception as e:
+                _LOGGER.debug("Mute status query failed: %s", e)
                 data["mute"] = None
+
+            await asyncio.sleep(0.1)
+
             try:
-                data["input"] = await self.api.async_get_input()
-            except Exception:
+                input_status = await self.api.async_get_input()
+                data["input"] = input_status
+                _LOGGER.debug("Input status query returned: %s", input_status)
+            except Exception as e:
+                _LOGGER.debug("Input status query failed: %s", e)
                 data["input"] = None
+
             await self.api.disconnect()
+            _LOGGER.debug("Coordinator update completed with data: %s", data)
             return data
         except Exception as exception:
             _LOGGER.error("Failed to update AVR data: %s", exception)

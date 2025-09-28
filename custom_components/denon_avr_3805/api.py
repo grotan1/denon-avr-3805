@@ -58,21 +58,24 @@ class DenonAvr3805ApiClient:
                 decoded = response.decode().strip()
                 _LOGGER.debug("Received response: %s", decoded)
 
-                # If the response is just an echo of the command, try to read more
+                # Filter out command echoes - if response matches command, it's an echo
                 if decoded == command:
+                    _LOGGER.debug("Received echo of command, reading actual response")
                     try:
                         response2 = await asyncio.wait_for(
                             self._reader.readuntil(b"\r"), timeout=1.0
                         )
                         decoded2 = response2.decode().strip()
-                        _LOGGER.debug("Received second response: %s", decoded2)
+                        _LOGGER.debug("Received actual response: %s", decoded2)
                         return decoded2
                     except asyncio.TimeoutError:
-                        pass
+                        _LOGGER.debug("No actual response received after echo")
+                        return None
 
+                # If we get a response that doesn't match the command, it's likely a real response
                 return decoded
             except asyncio.TimeoutError:
-                _LOGGER.warning("Timeout reading response for command: %s", command)
+                _LOGGER.debug("Timeout reading response for command: %s", command)
                 return None
             except Exception as e:
                 _LOGGER.error("Error sending command %s: %s", command, e)
@@ -127,5 +130,44 @@ class DenonAvr3805ApiClient:
     async def async_get_input(self) -> str | None:
         """Get current input."""
         return await self._send_command("SI?")
+
+    async def async_get_status_all(self) -> dict:
+        """Get all status information at once (for debugging)."""
+        status = {}
+        queries = [
+            ("power", "PW?"),
+            ("volume", "MV?"),
+            ("mute", "MU?"),
+            ("input", "SI?"),
+        ]
+
+        for name, command in queries:
+            try:
+                response = await self._send_command(command)
+                status[name] = response
+                _LOGGER.debug("Query %s (%s) returned: %s", name, command, response)
+            except Exception as e:
+                _LOGGER.debug("Query %s (%s) failed: %s", name, command, e)
+                status[name] = None
+
+        return status
+
+    async def async_get_volume_alt(self) -> str | None:
+        """Try alternative volume query methods."""
+        # Some AVRs respond better to CV? (channel volume)
+        response = await self._send_command("CV?")
+        if response:
+            return response
+        # Try MV? again as fallback
+        return await self._send_command("MV?")
+
+    async def async_get_power_alt(self) -> str | None:
+        """Try alternative power query methods."""
+        # Try PW? first
+        response = await self._send_command("PW?")
+        if response:
+            return response
+        # Some AVRs use ZM? for main zone power
+        return await self._send_command("ZM?")
 
     # Add more methods as needed for other AVR functions

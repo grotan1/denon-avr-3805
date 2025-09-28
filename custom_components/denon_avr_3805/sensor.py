@@ -31,12 +31,23 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        volume = self.coordinator.data.get("volume")
-        if volume and isinstance(volume, str) and volume.startswith("MV"):
-            try:
-                return int(volume[2:])
-            except ValueError:
-                return None
+        volume_response = self.coordinator.data.get("volume")
+        if volume_response and isinstance(volume_response, str):
+            # Handle different volume response formats
+            if volume_response.startswith("MV"):
+                try:
+                    # MVxx format (xx is volume level)
+                    vol_str = volume_response[2:]
+                    if vol_str.isdigit():
+                        return int(vol_str)
+                except (ValueError, IndexError):
+                    pass
+            elif volume_response.isdigit():
+                # Just digits (raw volume level)
+                try:
+                    return int(volume_response)
+                except ValueError:
+                    pass
         return None
 
     @property
@@ -66,9 +77,20 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        input_val = self.coordinator.data.get("input")
-        if input_val and isinstance(input_val, str) and input_val.startswith("SI"):
-            return input_val[2:]  # Extract input from SIVCR
+        input_response = self.coordinator.data.get("input")
+        if input_response and isinstance(input_response, str):
+            # Handle different input response formats
+            if input_response.startswith("SI"):
+                # SI<source> format - extract source after SI
+                source = input_response[2:]
+                # Only return if we have a non-empty source
+                return source if source else None
+            elif len(input_response) > 0:
+                # Raw input name - but filter out obviously invalid responses
+                # Some AVRs might return status messages instead of input names
+                if input_response in ["ON", "OFF", "STANDBY", "PWON", "PWSTANDBY"]:
+                    return None
+                return input_response
         return None
 
     @property

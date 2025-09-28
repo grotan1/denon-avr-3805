@@ -31,8 +31,10 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     @property
     def state(self):
         """Return the state of the media player."""
-        if self.coordinator.data.get("power") == "PWON":
-            return STATE_ON
+        power_status = self.coordinator.data.get("power")
+        if power_status and isinstance(power_status, str):
+            if power_status in ["PWON", "ON", "ZM ON"]:
+                return STATE_ON
         return STATE_OFF
 
     @property
@@ -50,26 +52,45 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     @property
     def volume_level(self):
         """Volume level of the media player (0..1)."""
-        volume = self.coordinator.data.get("volume")
-        if volume and isinstance(volume, str) and volume.startswith("MV"):
-            try:
-                level = int(volume[2:])
-                return level / 98.0  # Denon uses 0-98 scale
-            except ValueError:
-                return None
+        volume_response = self.coordinator.data.get("volume")
+        if volume_response and isinstance(volume_response, str):
+            # Handle different volume response formats
+            if volume_response.startswith("MV"):
+                try:
+                    vol_str = volume_response[2:]
+                    if vol_str.isdigit():
+                        level = int(vol_str)
+                        return level / 98.0  # Denon uses 0-98 scale
+                except (ValueError, IndexError):
+                    pass
+            elif volume_response.isdigit():
+                try:
+                    level = int(volume_response)
+                    return level / 98.0
+                except ValueError:
+                    pass
         return None
 
     @property
     def is_volume_muted(self):
         """Boolean if volume is currently muted."""
-        return self.coordinator.data.get("mute") == "MUON"
+        mute_status = self.coordinator.data.get("mute")
+        if mute_status and isinstance(mute_status, str):
+            return mute_status in ["MUON", "ON"]
+        return False
 
     @property
     def source(self):
         """Return the current input source."""
-        input_val = self.coordinator.data.get("input")
-        if input_val and isinstance(input_val, str) and input_val.startswith("SI"):
-            return input_val[2:]
+        input_response = self.coordinator.data.get("input")
+        if input_response and isinstance(input_response, str):
+            if input_response.startswith("SI"):
+                source = input_response[2:]
+                return source if source else None
+            elif len(input_response) > 0:
+                if input_response in ["ON", "OFF", "STANDBY", "PWON", "PWSTANDBY"]:
+                    return None
+                return input_response
         return None
 
     @property
