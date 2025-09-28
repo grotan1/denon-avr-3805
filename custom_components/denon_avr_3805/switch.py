@@ -20,6 +20,11 @@ async def async_setup_entry(hass, entry, async_add_devices):
 class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     """Denon AVR-3805 power switch class."""
 
+    @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_power"
+
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Turn on the AVR."""
         await self.coordinator.api.connect()
@@ -52,6 +57,11 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
 
 class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     """Denon AVR-3805 mute switch class."""
+
+    @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_mute"
 
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Mute the AVR."""

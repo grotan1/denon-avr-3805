@@ -18,6 +18,11 @@ class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
     """denon_avr_3805 binary_sensor class."""
 
     @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_connectivity"
+
+    @property
     def name(self):
         """Return the name of the binary_sensor."""
         return f"{DEFAULT_NAME}_connectivity"

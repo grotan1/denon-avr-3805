@@ -19,6 +19,11 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
     """Denon AVR-3805 volume sensor class."""
 
     @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_volume"
+
+    @property
     def name(self):
         """Return the name of the sensor."""
         return f"{DEFAULT_NAME}_volume"
@@ -44,6 +49,11 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
 
 class DenonAvr3805InputSensor(DenonAvr3805Entity):
     """Denon AVR-3805 input sensor class."""
+
+    @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_input"
 
     @property
     def name(self):

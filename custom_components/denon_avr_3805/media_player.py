@@ -26,6 +26,11 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     """Denon AVR-3805 media player class."""
 
     @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self.config_entry.entry_id}_media_player"
+
+    @property
     def name(self):
         """Return the name of the media player."""
         return f"{DEFAULT_NAME}_{MEDIA_PLAYER}"
