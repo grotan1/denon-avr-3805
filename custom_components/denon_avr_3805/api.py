@@ -51,9 +51,9 @@ class DenonAvr3805ApiClient:
                 self._writer.write(full_command)
                 await self._writer.drain()
 
-                # Read response (up to 100 bytes, timeout 2s)
+                # Read response (up to 100 bytes, timeout 5s)
                 response = await asyncio.wait_for(
-                    self._reader.readuntil(b"\r"), timeout=2.0
+                    self._reader.readuntil(b"\r"), timeout=5.0
                 )
                 decoded = response.decode().strip()
                 _LOGGER.debug("Received response: %s", decoded)
@@ -63,7 +63,7 @@ class DenonAvr3805ApiClient:
                     _LOGGER.debug("Received echo of command, reading actual response")
                     try:
                         response2 = await asyncio.wait_for(
-                            self._reader.readuntil(b"\r"), timeout=1.0
+                            self._reader.readuntil(b"\r"), timeout=2.0
                         )
                         decoded2 = response2.decode().strip()
                         _LOGGER.debug("Received actual response: %s", decoded2)
@@ -154,11 +154,7 @@ class DenonAvr3805ApiClient:
 
     async def async_get_volume_alt(self) -> str | None:
         """Try alternative volume query methods."""
-        # Some AVRs respond better to CV? (channel volume)
-        response = await self._send_command("CV?")
-        if response:
-            return response
-        # Try MV? again as fallback
+        # Try MV? again as fallback (CV? was returning power status)
         return await self._send_command("MV?")
 
     async def async_get_power_alt(self) -> str | None:
