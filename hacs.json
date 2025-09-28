@@ -1,7 +1,12 @@
 {
   "name": "Denon AVR-3805",
   "hacs": "1.6.0",
-  "domains": ["binary_sensor", "sensor", "switch", "media_player"],
+  "domains": [
+    "binary_sensor",
+    "sensor",
+    "switch",
+    "media_player"
+  ],
   "iot_class": "Local Polling",
   "homeassistant": "0.118.0"
 }
