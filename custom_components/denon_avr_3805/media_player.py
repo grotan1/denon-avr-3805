@@ -1,13 +1,6 @@
 """Media player platform for Denon AVR-3805."""
 from homeassistant.components.media_player import MediaPlayerEntity
-from homeassistant.components.media_player.const import (
-    SUPPORT_SELECT_SOURCE,
-    SUPPORT_TURN_OFF,
-    SUPPORT_TURN_ON,
-    SUPPORT_VOLUME_MUTE,
-    SUPPORT_VOLUME_SET,
-    SUPPORT_VOLUME_STEP,
-)
+from homeassistant.components.media_player import MediaPlayerEntityFeature
 from homeassistant.const import STATE_OFF, STATE_ON
 
 from .const import DEFAULT_NAME
@@ -46,12 +39,12 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     def supported_features(self):
         """Flag media player features that are supported."""
         return (
-            SUPPORT_TURN_ON
-            | SUPPORT_TURN_OFF
-            | SUPPORT_VOLUME_SET
-            | SUPPORT_VOLUME_STEP
-            | SUPPORT_VOLUME_MUTE
-            | SUPPORT_SELECT_SOURCE
+            MediaPlayerEntityFeature.TURN_ON
+            | MediaPlayerEntityFeature.TURN_OFF
+            | MediaPlayerEntityFeature.VOLUME_SET
+            | MediaPlayerEntityFeature.VOLUME_STEP
+            | MediaPlayerEntityFeature.VOLUME_MUTE
+            | MediaPlayerEntityFeature.SELECT_SOURCE
         )
 
     @property
