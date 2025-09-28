@@ -1,6 +1,6 @@
 {
   "name": "Denon AVR-3805",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "hacs": "1.6.0",
   "icon": "mdi:amplifier",
   "domains": [
