@@ -51,9 +51,12 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     def volume_level(self):
         """Volume level of the media player (0..1)."""
         volume = self.coordinator.data.get("volume")
-        if volume and volume.startswith("MV"):
-            level = int(volume[2:])
-            return level / 98.0  # Denon uses 0-98 scale
+        if volume and isinstance(volume, str) and volume.startswith("MV"):
+            try:
+                level = int(volume[2:])
+                return level / 98.0  # Denon uses 0-98 scale
+            except ValueError:
+                return None
         return None
 
     @property
@@ -65,7 +68,7 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     def source(self):
         """Return the current input source."""
         input_val = self.coordinator.data.get("input")
-        if input_val and input_val.startswith("SI"):
+        if input_val and isinstance(input_val, str) and input_val.startswith("SI"):
             return input_val[2:]
         return None
 

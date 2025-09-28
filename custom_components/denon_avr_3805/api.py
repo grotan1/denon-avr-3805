@@ -46,14 +46,31 @@ class DenonAvr3805ApiClient:
         async with self._lock:
             try:
                 # Send command with carriage return
-                self._writer.write((command + "\r").encode())
+                full_command = (command + "\r").encode()
+                _LOGGER.debug("Sending command: %s", command)
+                self._writer.write(full_command)
                 await self._writer.drain()
 
                 # Read response (up to 100 bytes, timeout 2s)
                 response = await asyncio.wait_for(
                     self._reader.readuntil(b"\r"), timeout=2.0
                 )
-                return response.decode().strip()
+                decoded = response.decode().strip()
+                _LOGGER.debug("Received response: %s", decoded)
+
+                # If the response is just an echo of the command, try to read more
+                if decoded == command:
+                    try:
+                        response2 = await asyncio.wait_for(
+                            self._reader.readuntil(b"\r"), timeout=1.0
+                        )
+                        decoded2 = response2.decode().strip()
+                        _LOGGER.debug("Received second response: %s", decoded2)
+                        return decoded2
+                    except asyncio.TimeoutError:
+                        pass
+
+                return decoded
             except asyncio.TimeoutError:
                 _LOGGER.warning("Timeout reading response for command: %s", command)
                 return None

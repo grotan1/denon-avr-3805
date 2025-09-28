@@ -32,8 +32,11 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
     def state(self):
         """Return the state of the sensor."""
         volume = self.coordinator.data.get("volume")
-        if volume and volume.startswith("MV"):
-            return int(volume[2:])  # Extract level from MV50
+        if volume and isinstance(volume, str) and volume.startswith("MV"):
+            try:
+                return int(volume[2:])
+            except ValueError:
+                return None
         return None
 
     @property
@@ -64,7 +67,7 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
     def state(self):
         """Return the state of the sensor."""
         input_val = self.coordinator.data.get("input")
-        if input_val and input_val.startswith("SI"):
+        if input_val and isinstance(input_val, str) and input_val.startswith("SI"):
             return input_val[2:]  # Extract input from SIVCR
         return None
 

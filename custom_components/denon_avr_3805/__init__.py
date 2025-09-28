@@ -83,15 +83,27 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
         """Update data via library."""
         try:
             await self.api.connect()
-            data = {
-                "power": await self.api.async_get_power_status(),
-                "volume": await self.api.async_get_volume(),
-                "mute": await self.api.async_get_mute_status(),
-                "input": await self.api.async_get_input(),
-            }
+            data = {}
+            try:
+                data["power"] = await self.api.async_get_power_status()
+            except Exception:
+                data["power"] = None
+            try:
+                data["volume"] = await self.api.async_get_volume()
+            except Exception:
+                data["volume"] = None
+            try:
+                data["mute"] = await self.api.async_get_mute_status()
+            except Exception:
+                data["mute"] = None
+            try:
+                data["input"] = await self.api.async_get_input()
+            except Exception:
+                data["input"] = None
             await self.api.disconnect()
             return data
         except Exception as exception:
+            _LOGGER.error("Failed to update AVR data: %s", exception)
             raise UpdateFailed() from exception
 
 
