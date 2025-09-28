@@ -38,7 +38,7 @@ class DenonAvr3805ApiClient:
             self._writer = None
             _LOGGER.info("Disconnected from Denon AVR")
 
-    async def _send_command(self, command: str) -> str | None:
+    async def _send_command(self, command: str, expected_prefix: str = None) -> str | None:
         """Send a command and return the response."""
         if not self._writer or not self._reader:
             raise ConnectionError("Not connected to AVR")
@@ -51,29 +51,32 @@ class DenonAvr3805ApiClient:
                 self._writer.write(full_command)
                 await self._writer.drain()
 
-                # Read response (up to 100 bytes, timeout 5s)
-                response = await asyncio.wait_for(
-                    self._reader.readuntil(b"\r"), timeout=5.0
-                )
-                decoded = response.decode().strip()
-                _LOGGER.debug("Received response: %s", decoded)
+                # If we know what prefix to expect, try to find the right response
+                if expected_prefix:
+                    return await self._read_expected_response(expected_prefix)
+                else:
+                    # Fallback to original behavior
+                    response = await asyncio.wait_for(
+                        self._reader.readuntil(b"\r"), timeout=5.0
+                    )
+                    decoded = response.decode().strip()
+                    _LOGGER.debug("Received response: %s", decoded)
 
-                # Filter out command echoes - if response matches command, it's an echo
-                if decoded == command:
-                    _LOGGER.debug("Received echo of command, reading actual response")
-                    try:
-                        response2 = await asyncio.wait_for(
-                            self._reader.readuntil(b"\r"), timeout=2.0
-                        )
-                        decoded2 = response2.decode().strip()
-                        _LOGGER.debug("Received actual response: %s", decoded2)
-                        return decoded2
-                    except asyncio.TimeoutError:
-                        _LOGGER.debug("No actual response received after echo")
-                        return None
+                    # Filter out command echoes
+                    if decoded == command:
+                        _LOGGER.debug("Received echo of command, reading actual response")
+                        try:
+                            response2 = await asyncio.wait_for(
+                                self._reader.readuntil(b"\r"), timeout=2.0
+                            )
+                            decoded2 = response2.decode().strip()
+                            _LOGGER.debug("Received actual response: %s", decoded2)
+                            return decoded2
+                        except asyncio.TimeoutError:
+                            _LOGGER.debug("No actual response received after echo")
+                            return None
 
-                # If we get a response that doesn't match the command, it's likely a real response
-                return decoded
+                    return decoded
             except asyncio.TimeoutError:
                 _LOGGER.debug("Timeout reading response for command: %s", command)
                 return None
@@ -81,7 +84,44 @@ class DenonAvr3805ApiClient:
                 _LOGGER.error("Error sending command %s: %s", command, e)
                 raise
 
-    async def async_power_on(self) -> None:
+                _LOGGER.error("Error sending command %s: %s", command, e)
+                raise
+
+    async def _read_expected_response(self, expected_prefix: str) -> str | None:
+        """Read responses until we find one that starts with the expected prefix."""
+        start_time = asyncio.get_event_loop().time()
+        timeout = 5.0  # Total timeout for finding the right response
+        
+        while asyncio.get_event_loop().time() - start_time < timeout:
+            try:
+                response = await asyncio.wait_for(
+                    self._reader.readuntil(b"\r"), timeout=1.0
+                )
+                decoded = response.decode().strip()
+                _LOGGER.debug("Received response: %s", decoded)
+                
+                # Check if this is the expected response
+                if decoded.startswith(expected_prefix):
+                    _LOGGER.debug("Found expected response: %s", decoded)
+                    return decoded
+                
+                # If it's a command echo, skip it
+                if decoded in ["PW?", "MV?", "MU?", "SI?", "SI ?", "CV?", "ZM?"]:
+                    _LOGGER.debug("Skipping command echo: %s", decoded)
+                    continue
+                    
+                # Skip other invalid responses
+                _LOGGER.debug("Skipping unexpected response: %s", decoded)
+                
+            except asyncio.TimeoutError:
+                _LOGGER.debug("Timeout waiting for expected response with prefix: %s", expected_prefix)
+                break
+            except Exception as e:
+                _LOGGER.debug("Error reading response: %s", e)
+                break
+                
+        _LOGGER.debug("Failed to find expected response with prefix: %s", expected_prefix)
+        return None
         """Turn the AVR on."""
         await self._send_command("PWON")
 
@@ -91,7 +131,7 @@ class DenonAvr3805ApiClient:
 
     async def async_get_power_status(self) -> str | None:
         """Get power status (PWON or PWSTANDBY)."""
-        return await self._send_command("PW?")
+        return await self._send_command("PW?", "PW")
 
     async def async_mute_on(self) -> None:
         """Mute the AVR."""
@@ -103,7 +143,7 @@ class DenonAvr3805ApiClient:
 
     async def async_get_mute_status(self) -> str | None:
         """Get mute status (MUON or MUOFF)."""
-        return await self._send_command("MU?")
+        return await self._send_command("MU?", "MU")
 
     async def async_volume_up(self) -> None:
         """Increase volume."""
@@ -121,7 +161,7 @@ class DenonAvr3805ApiClient:
 
     async def async_get_volume(self) -> str | None:
         """Get current volume level."""
-        return await self._send_command("MV?")
+        return await self._send_command("MV?", "MV")
 
     async def async_select_input(self, input_code: str) -> None:
         """Select input (e.g., 'VCR', 'TV', 'DVD')."""
@@ -129,9 +169,24 @@ class DenonAvr3805ApiClient:
 
     async def async_get_input(self) -> str | None:
         """Get current input."""
-        return await self._send_command("SI?")
+        return await self._send_command("SI?", "SI")
 
-    async def async_get_status_all(self) -> dict:
+    async def _drain_input(self) -> None:
+        """Drain any pending input from the connection."""
+        if not self._reader:
+            return
+        try:
+            # Read any pending data with a short timeout
+            while True:
+                data = await asyncio.wait_for(
+                    self._reader.readuntil(b"\r"), timeout=0.1
+                )
+                _LOGGER.debug("Drained pending data: %s", data.decode().strip())
+        except asyncio.TimeoutError:
+            # No more data to drain
+            pass
+        except Exception as e:
+            _LOGGER.debug("Error draining input: %s", e)
         """Get all status information at once (for debugging)."""
         status = {}
         queries = [
@@ -155,15 +210,15 @@ class DenonAvr3805ApiClient:
     async def async_get_volume_alt(self) -> str | None:
         """Try alternative volume query methods."""
         # Try MV? again as fallback (CV? was returning power status)
-        return await self._send_command("MV?")
+        return await self._send_command("MV?", "MV")
 
     async def async_get_power_alt(self) -> str | None:
         """Try alternative power query methods."""
         # Try PW? first
-        response = await self._send_command("PW?")
+        response = await self._send_command("PW?", "PW")
         if response:
             return response
         # Some AVRs use ZM? for main zone power
-        return await self._send_command("ZM?")
+        return await self._send_command("ZM?", "ZM")
 
     # Add more methods as needed for other AVR functions

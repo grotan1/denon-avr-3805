@@ -85,16 +85,14 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             await self.api.connect()
             # Give AVR time to be ready after connection
             await asyncio.sleep(0.5)
+            # Drain any pending input
+            await self.api._drain_input()
             data = {}
             try:
                 power_status = await self.api.async_get_power_status()
                 if not power_status:
                     # Try alternative power query
                     power_status = await self.api.async_get_power_alt()
-                # Validate power response
-                if power_status and not power_status.startswith("PW"):
-                    _LOGGER.debug("Invalid power response: %s", power_status)
-                    power_status = None
                 data["power"] = power_status
                 _LOGGER.debug("Power status query returned: %s", power_status)
             except Exception as e:
@@ -109,10 +107,6 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 if not volume_status:
                     # Try alternative volume query
                     volume_status = await self.api.async_get_volume_alt()
-                # Validate volume response
-                if volume_status and not volume_status.startswith("MV"):
-                    _LOGGER.debug("Invalid volume response: %s", volume_status)
-                    volume_status = None
                 data["volume"] = volume_status
                 _LOGGER.debug("Volume status query returned: %s", volume_status)
             except Exception as e:
@@ -124,10 +118,6 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
 
             try:
                 mute_status = await self.api.async_get_mute_status()
-                # Validate mute response
-                if mute_status and not mute_status.startswith("MU"):
-                    _LOGGER.debug("Invalid mute response: %s", mute_status)
-                    mute_status = None
                 data["mute"] = mute_status
                 _LOGGER.debug("Mute status query returned: %s", mute_status)
             except Exception as e:
@@ -138,10 +128,6 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
 
             try:
                 input_status = await self.api.async_get_input()
-                # Validate input response
-                if input_status and not input_status.startswith("SI"):
-                    _LOGGER.debug("Invalid input response: %s", input_status)
-                    input_status = None
                 data["input"] = input_status
                 _LOGGER.debug("Input status query returned: %s", input_status)
             except Exception as e:
@@ -154,7 +140,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             try:
                 # Some AVRs respond better to different query formats
                 alt_input = await self.api._send_command("SI ?")
-                if alt_input and alt_input.startswith("SI") and alt_input != input_status:
+                if alt_input and alt_input != input_status:
                     _LOGGER.debug("Alternative input query returned: %s", alt_input)
                     if input_status is None and alt_input:
                         data["input"] = alt_input
