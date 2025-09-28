@@ -1,0 +1,33 @@
+"""Binary sensor platform for Denon AVR-3805."""
+from homeassistant.components.binary_sensor import BinarySensorEntity
+
+from .const import BINARY_SENSOR
+from .const import BINARY_SENSOR_DEVICE_CLASS
+from .const import DEFAULT_NAME
+from .const import DOMAIN
+from .entity import DenonAvr3805Entity
+
+
+async def async_setup_entry(hass, entry, async_add_devices):
+    """Setup binary_sensor platform."""
+    coordinator = hass.data[DOMAIN][entry.entry_id]
+    async_add_devices([DenonAvr3805BinarySensor(coordinator, entry)])
+
+
+class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
+    """denon_avr_3805 binary_sensor class."""
+
+    @property
+    def name(self):
+        """Return the name of the binary_sensor."""
+        return f"{DEFAULT_NAME}_connectivity"
+
+    @property
+    def device_class(self):
+        """Return the class of this binary_sensor."""
+        return "connectivity"
+
+    @property
+    def is_on(self):
+        """Return true if the AVR is connected."""
+        return self.coordinator.last_update_success
