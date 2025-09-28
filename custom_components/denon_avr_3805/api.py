@@ -51,39 +51,17 @@ class DenonAvr3805ApiClient:
                 self._writer.write(full_command)
                 await self._writer.drain()
 
-                # If we know what prefix to expect, try to find the right response
-                if expected_prefix:
-                    return await self._read_expected_response(expected_prefix)
-                else:
-                    # Fallback to original behavior
-                    response = await asyncio.wait_for(
-                        self._reader.readuntil(b"\r"), timeout=5.0
-                    )
-                    decoded = response.decode().strip()
-                    _LOGGER.debug("Received response: %s", decoded)
+                # If no response expected (control commands), just return None
+                if expected_prefix is None:
+                    _LOGGER.debug("Control command sent (no response expected)")
+                    return None
 
-                    # Filter out command echoes
-                    if decoded == command:
-                        _LOGGER.debug("Received echo of command, reading actual response")
-                        try:
-                            response2 = await asyncio.wait_for(
-                                self._reader.readuntil(b"\r"), timeout=2.0
-                            )
-                            decoded2 = response2.decode().strip()
-                            _LOGGER.debug("Received actual response: %s", decoded2)
-                            return decoded2
-                        except asyncio.TimeoutError:
-                            _LOGGER.debug("No actual response received after echo")
-                            return None
-
-                    return decoded
+                # For status queries, read expected response
+                return await self._read_expected_response(expected_prefix)
             except asyncio.TimeoutError:
                 _LOGGER.debug("Timeout reading response for command: %s", command)
                 return None
             except Exception as e:
-                _LOGGER.error("Error sending command %s: %s", command, e)
-                raise
-
                 _LOGGER.error("Error sending command %s: %s", command, e)
                 raise
 
