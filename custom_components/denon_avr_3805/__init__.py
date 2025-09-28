@@ -109,6 +109,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Volume status query failed: %s", e)
                 data["volume"] = None
 
+            # Small delay between queries to avoid overwhelming the AVR
             await asyncio.sleep(0.1)
 
             try:
@@ -129,8 +130,22 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Input status query failed: %s", e)
                 data["input"] = None
 
+            await asyncio.sleep(0.1)
+
+            # Try additional queries that might work better with this AVR
+            try:
+                # Some AVRs respond better to different query formats
+                alt_input = await self.api._send_command("SI ?")
+                if alt_input and alt_input != input_status:
+                    _LOGGER.debug("Alternative input query returned: %s", alt_input)
+                    if input_status is None and alt_input:
+                        data["input"] = alt_input
+            except Exception as e:
+                _LOGGER.debug("Alternative input query failed: %s", e)
+
             await self.api.disconnect()
-            _LOGGER.debug("Coordinator update completed with data: %s", data)
+            _LOGGER.info("Coordinator update completed - Power: %s, Volume: %s, Mute: %s, Input: %s",
+                        data.get("power"), data.get("volume"), data.get("mute"), data.get("input"))
             return data
         except Exception as exception:
             _LOGGER.error("Failed to update AVR data: %s", exception)

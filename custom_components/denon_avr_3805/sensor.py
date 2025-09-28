@@ -39,13 +39,28 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
                     # MVxx format (xx is volume level)
                     vol_str = volume_response[2:]
                     if vol_str.isdigit():
-                        return int(vol_str)
+                        vol_int = int(vol_str)
+                        # Validate volume range (0-98 for Denon)
+                        if 0 <= vol_int <= 98:
+                            return vol_int
+                except (ValueError, IndexError):
+                    pass
+            elif volume_response.startswith("CV"):
+                try:
+                    # CVxx format (channel volume)
+                    vol_str = volume_response[2:]
+                    if vol_str.isdigit():
+                        vol_int = int(vol_str)
+                        if 0 <= vol_int <= 98:
+                            return vol_int
                 except (ValueError, IndexError):
                     pass
             elif volume_response.isdigit():
                 # Just digits (raw volume level)
                 try:
-                    return int(volume_response)
+                    vol_int = int(volume_response)
+                    if 0 <= vol_int <= 98:
+                        return vol_int
                 except ValueError:
                     pass
         return None
@@ -88,7 +103,15 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
             elif len(input_response) > 0:
                 # Raw input name - but filter out obviously invalid responses
                 # Some AVRs might return status messages instead of input names
-                if input_response in ["ON", "OFF", "STANDBY", "PWON", "PWSTANDBY"]:
+                invalid_responses = [
+                    "ON", "OFF", "STANDBY", "PWON", "PWSTANDBY",
+                    "MUON", "MUOFF", "MV", "CV", "ZM", "ZMON", "ZMOFF"
+                ]
+                # Check if response starts with any invalid prefix
+                if any(input_response.startswith(invalid) for invalid in invalid_responses):
+                    return None
+                # Check if response is exactly an invalid response
+                if input_response in invalid_responses:
                     return None
                 return input_response
         return None
