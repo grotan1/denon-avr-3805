@@ -29,6 +29,11 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
         return f"{DEFAULT_NAME}_{MEDIA_PLAYER}"
 
     @property
+    def icon(self):
+        """Return the icon of the media player."""
+        return "mdi:audio-video"
+
+    @property
     def state(self):
         """Return the state of the media player."""
         power_status = self.coordinator.data.get("power")
