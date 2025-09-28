@@ -3,7 +3,7 @@
 NAME = "Denon AVR-3805"
 DOMAIN = "denon_avr_3805"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "0.0.0"
+VERSION = "1.0.0"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/grotan1/denon-avr-3805/issues"
