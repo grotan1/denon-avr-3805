@@ -27,10 +27,24 @@
 The integration connects to the Denon AVR-3805 via serial port exposed over TCP using ser2net.
 
 1. On your Raspberry Pi (or host with serial access), install and configure ser2net:
-   ```
+   ```bash
    sudo apt install ser2net
-   # Edit /etc/ser2net.conf to add a line like:
-   # 2000:raw:600:/dev/ttyUSB0:9600 NONE 8DATABITS NONE 1STOPBIT
+   ```
+
+   Create or edit `/etc/ser2net.yaml` with the following configuration:
+   ```yaml
+   connection: &con01
+     accepter: tcp,2000
+     enable: on
+     options:
+       banner: ser2net
+       kickolduser: true
+       telnet-brk-on-sync: true
+     connector: serialdev,/dev/ttyUSB0,9600n81
+   ```
+
+   Then restart ser2net:
+   ```bash
    sudo systemctl restart ser2net
    ```
 
