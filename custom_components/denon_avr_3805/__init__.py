@@ -85,8 +85,6 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             await self.api.connect()
             # Give AVR time to be ready after connection
             await asyncio.sleep(0.5)
-            # Drain any pending input
-            await self.api._drain_input()
             data = {}
             try:
                 power_status = await self.api.async_get_power_status()

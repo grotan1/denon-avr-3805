@@ -91,7 +91,7 @@ class DenonAvr3805ApiClient:
         """Read responses until we find one that starts with the expected prefix."""
         start_time = asyncio.get_event_loop().time()
         timeout = 5.0  # Total timeout for finding the right response
-        
+
         while asyncio.get_event_loop().time() - start_time < timeout:
             try:
                 response = await asyncio.wait_for(
@@ -99,29 +99,31 @@ class DenonAvr3805ApiClient:
                 )
                 decoded = response.decode().strip()
                 _LOGGER.debug("Received response: %s", decoded)
-                
+
                 # Check if this is the expected response
                 if decoded.startswith(expected_prefix):
                     _LOGGER.debug("Found expected response: %s", decoded)
                     return decoded
-                
+
                 # If it's a command echo, skip it
                 if decoded in ["PW?", "MV?", "MU?", "SI?", "SI ?", "CV?", "ZM?"]:
                     _LOGGER.debug("Skipping command echo: %s", decoded)
                     continue
-                    
+
                 # Skip other invalid responses
                 _LOGGER.debug("Skipping unexpected response: %s", decoded)
-                
+
             except asyncio.TimeoutError:
                 _LOGGER.debug("Timeout waiting for expected response with prefix: %s", expected_prefix)
                 break
             except Exception as e:
                 _LOGGER.debug("Error reading response: %s", e)
                 break
-                
+
         _LOGGER.debug("Failed to find expected response with prefix: %s", expected_prefix)
         return None
+
+    async def async_power_on(self) -> None:
         """Turn the AVR on."""
         await self._send_command("PWON")
 
@@ -176,12 +178,15 @@ class DenonAvr3805ApiClient:
         if not self._reader:
             return
         try:
-            # Read any pending data with a short timeout
+            # Try to read any pending data with a very short timeout
+            # Use read(1) instead of readuntil to avoid conflicts
             while True:
                 data = await asyncio.wait_for(
-                    self._reader.readuntil(b"\r"), timeout=0.1
+                    self._reader.read(1), timeout=0.01
                 )
-                _LOGGER.debug("Drained pending data: %s", data.decode().strip())
+                if not data:
+                    break  # No more data
+                # Continue reading until no more data
         except asyncio.TimeoutError:
             # No more data to drain
             pass
