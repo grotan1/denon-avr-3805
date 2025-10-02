@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Nelze se připojit k AVR. Zkontrolujte nastavení hostitele a portu."
+            "invalid_host": "Nelze se připojit k AVR. Zkontrolujte nastavení hostitele a portu."
         },
         "abort": {
             "single_instance_allowed": "Je povolena pouze jedna instance."

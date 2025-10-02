@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Get ekki tengst AVR. Vinsamlegast athugaðu hýsils- og gáttarstillingar."
+            "invalid_host": "Get ekki tengst AVR. Vinsamlegast athugaðu hýsils- og gáttarstillingar."
         },
         "abort": {
             "single_instance_allowed": "Aðeins ein tilvik leyfð."

@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Kan niet verbinden met de AVR. Controleer de host- en poortinstellingen."
+            "invalid_host": "Kan niet verbinden met de AVR. Controleer de host- en poortinstellingen."
         },
         "abort": {
             "single_instance_allowed": "Slechts één instantie is toegestaan."

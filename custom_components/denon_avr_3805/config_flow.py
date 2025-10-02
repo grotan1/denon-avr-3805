@@ -38,7 +38,7 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     title=user_input.get(CONF_NAME, f"{user_input[CONF_HOST]}:{user_input[CONF_PORT]}"), data=user_input
                 )
             else:
-                self._errors["base"] = "cannot_connect"
+                self._errors["base"] = "invalid_host"
 
             return await self._show_config_form(user_input)
 

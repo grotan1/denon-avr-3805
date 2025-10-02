@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Ei voida yhdistää AVR:ään. Tarkista isäntä- ja porttiasetukset."
+            "invalid_host": "Ei voida yhdistää AVR:ään. Tarkista isäntä- ja porttiasetukset."
         },
         "abort": {
             "single_instance_allowed": "Vain yksi instanssi sallittu."

@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "No se puede conectar al AVR. Por favor, verifique la configuración de host y puerto."
+            "invalid_host": "No se puede conectar al AVR. Por favor, verifique la configuración de host y puerto."
         },
         "abort": {
             "single_instance_allowed": "Solo se permite una única instancia."

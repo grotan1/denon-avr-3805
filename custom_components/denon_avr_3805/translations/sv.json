@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Kan inte ansluta till AVR. Kontrollera värd- och portinställningarna."
+            "invalid_host": "Kan inte ansluta till AVR. Kontrollera värd- och portinställningarna."
         },
         "abort": {
             "single_instance_allowed": "Endast en instans är tillåten."

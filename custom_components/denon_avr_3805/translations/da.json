@@ -12,7 +12,7 @@
             }
         },
         "error": {
-            "cannot_connect": "Kan ikke oprette forbindelse til AVR. Tjek venligst vært- og portindstillingerne."
+            "invalid_host": "Kan ikke oprette forbindelse til AVR. Tjek venligst vært- og portindstillingerne."
         },
         "abort": {
             "single_instance_allowed": "Kun én instans er tilladt."

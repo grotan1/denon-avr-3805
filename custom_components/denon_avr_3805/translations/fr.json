@@ -12,7 +12,7 @@
       }
     },
     "error": {
-      "cannot_connect": "Impossible de se connecter à l'ampli. Vérifiez les paramètres d'hôte et de port."
+      "invalid_host": "Impossible de se connecter à l'ampli. Vérifiez les paramètres d'hôte et de port."
     },
     "abort": {
       "single_instance_allowed": "Une seule instance est autorisée."
