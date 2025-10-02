@@ -2,6 +2,7 @@
 import asyncio
 import logging
 import socket
+from typing import Optional
 
 TIMEOUT = 5  # seconds for socket operations
 
@@ -14,8 +15,8 @@ class DenonAvr3805ApiClient:
         """Initialize the API client for TCP connection to ser2net."""
         self._host = host
         self._port = port
-        self._reader: asyncio.StreamReader | None = None
-        self._writer: asyncio.StreamWriter | None = None
+        self._reader: Optional[asyncio.StreamReader] = None
+        self._writer: Optional[asyncio.StreamWriter] = None
         self._lock = asyncio.Lock()  # To serialize commands
 
     async def connect(self) -> None:
@@ -38,7 +39,7 @@ class DenonAvr3805ApiClient:
             self._writer = None
             _LOGGER.info("Disconnected from Denon AVR")
 
-    async def _send_command(self, command: str, expected_prefix: str = None) -> str | None:
+    async def _send_command(self, command: str, expected_prefix: str = None) -> Optional[str]:
         """Send a command and return the response."""
         if not self._writer or not self._reader:
             raise ConnectionError("Not connected to AVR")
@@ -65,7 +66,7 @@ class DenonAvr3805ApiClient:
                 _LOGGER.error("Error sending command %s: %s", command, e)
                 raise
 
-    async def _read_expected_response(self, expected_prefix: str) -> str | None:
+    async def _read_expected_response(self, expected_prefix: str) -> Optional[str]:
         """Read responses until we find one that starts with the expected prefix."""
         start_time = asyncio.get_event_loop().time()
         timeout = 5.0  # Total timeout for finding the right response
@@ -109,7 +110,7 @@ class DenonAvr3805ApiClient:
         """Turn the AVR to standby."""
         await self._send_command("PWSTANDBY")
 
-    async def async_get_power_status(self) -> str | None:
+    async def async_get_power_status(self) -> Optional[str]:
         """Get power status (PWON or PWSTANDBY)."""
         return await self._send_command("PW?", "PW")
 
@@ -121,7 +122,7 @@ class DenonAvr3805ApiClient:
         """Unmute the AVR."""
         await self._send_command("MUOFF")
 
-    async def async_get_mute_status(self) -> str | None:
+    async def async_get_mute_status(self) -> Optional[str]:
         """Get mute status (MUON or MUOFF)."""
         return await self._send_command("MU?", "MU")
 
@@ -139,7 +140,7 @@ class DenonAvr3805ApiClient:
             raise ValueError("Volume level must be between 0 and 98")
         await self._send_command(f"MV{level:02d}")
 
-    async def async_get_volume(self) -> str | None:
+    async def async_get_volume(self) -> Optional[str]:
         """Get current volume level."""
         return await self._send_command("MV?", "MV")
 
@@ -147,7 +148,7 @@ class DenonAvr3805ApiClient:
         """Select input (e.g., 'VCR', 'TV', 'DVD')."""
         await self._send_command(f"SI{input_code}")
 
-    async def async_get_input(self) -> str | None:
+    async def async_get_input(self) -> Optional[str]:
         """Get current input."""
         return await self._send_command("SI?", "SI")
 
@@ -190,12 +191,12 @@ class DenonAvr3805ApiClient:
 
         return status
 
-    async def async_get_volume_alt(self) -> str | None:
+    async def async_get_volume_alt(self) -> Optional[str]:
         """Try alternative volume query methods."""
         # Try MV? again as fallback (CV? was returning power status)
         return await self._send_command("MV?", "MV")
 
-    async def async_get_power_alt(self) -> str | None:
+    async def async_get_power_alt(self) -> Optional[str]:
         """Try alternative power query methods."""
         # Try PW? first
         response = await self._send_command("PW?", "PW")
