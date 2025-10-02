@@ -27,6 +27,11 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
         """Return a unique ID for this entity."""
         return f"{self.config_entry.entry_id}_power"
 
+    @property
+    def translation_key(self):
+        """Return the translation key for this entity."""
+        return "power"
+
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Turn on the AVR."""
         await self.coordinator.api.connect()
@@ -45,15 +50,7 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     def name(self):
         """Return the name of the switch."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        # Try to get translated "Power" string
-        try:
-            power_text = self.hass.helpers.translation.get_translated_string(
-                ["entity.switch.power.name"],
-                language=self.hass.config.language
-            )
-        except:
-            power_text = "Power"
-        return f"{device_name} {power_text}"
+        return f"{device_name} Power"
 
     @property
     def icon(self):
@@ -78,6 +75,11 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
         """Return a unique ID for this entity."""
         return f"{self.config_entry.entry_id}_mute"
 
+    @property
+    def translation_key(self):
+        """Return the translation key for this entity."""
+        return "mute"
+
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Mute the AVR."""
         await self.coordinator.api.connect()
@@ -96,15 +98,7 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     def name(self):
         """Return the name of the switch."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        # Try to get translated "Mute" string
-        try:
-            mute_text = self.hass.helpers.translation.get_translated_string(
-                ["entity.switch.mute.name"],
-                language=self.hass.config.language
-            )
-        except:
-            mute_text = "Mute"
-        return f"{device_name} {mute_text}"
+        return f"{device_name} Mute"
 
     @property
     def icon(self):

@@ -25,18 +25,15 @@ class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
         return f"{self.config_entry.entry_id}_connectivity"
 
     @property
+    def translation_key(self):
+        """Return the translation key for this entity."""
+        return "connectivity"
+
+    @property
     def name(self):
         """Return the name of the binary_sensor."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        # Try to get translated "Connectivity" string
-        try:
-            connectivity_text = self.hass.helpers.translation.get_translated_string(
-                ["entity.binary_sensor.connectivity.name"],
-                language=self.hass.config.language
-            )
-        except:
-            connectivity_text = "Connectivity"
-        return f"{device_name} {connectivity_text}"
+        return f"{device_name} Connectivity"
 
     @property
     def device_class(self):

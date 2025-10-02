@@ -26,18 +26,15 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
         return f"{self.config_entry.entry_id}_volume"
 
     @property
+    def translation_key(self):
+        """Return the translation key for this entity."""
+        return "volume"
+
+    @property
     def name(self):
         """Return the name of the sensor."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        # Try to get translated "Volume" string
-        try:
-            volume_text = self.hass.helpers.translation.get_translated_string(
-                ["entity.sensor.volume.name"],
-                language=self.hass.config.language
-            )
-        except:
-            volume_text = "Volume"
-        return f"{device_name} {volume_text}"
+        return f"{device_name} Volume"
 
     @property
     def state(self):
@@ -96,18 +93,15 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
         return f"{self.config_entry.entry_id}_input"
 
     @property
+    def translation_key(self):
+        """Return the translation key for this entity."""
+        return "input"
+
+    @property
     def name(self):
         """Return the name of the sensor."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        # Try to get translated "Input" string
-        try:
-            input_text = self.hass.helpers.translation.get_translated_string(
-                ["entity.sensor.input.name"],
-                language=self.hass.config.language
-            )
-        except:
-            input_text = "Input"
-        return f"{device_name} {input_text}"
+        return f"{device_name} Input"
 
     @property
     def state(self):
