@@ -33,8 +33,7 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Volume"
+        return None
 
     @property
     def state(self):
@@ -100,8 +99,7 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Input"
+        return None
 
     @property
     def state(self):

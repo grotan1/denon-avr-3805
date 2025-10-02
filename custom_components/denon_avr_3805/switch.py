@@ -49,8 +49,7 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Power"
+        return None
 
     @property
     def icon(self):
@@ -97,8 +96,7 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Mute"
+        return None
 
     @property
     def icon(self):
