@@ -2,6 +2,7 @@
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION
+from .const import CONF_NAME
 from .const import DOMAIN
 from .const import MANUFACTURER
 from .const import NAME
@@ -20,9 +21,11 @@ class DenonAvr3805Entity(CoordinatorEntity):
 
     @property
     def device_info(self):
+        """Return device information."""
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
         return {
             "identifiers": {(DOMAIN, self.config_entry.entry_id)},
-            "name": NAME,
+            "name": device_name,
             "model": VERSION,
             "manufacturer": MANUFACTURER,
         }

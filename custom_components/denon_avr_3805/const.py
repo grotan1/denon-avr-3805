@@ -3,7 +3,7 @@
 NAME = "Denon AVR-3805"
 DOMAIN = "denon_avr_3805"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "1.0.23"
+VERSION = "1.0.24"
 MANUFACTURER = "Denon"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
@@ -26,6 +26,7 @@ PLATFORMS = [BINARY_SENSOR, SENSOR, SWITCH, MEDIA_PLAYER]
 # Configuration and options
 CONF_ENABLED = "enabled"
 CONF_HOST = "host"
+CONF_NAME = "name"
 CONF_PORT = "port"
 
 # Defaults

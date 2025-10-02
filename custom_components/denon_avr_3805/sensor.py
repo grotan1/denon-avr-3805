@@ -1,7 +1,9 @@
 """Sensor platform for Denon AVR-3805."""
+from .const import CONF_NAME
 from .const import DEFAULT_NAME
 from .const import DOMAIN
 from .const import ICON
+from .const import NAME
 from .const import SENSOR
 from .entity import DenonAvr3805Entity
 
@@ -26,7 +28,8 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return f"{DEFAULT_NAME}_volume"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return f"{device_name} Volume"
 
     @property
     def state(self):
@@ -87,7 +90,8 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
     @property
     def name(self):
         """Return the name of the sensor."""
-        return f"{DEFAULT_NAME}_input"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return f"{device_name} Input"
 
     @property
     def state(self):

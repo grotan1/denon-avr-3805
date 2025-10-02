@@ -3,9 +3,11 @@ from homeassistant.components.media_player import MediaPlayerEntity
 from homeassistant.components.media_player import MediaPlayerEntityFeature
 from homeassistant.const import STATE_OFF, STATE_ON
 
+from .const import CONF_NAME
 from .const import DEFAULT_NAME
 from .const import DOMAIN
 from .const import MEDIA_PLAYER
+from .const import NAME
 from .entity import DenonAvr3805Entity
 
 
@@ -26,7 +28,8 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     @property
     def name(self):
         """Return the name of the media player."""
-        return f"{DEFAULT_NAME}_{MEDIA_PLAYER}"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return device_name
 
     @property
     def icon(self):

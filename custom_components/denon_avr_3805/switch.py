@@ -1,9 +1,11 @@
 """Switch platform for Denon AVR-3805."""
 from homeassistant.components.switch import SwitchEntity
 
+from .const import CONF_NAME
 from .const import DEFAULT_NAME
 from .const import DOMAIN
 from .const import ICON
+from .const import NAME
 from .const import SWITCH
 from .entity import DenonAvr3805Entity
 
@@ -42,7 +44,8 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        return f"{DEFAULT_NAME}_power"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return f"{device_name} Power"
 
     @property
     def icon(self):
@@ -84,7 +87,8 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        return f"{DEFAULT_NAME}_mute"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return f"{device_name} Mute"
 
     @property
     def icon(self):

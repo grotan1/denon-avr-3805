@@ -3,8 +3,10 @@ from homeassistant.components.binary_sensor import BinarySensorEntity
 
 from .const import BINARY_SENSOR
 from .const import BINARY_SENSOR_DEVICE_CLASS
+from .const import CONF_NAME
 from .const import DEFAULT_NAME
 from .const import DOMAIN
+from .const import NAME
 from .entity import DenonAvr3805Entity
 
 
@@ -25,7 +27,8 @@ class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
     @property
     def name(self):
         """Return the name of the binary_sensor."""
-        return f"{DEFAULT_NAME}_connectivity"
+        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        return f"{device_name} Connectivity"
 
     @property
     def device_class(self):
