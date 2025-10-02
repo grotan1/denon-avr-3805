@@ -32,7 +32,7 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
         # Try to get translated "Volume" string
         try:
             volume_text = self.hass.helpers.translation.get_translated_string(
-                ["component.denon_avr_3805.entity.sensor.volume.name"],
+                ["entity.sensor.volume.name"],
                 language=self.hass.config.language
             )
         except:
@@ -102,7 +102,7 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
         # Try to get translated "Input" string
         try:
             input_text = self.hass.helpers.translation.get_translated_string(
-                ["component.denon_avr_3805.entity.sensor.input.name"],
+                ["entity.sensor.input.name"],
                 language=self.hass.config.language
             )
         except:

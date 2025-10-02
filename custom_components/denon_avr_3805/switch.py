@@ -48,7 +48,7 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
         # Try to get translated "Power" string
         try:
             power_text = self.hass.helpers.translation.get_translated_string(
-                ["component.denon_avr_3805.entity.switch.power.name"],
+                ["entity.switch.power.name"],
                 language=self.hass.config.language
             )
         except:
@@ -99,7 +99,7 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
         # Try to get translated "Mute" string
         try:
             mute_text = self.hass.helpers.translation.get_translated_string(
-                ["component.denon_avr_3805.entity.switch.mute.name"],
+                ["entity.switch.mute.name"],
                 language=self.hass.config.language
             )
         except:

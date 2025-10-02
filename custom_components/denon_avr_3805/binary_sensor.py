@@ -31,7 +31,7 @@ class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
         # Try to get translated "Connectivity" string
         try:
             connectivity_text = self.hass.helpers.translation.get_translated_string(
-                ["component.denon_avr_3805.entity.binary_sensor.connectivity.name"],
+                ["entity.binary_sensor.connectivity.name"],
                 language=self.hass.config.language
             )
         except:
