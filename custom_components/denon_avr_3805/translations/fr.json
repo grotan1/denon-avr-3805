@@ -5,13 +5,14 @@
         "title": "Denon AVR-3805",
         "description": "Si vous avez besoin d'aide pour la configuration, regardez ici: https://github.com/grotan1/denon-avr-3805",
         "data": {
-          "username": "Identifiant",
-          "password": "Mot de Passe"
+          "host": "Hôte",
+          "port": "Port",
+          "name": "Nom"
         }
       }
     },
     "error": {
-      "auth": "Identifiant ou mot de passe erroné."
+      "cannot_connect": "Impossible de se connecter à l'ampli. Vérifiez les paramètres d'hôte et de port."
     },
     "abort": {
       "single_instance_allowed": "Une seule instance est autorisée."

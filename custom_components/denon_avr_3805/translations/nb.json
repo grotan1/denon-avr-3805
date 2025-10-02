@@ -5,13 +5,14 @@
         "title": "Denon AVR-3805",
         "description": "Hvis du trenger hjep til konfigurasjon ta en titt her: https://github.com/grotan1/denon-avr-3805",
         "data": {
-          "username": "Brukernavn",
-          "password": "Passord"
+          "host": "Vert",
+          "port": "Port",
+          "name": "Navn"
         }
       }
     },
     "error": {
-      "auth": "Brukernavn/Passord er feil."
+      "cannot_connect": "Kan ikke koble til AVR-en. Sjekk vert og port innstillinger."
     },
     "abort": {
       "single_instance_allowed": "Denne integrasjonen kan kun konfigureres en gang."
