@@ -23,16 +23,26 @@
 | `switch`        | Controls power and mute functions.                                       |
 | `media_player`  | Full media player control with volume, sources, and power.                |
 
+## Features
+
+- **Custom Device Naming**: Set a personalized name for your Denon AVR-3805 during setup
+- **Real-time Status**: Monitor connectivity, volume levels, and input sources
+- **Power Control**: Turn the AVR on/off and control mute function
+- **TCP/IP Connection**: Connect directly via network using serial-over-TCP
+- **Broad Compatibility**: May work with other Denon AVR models that have serial ports and similar command protocols
+
 ## Configuration
 
-The integration connects to the Denon AVR-3805 via serial port exposed over TCP using ser2net.
+The integration connects to the Denon AVR-3805 via serial port exposed over TCP using ser2net or similar tools.
+
+### Setting up Serial-to-TCP Bridge
 
 1. On your Raspberry Pi (or host with serial access), install and configure ser2net:
    ```bash
    sudo apt install ser2net
    ```
 
-   Create or edit `/etc/ser2net.yaml` with the following configuration:
+2. Create or edit `/etc/ser2net.yaml` with the following configuration:
    ```yaml
    connection: &con01
      accepter: tcp,2000
@@ -44,16 +54,17 @@ The integration connects to the Denon AVR-3805 via serial port exposed over TCP 
      connector: serialdev,/dev/ttyUSB0,9600n81
    ```
 
-   Then restart ser2net:
+3. Restart ser2net:
    ```bash
    sudo systemctl restart ser2net
    ```
 
-2. In Home Assistant, add the integration and provide:
-   - **Host**: IP address of the RPi running ser2net.
-   - **Port**: The TCP port configured in ser2net (e.g., 2000).
+### Home Assistant Configuration
 
-![example][exampleimg]
+In Home Assistant, add the integration and provide:
+- **Host**: IP address of the device running the serial-to-TCP bridge
+- **Port**: The TCP port configured for the serial connection (e.g., 2000)
+- **Name** (optional): Custom name for your AVR (defaults to "Denon AVR-3805")
 
 ## Installation
 
@@ -71,23 +82,30 @@ Using your HA configuration directory (folder) as a starting point you should no
 custom_components/denon_avr_3805/translations/en.json
 custom_components/denon_avr_3805/translations/fr.json
 custom_components/denon_avr_3805/translations/nb.json
-custom_components/denon_avr_3805/translations/sensor.en.json
-custom_components/denon_avr_3805/translations/sensor.fr.json
-custom_components/denon_avr_3805/translations/sensor.nb.json
-custom_components/denon_avr_3805/translations/sensor.nb.json
 custom_components/denon_avr_3805/__init__.py
 custom_components/denon_avr_3805/api.py
 custom_components/denon_avr_3805/binary_sensor.py
 custom_components/denon_avr_3805/config_flow.py
 custom_components/denon_avr_3805/const.py
+custom_components/denon_avr_3805/entity.py
 custom_components/denon_avr_3805/manifest.json
+custom_components/denon_avr_3805/media_player.py
 custom_components/denon_avr_3805/sensor.py
 custom_components/denon_avr_3805/switch.py
 ```
 
 ## Configuration is done in the UI
 
-<!---->
+## Recent Changes
+
+### v1.0.24
+- ✨ Added custom device naming feature - users can now set a personalized name for their AVR during setup
+- 🔧 Updated all entities to use the configurable device name
+- 🐛 Fixed various compatibility and attribution issues
+
+### v1.0.23
+- 🔧 Fixed device manufacturer attribution
+- 📝 Updated documentation and metadata
 
 ## Contributions are welcome!
 
