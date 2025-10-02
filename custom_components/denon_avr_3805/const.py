@@ -3,7 +3,7 @@
 NAME = "Denon AVR-3805"
 DOMAIN = "denon_avr_3805"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "1.0.24"
+VERSION = "1.0.25"
 MANUFACTURER = "Denon"
 
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
