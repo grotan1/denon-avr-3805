@@ -18,11 +18,34 @@
       "single_instance_allowed": "Denne integrasjonen kan kun konfigureres en gang."
     }
   },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Tilkobling"
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Volum"
+      },
+      "input": {
+        "name": "Inngang"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Strøm"
+      },
+      "mute": {
+        "name": "Demp"
+      }
+    }
+  },
   "options": {
     "step": {
       "user": {
         "data": {
-          "binary_sensor": "Binær sensor aktivert",
+          "binary_sensor": "Binærsensor aktivert",
           "sensor": "Sensor aktivert",
           "switch": "Bryter aktivert"
         }

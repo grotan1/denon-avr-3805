@@ -18,6 +18,29 @@
             "single_instance_allowed": "Aðeins ein tilvik leyfð."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Tenging"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Hljóðstyrkur"
+            },
+            "input": {
+                "name": "Inntak"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Afl"
+            },
+            "mute": {
+                "name": "Þögn"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {

@@ -18,6 +18,29 @@
             "single_instance_allowed": "Je povolena pouze jedna instance."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Připojení"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Hlasitost"
+            },
+            "input": {
+                "name": "Vstup"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Napájení"
+            },
+            "mute": {
+                "name": "Ztlumit"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {

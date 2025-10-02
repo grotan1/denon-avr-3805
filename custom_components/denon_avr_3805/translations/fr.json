@@ -18,14 +18,26 @@
       "single_instance_allowed": "Une seule instance est autorisée."
     }
   },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Capteur binaire activé",
-          "sensor": "Capteur activé",
-          "switch": "Interrupteur activé"
-        }
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Connectivité"
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Volume"
+      },
+      "input": {
+        "name": "Entrée"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Alimentation"
+      },
+      "mute": {
+        "name": "Muet"
       }
     }
   }

@@ -18,6 +18,29 @@
             "single_instance_allowed": "Vain yksi instanssi sallittu."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Yhteys"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Äänenvoimakkuus"
+            },
+            "input": {
+                "name": "Tulo"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Virta"
+            },
+            "mute": {
+                "name": "Mykistys"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {

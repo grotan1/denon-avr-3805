@@ -18,6 +18,29 @@
             "single_instance_allowed": "Дозволено лише один екземпляр."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Підключення"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Гучність"
+            },
+            "input": {
+                "name": "Вхід"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Живлення"
+            },
+            "mute": {
+                "name": "Вимкнути звук"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {

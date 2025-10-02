@@ -18,6 +18,29 @@
             "single_instance_allowed": "Endast en instans är tillåten."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Anslutning"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Volym"
+            },
+            "input": {
+                "name": "Ingång"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Ström"
+            },
+            "mute": {
+                "name": "Tyst"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {

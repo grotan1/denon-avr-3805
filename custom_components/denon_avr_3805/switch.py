@@ -45,7 +45,15 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     def name(self):
         """Return the name of the switch."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Power"
+        # Try to get translated "Power" string
+        try:
+            power_text = self.hass.helpers.translation.get_translated_string(
+                ["component.denon_avr_3805.entity.switch.power.name"],
+                language=self.hass.config.language
+            )
+        except:
+            power_text = "Power"
+        return f"{device_name} {power_text}"
 
     @property
     def icon(self):
@@ -88,7 +96,15 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     def name(self):
         """Return the name of the switch."""
         device_name = self.config_entry.data.get(CONF_NAME, NAME)
-        return f"{device_name} Mute"
+        # Try to get translated "Mute" string
+        try:
+            mute_text = self.hass.helpers.translation.get_translated_string(
+                ["component.denon_avr_3805.entity.switch.mute.name"],
+                language=self.hass.config.language
+            )
+        except:
+            mute_text = "Mute"
+        return f"{device_name} {mute_text}"
 
     @property
     def icon(self):

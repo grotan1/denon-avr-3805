@@ -18,6 +18,29 @@
             "single_instance_allowed": "Solo se permite una única instancia."
         }
     },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Conectividad"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Volumen"
+            },
+            "input": {
+                "name": "Entrada"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Encendido"
+            },
+            "mute": {
+                "name": "Silencio"
+            }
+        }
+    },
     "options": {
         "step": {
             "user": {
