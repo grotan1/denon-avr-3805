@@ -1,32 +1,32 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Pokud potřebujete pomoc s konfigurací, podívejte se sem: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Hostitel",
-          "port": "Port",
-          "name": "Název"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Pokud potřebujete pomoc s konfigurací, podívejte se sem: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Hostitel",
+                    "port": "Port",
+                    "name": "Název"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Nelze se připojit k AVR. Zkontrolujte nastavení hostitele a portu."
+        },
+        "abort": {
+            "single_instance_allowed": "Je povolena pouze jedna instance."
         }
-      }
     },
-    "error": {
-      "cannot_connect": "Nelze se připojit k AVR. Zkontrolujte nastavení hostitele a portu."
-    },
-    "abort": {
-      "single_instance_allowed": "Je povolena pouze jedna instance."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Binární senzor povolen",
-          "sensor": "Senzor povolen",
-          "switch": "Přepínač povolen"
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Binární senzor povolen",
+                    "sensor": "Senzor povolen",
+                    "switch": "Přepínač povolen"
+                }
+            }
         }
-      }
     }
-  }
 }

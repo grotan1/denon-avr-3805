@@ -1,32 +1,32 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Hvis du har brug for hjælp til konfigurationen, så kig her: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Vært",
-          "port": "Port",
-          "name": "Navn"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Hvis du har brug for hjælp til konfigurationen, så kig her: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Vært",
+                    "port": "Port",
+                    "name": "Navn"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Kan ikke oprette forbindelse til AVR. Tjek venligst vært- og portindstillingerne."
+        },
+        "abort": {
+            "single_instance_allowed": "Kun én instans er tilladt."
         }
-      }
     },
-    "error": {
-      "cannot_connect": "Kan ikke oprette forbindelse til AVR. Tjek venligst vært- og portindstillingerne."
-    },
-    "abort": {
-      "single_instance_allowed": "Kun én instans er tilladt."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Binær sensor aktiveret",
-          "sensor": "Sensor aktiveret",
-          "switch": "Kontakt aktiveret"
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Binær sensor aktiveret",
+                    "sensor": "Sensor aktiveret",
+                    "switch": "Kontakt aktiveret"
+                }
+            }
         }
-      }
     }
-  }
 }

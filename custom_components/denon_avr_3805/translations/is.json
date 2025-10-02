@@ -1,32 +1,32 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Ef þú þarft aðstoð við uppsetningu, skoðaðu hér: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Hýsill",
-          "port": "Gátt",
-          "name": "Nafn"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Ef þú þarft aðstoð við uppsetningu, skoðaðu hér: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Hýsill",
+                    "port": "Gátt",
+                    "name": "Nafn"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Get ekki tengst AVR. Vinsamlegast athugaðu hýsils- og gáttarstillingar."
+        },
+        "abort": {
+            "single_instance_allowed": "Aðeins ein tilvik leyfð."
         }
-      }
     },
-    "error": {
-      "cannot_connect": "Get ekki tengst AVR. Vinsamlegast athugaðu hýsils- og gáttarstillingar."
-    },
-    "abort": {
-      "single_instance_allowed": "Aðeins ein tilvik leyfð."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Tvíundarskoppari virkjaður",
-          "sensor": "Skoppari virkjaður",
-          "switch": "Rofi virkjaður"
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Tvíundarskoppari virkjaður",
+                    "sensor": "Skoppari virkjaður",
+                    "switch": "Rofi virkjaður"
+                }
+            }
         }
-      }
     }
-  }
 }

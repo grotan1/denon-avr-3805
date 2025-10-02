@@ -1,32 +1,32 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Als je hulp nodig hebt bij de configuratie, kijk dan hier: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Host",
-          "port": "Poort",
-          "name": "Naam"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Als je hulp nodig hebt bij de configuratie, kijk dan hier: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Host",
+                    "port": "Poort",
+                    "name": "Naam"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Kan niet verbinden met de AVR. Controleer de host- en poortinstellingen."
+        },
+        "abort": {
+            "single_instance_allowed": "Slechts één instantie is toegestaan."
         }
-      }
     },
-    "error": {
-      "cannot_connect": "Kan niet verbinden met de AVR. Controleer de host- en poortinstellingen."
-    },
-    "abort": {
-      "single_instance_allowed": "Slechts één instantie is toegestaan."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Binaire sensor ingeschakeld",
-          "sensor": "Sensor ingeschakeld",
-          "switch": "Schakelaar ingeschakeld"
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Binaire sensor ingeschakeld",
+                    "sensor": "Sensor ingeschakeld",
+                    "switch": "Schakelaar ingeschakeld"
+                }
+            }
         }
-      }
     }
-  }
 }

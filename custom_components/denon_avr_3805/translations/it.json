@@ -1,32 +1,32 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Se hai bisogno di aiuto con la configurazione, guarda qui: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Host",
-          "port": "Porta",
-          "name": "Nome"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Se hai bisogno di aiuto con la configurazione, guarda qui: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Host",
+                    "port": "Porta",
+                    "name": "Nome"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Impossibile connettersi all'AVR. Controlla le impostazioni host e porta."
+        },
+        "abort": {
+            "single_instance_allowed": "È consentita solo un'unica istanza."
         }
-      }
     },
-    "error": {
-      "cannot_connect": "Impossibile connettersi all'AVR. Controlla le impostazioni host e porta."
-    },
-    "abort": {
-      "single_instance_allowed": "È consentita solo un'unica istanza."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "data": {
-          "binary_sensor": "Sensore binario abilitato",
-          "sensor": "Sensore abilitato",
-          "switch": "Interruttore abilitato"
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Sensore binario abilitato",
+                    "sensor": "Sensore abilitato",
+                    "switch": "Interruttore abilitato"
+                }
+            }
         }
-      }
     }
-  }
 }

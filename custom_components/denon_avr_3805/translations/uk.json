@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Якщо вам потрібна допомога з налаштуванням, подивіться тут: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Хост",
+          "port": "Порт",
+          "name": "Ім'я"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не вдається підключитися до AVR. Перевірте налаштування хоста та порту."
+    },
+    "abort": {
+      "single_instance_allowed": "Дозволено лише один екземпляр."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "data": {
+          "binary_sensor": "Бінарний датчик увімкнено",
+          "sensor": "Датчик увімкнено",
+          "switch": "Перемикач увімкнено"
+        }
+      }
+    }
+  }
+}
