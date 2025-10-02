@@ -3,12 +3,6 @@
   "version": "1.0.21",
   "hacs": "1.6.0",
   "icon": "mdi:amplifier",
-  "domains": [
-    "binary_sensor",
-    "sensor",
-    "switch",
-    "media_player"
-  ],
   "iot_class": "Local Polling",
   "homeassistant": "0.118.0"
 }
