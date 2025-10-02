@@ -1,8 +1,4 @@
 {
   "name": "Denon AVR-3805",
-  "version": "1.0.21",
-  "hacs": "1.6.0",
-  "icon": "mdi:amplifier",
-  "iot_class": "Local Polling",
-  "homeassistant": "0.118.0"
+  "hacs": "1.6.0"
 }
