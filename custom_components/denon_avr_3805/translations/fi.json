@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Jos tarvitset apua konfiguroinnissa, katso tästä: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Isäntä",
+          "port": "Portti",
+          "name": "Nimi"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Ei voida yhdistää AVR:ään. Tarkista isäntä- ja porttiasetukset."
+    },
+    "abort": {
+      "single_instance_allowed": "Vain yksi instanssi sallittu."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "data": {
+          "binary_sensor": "Binäärianturi käytössä",
+          "sensor": "Anturi käytössä",
+          "switch": "Kytkin käytössä"
+        }
+      }
+    }
+  }
+}

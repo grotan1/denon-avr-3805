@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Wenn Sie Hilfe bei der Konfiguration benötigen, schauen Sie hier: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "name": "Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum AVR nicht möglich. Bitte überprüfen Sie die Host- und Port-Einstellungen."
+    },
+    "abort": {
+      "single_instance_allowed": "Nur eine einzige Instanz ist erlaubt."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "data": {
+          "binary_sensor": "Binärsensor aktiviert",
+          "sensor": "Sensor aktiviert",
+          "switch": "Schalter aktiviert"
+        }
+      }
+    }
+  }
+}

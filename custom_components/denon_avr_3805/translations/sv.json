@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Om du behöver hjälp med konfigurationen, ta en titt här: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Värd",
+          "port": "Port",
+          "name": "Namn"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan inte ansluta till AVR. Kontrollera värd- och portinställningarna."
+    },
+    "abort": {
+      "single_instance_allowed": "Endast en instans är tillåten."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "data": {
+          "binary_sensor": "Binär sensor aktiverad",
+          "sensor": "Sensor aktiverad",
+          "switch": "Brytare aktiverad"
+        }
+      }
+    }
+  }
+}
