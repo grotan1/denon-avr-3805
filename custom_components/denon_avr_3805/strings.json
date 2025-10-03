@@ -48,17 +48,10 @@
                     "switch": "Enable switches",
                     "media_player": "Enable media player"
                 }
-            },
-            "user": {
-                "title": "Denon AVR-3805 Options",
-                "description": "Configure which platforms to enable.",
-                "data": {
-                    "binary_sensor": "Enable binary sensor",
-                    "sensor": "Enable sensors",
-                    "switch": "Enable switches",
-                    "media_player": "Enable media player"
-                }
             }
+        },
+        "error": {
+            "invalid_host": "Cannot connect to the AVR. Please check the host and port settings."
         }
     },
     "entity": {
