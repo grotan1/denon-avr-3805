@@ -21,7 +21,7 @@ Professional Denon AVR control with **26-language multilingual support**, stable
 ### 🔄 **v2.0.3 - Stable Release**
 **Emergency revert completed!** After critical issues in v2.0.0-v2.0.2, we've restored the proven stable codebase. The integration now works reliably with all original functionality intact.
 
-### 🇺🇦 **Slava Ukrajini!** 
+### 🇺🇦 **Slava Ukrajini!**
 This integration proudly supports Ukraine with full Ukrainian language support and maintains our solidarity through every release.
 
 ## 🎯 **Platforms & Features**
@@ -101,7 +101,7 @@ In Home Assistant, add the integration and provide:
 
 ### **HACS Installation (Recommended)**
 1. **Open HACS** in Home Assistant
-2. **Go to Integrations** 
+2. **Go to Integrations**
 3. **Click "+ Explore & Download Repositories"**
 4. **Search for** "Denon AVR-3805"
 5. **Download** and restart Home Assistant
@@ -148,7 +148,7 @@ All configuration is done through the **user-friendly interface** with **live co
 
 ### **Initial Setup**
 1. **Host**: IP address of ser2net device
-2. **Port**: TCP port (e.g., 2000) 
+2. **Port**: TCP port (e.g., 2000)
 3. **Name**: Custom device name (optional)
 4. **Model**: Exact AVR model (e.g., AVR-3805, AVR-4306)
 
@@ -193,11 +193,11 @@ name: "Denon"  # Just your device name, nothing else
 entity_id: sensor.denon_volume
 name: "Denon Volume"
 
-entity_id: sensor.denon_input  
+entity_id: sensor.denon_input
 name: "Denon Input"
 ```
 
-### **Switches** (English Suffixes)  
+### **Switches** (English Suffixes)
 ```yaml
 entity_id: switch.denon_power
 name: "Denon Power"
