@@ -1,104 +1,104 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Kui vajate abi konfiguratsiooni osas, vaadake siit: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Host",
-          "port": "Port",
-          "name": "Nimi",
-          "model": "Mudel (nt AVR-3805, AVR-4306)"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Kui vajate abi konfiguratsiooni osas, vaadake siit: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Host",
+                    "port": "Port",
+                    "name": "Nimi",
+                    "model": "Mudel (nt AVR-3805, AVR-4306)"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "AVR-iga ei saa ühendust. Palun kontrollige hosti ja pordi seadeid."
+        },
+        "abort": {
+            "single_instance_allowed": "Lubatud on ainult üks eksemplar."
         }
-      }
     },
-    "error": {
-      "invalid_host": "AVR-iga ei saa ühendust. Palun kontrollige hosti ja pordi seadeid."
+    "options": {
+        "step": {
+            "init": {
+                "title": "Denon AVR konfiguratsioon",
+                "description": "Valige, mida soovite konfigureerida.",
+                "menu_options": {
+                    "connection": "Ühenduse seaded (IP, port, nimi, mudel)",
+                    "platforms": "Platvormi seaded (funktsioonide lubamine/keelamine)"
+                }
+            },
+            "connection": {
+                "title": "Ühenduse seaded",
+                "description": "Konfigureerige ühenduse parameetreid. Saate vaadata ja muuta oma praeguseid seadeid.",
+                "data": {
+                    "host": "Host",
+                    "port": "Port",
+                    "name": "Nimi",
+                    "model": "Mudel (nt AVR-3805, AVR-4306)"
+                }
+            },
+            "platforms": {
+                "title": "Platvormi seaded",
+                "description": "Konfigureerige, millised platvormid lubada.",
+                "data": {
+                    "binary_sensor": "Luba binaarne andur",
+                    "sensor": "Luba andurid",
+                    "switch": "Luba lülitid",
+                    "media_player": "Luba meediapleier"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "AVR-iga ei saa ühendust. Palun kontrollige hosti ja pordi seadeid."
+        }
     },
-    "abort": {
-      "single_instance_allowed": "Lubatud on ainult üks eksemplar."
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Ühenduvus",
+                "state": {
+                    "on": "Ühendatud",
+                    "off": "Lahti ühendatud"
+                }
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Helitugevus"
+            },
+            "input": {
+                "name": "Sisend"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Toide",
+                "state": {
+                    "on": "Sisse lülitatud",
+                    "off": "Välja lülitatud"
+                }
+            },
+            "mute": {
+                "name": "Vaigista",
+                "state": {
+                    "on": "Vaigistatud",
+                    "off": "Heli sisse lülitatud"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Meediapleier",
+                "state": {
+                    "on": "Sisse lülitatud",
+                    "off": "Välja lülitatud",
+                    "playing": "Esitab",
+                    "paused": "Peatatud",
+                    "idle": "Jõude"
+                }
+            }
+        }
     }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Denon AVR konfiguratsioon",
-        "description": "Valige, mida soovite konfigureerida.",
-        "menu_options": {
-          "connection": "Ühenduse seaded (IP, port, nimi, mudel)",
-          "platforms": "Platvormi seaded (funktsioonide lubamine/keelamine)"
-        }
-      },
-      "connection": {
-        "title": "Ühenduse seaded",
-        "description": "Konfigureerige ühenduse parameetreid. Saate vaadata ja muuta oma praeguseid seadeid.",
-        "data": {
-          "host": "Host",
-          "port": "Port",
-          "name": "Nimi",
-          "model": "Mudel (nt AVR-3805, AVR-4306)"
-        }
-      },
-      "platforms": {
-        "title": "Platvormi seaded",
-        "description": "Konfigureerige, millised platvormid lubada.",
-        "data": {
-          "binary_sensor": "Luba binaarne andur",
-          "sensor": "Luba andurid",
-          "switch": "Luba lülitid",
-          "media_player": "Luba meediapleier"
-        }
-      }
-    },
-    "error": {
-      "invalid_host": "AVR-iga ei saa ühendust. Palun kontrollige hosti ja pordi seadeid."
-    }
-  },
-  "entity": {
-    "binary_sensor": {
-      "connectivity": {
-        "name": "Ühenduvus",
-        "state": {
-          "on": "Ühendatud",
-          "off": "Lahti ühendatud"
-        }
-      }
-    },
-    "sensor": {
-      "volume": {
-        "name": "Helitugevus"
-      },
-      "input": {
-        "name": "Sisend"
-      }
-    },
-    "switch": {
-      "power": {
-        "name": "Toide",
-        "state": {
-          "on": "Sisse lülitatud",
-          "off": "Välja lülitatud"
-        }
-      },
-      "mute": {
-        "name": "Vaigista",
-        "state": {
-          "on": "Vaigistatud",
-          "off": "Heli sisse lülitatud"
-        }
-      }
-    },
-    "media_player": {
-      "media_player": {
-        "name": "Meediapleier",
-        "state": {
-          "on": "Sisse lülitatud",
-          "off": "Välja lülitatud",
-          "playing": "Esitab",
-          "paused": "Peatatud",
-          "idle": "Jõude"
-        }
-      }
-    }
-  }
 }

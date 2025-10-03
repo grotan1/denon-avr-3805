@@ -1,104 +1,104 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Ha segítségre van szüksége a konfigurációval, tekintse meg itt: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Kiszolgáló",
-          "port": "Port",
-          "name": "Név",
-          "model": "Modell (pl. AVR-3805, AVR-4306)"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Ha segítségre van szüksége a konfigurációval, tekintse meg itt: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Kiszolgáló",
+                    "port": "Port",
+                    "name": "Név",
+                    "model": "Modell (pl. AVR-3805, AVR-4306)"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nem lehet csatlakozni az AVR-hez. Ellenőrizze a kiszolgáló és port beállításokat."
+        },
+        "abort": {
+            "single_instance_allowed": "Csak egy példány engedélyezett."
         }
-      }
     },
-    "error": {
-      "invalid_host": "Nem lehet csatlakozni az AVR-hez. Ellenőrizze a kiszolgáló és port beállításokat."
+    "options": {
+        "step": {
+            "init": {
+                "title": "Denon AVR konfiguráció",
+                "description": "Válassza ki, mit szeretne konfigurálni.",
+                "menu_options": {
+                    "connection": "Kapcsolat beállítások (IP, Port, Név, Modell)",
+                    "platforms": "Platform beállítások (Funkciók engedélyezése/letiltása)"
+                }
+            },
+            "connection": {
+                "title": "Kapcsolat beállítások",
+                "description": "Kapcsolat paraméterek konfigurálása. Megtekintheti és módosíthatja a jelenlegi beállításait.",
+                "data": {
+                    "host": "Kiszolgáló",
+                    "port": "Port",
+                    "name": "Név",
+                    "model": "Modell (pl. AVR-3805, AVR-4306)"
+                }
+            },
+            "platforms": {
+                "title": "Platform beállítások",
+                "description": "Konfigurálja, mely platformokat engedélyezi.",
+                "data": {
+                    "binary_sensor": "Bináris érzékelő engedélyezése",
+                    "sensor": "Érzékelők engedélyezése",
+                    "switch": "Kapcsolók engedélyezése",
+                    "media_player": "Médialejátszó engedélyezése"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nem lehet csatlakozni az AVR-hez. Ellenőrizze a kiszolgáló és port beállításokat."
+        }
     },
-    "abort": {
-      "single_instance_allowed": "Csak egy példány engedélyezett."
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Kapcsolat",
+                "state": {
+                    "on": "Csatlakoztatva",
+                    "off": "Leválasztva"
+                }
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Hangerő"
+            },
+            "input": {
+                "name": "Bemenet"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Tápellátás",
+                "state": {
+                    "on": "Bekapcsolva",
+                    "off": "Kikapcsolva"
+                }
+            },
+            "mute": {
+                "name": "Némítás",
+                "state": {
+                    "on": "Némítva",
+                    "off": "Hanggal"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Médialejátszó",
+                "state": {
+                    "on": "Bekapcsolva",
+                    "off": "Kikapcsolva",
+                    "playing": "Lejátszás",
+                    "paused": "Szüneteltetve",
+                    "idle": "Tétlen"
+                }
+            }
+        }
     }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Denon AVR konfiguráció",
-        "description": "Válassza ki, mit szeretne konfigurálni.",
-        "menu_options": {
-          "connection": "Kapcsolat beállítások (IP, Port, Név, Modell)",
-          "platforms": "Platform beállítások (Funkciók engedélyezése/letiltása)"
-        }
-      },
-      "connection": {
-        "title": "Kapcsolat beállítások",
-        "description": "Kapcsolat paraméterek konfigurálása. Megtekintheti és módosíthatja a jelenlegi beállításait.",
-        "data": {
-          "host": "Kiszolgáló",
-          "port": "Port",
-          "name": "Név",
-          "model": "Modell (pl. AVR-3805, AVR-4306)"
-        }
-      },
-      "platforms": {
-        "title": "Platform beállítások",
-        "description": "Konfigurálja, mely platformokat engedélyezi.",
-        "data": {
-          "binary_sensor": "Bináris érzékelő engedélyezése",
-          "sensor": "Érzékelők engedélyezése",
-          "switch": "Kapcsolók engedélyezése",
-          "media_player": "Médialejátszó engedélyezése"
-        }
-      }
-    },
-    "error": {
-      "invalid_host": "Nem lehet csatlakozni az AVR-hez. Ellenőrizze a kiszolgáló és port beállításokat."
-    }
-  },
-  "entity": {
-    "binary_sensor": {
-      "connectivity": {
-        "name": "Kapcsolat",
-        "state": {
-          "on": "Csatlakoztatva",
-          "off": "Leválasztva"
-        }
-      }
-    },
-    "sensor": {
-      "volume": {
-        "name": "Hangerő"
-      },
-      "input": {
-        "name": "Bemenet"
-      }
-    },
-    "switch": {
-      "power": {
-        "name": "Tápellátás",
-        "state": {
-          "on": "Bekapcsolva",
-          "off": "Kikapcsolva"
-        }
-      },
-      "mute": {
-        "name": "Némítás",
-        "state": {
-          "on": "Némítva",
-          "off": "Hanggal"
-        }
-      }
-    },
-    "media_player": {
-      "media_player": {
-        "name": "Médialejátszó",
-        "state": {
-          "on": "Bekapcsolva",
-          "off": "Kikapcsolva",
-          "playing": "Lejátszás",
-          "paused": "Szüneteltetve",
-          "idle": "Tétlen"
-        }
-      }
-    }
-  }
 }

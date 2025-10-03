@@ -7,7 +7,7 @@ This maintenance release resolves a **configuration menu display issue** that wa
 
 ### ✨ **Key Improvements**
 - 🔍 **Visible Menu Labels**: Configuration options now display proper text labels
-- 🎛️ **Enhanced User Experience**: Clear navigation with descriptive menu options  
+- 🎛️ **Enhanced User Experience**: Clear navigation with descriptive menu options
 - 🌍 **Preserved Multilingual Support**: All 15 languages continue to work perfectly
 - 🚀 **Immediate Fix**: No configuration changes required for existing setups
 
@@ -72,7 +72,7 @@ Device customization features continue working perfectly:
 ### 🔧 **Advanced Configuration**
 Enhanced setup and management capabilities preserved:
 - ✅ **No-Delete Reconfiguration**: Modify settings without losing history
-- ✅ **Connection Testing**: Verify settings before applying changes  
+- ✅ **Connection Testing**: Verify settings before applying changes
 - ✅ **Current Value Display**: See what's configured before editing
 - ✅ **Granular Platform Control**: Individual sensor/switch management
 
@@ -88,7 +88,7 @@ Enhanced setup and management capabilities preserved:
 ```bash
 # HACS Installation (Recommended)
 1. Go to HACS → Integrations
-2. Search for "Denon AVR-3805" 
+2. Search for "Denon AVR-3805"
 3. Click Update (if already installed) or Install
 4. Restart Home Assistant
 5. Configuration menu now shows proper labels
@@ -116,7 +116,7 @@ Enhanced setup and management capabilities preserved:
 
 ## 🙏 **Special Recognition**
 
-### 🇺🇦 **Continued Ukraine Support** 
+### 🇺🇦 **Continued Ukraine Support**
 This release maintains our commitment to supporting Ukraine with full Ukrainian language support. Our thoughts remain with the Ukrainian people during these challenging times. **Slava Ukrajini! 🇺🇦**
 
 ### 🌍 **Community Appreciation**

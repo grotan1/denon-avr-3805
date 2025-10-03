@@ -1,104 +1,104 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Ja jums ir nepieciešama palīdzība ar konfigurāciju, skatieties šeit: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Saimnieks",
-          "port": "Ports",
-          "name": "Nosaukums",
-          "model": "Modelis (piem. AVR-3805, AVR-4306)"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Ja jums ir nepieciešama palīdzība ar konfigurāciju, skatieties šeit: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Saimnieks",
+                    "port": "Ports",
+                    "name": "Nosaukums",
+                    "model": "Modelis (piem. AVR-3805, AVR-4306)"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nevar izveidot savienojumu ar AVR. Lūdzu pārbaudiet saimnieka un porta iestatījumus."
+        },
+        "abort": {
+            "single_instance_allowed": "Atļauta tikai viena instance."
         }
-      }
     },
-    "error": {
-      "invalid_host": "Nevar izveidot savienojumu ar AVR. Lūdzu pārbaudiet saimnieka un porta iestatījumus."
+    "options": {
+        "step": {
+            "init": {
+                "title": "Denon AVR konfigurācija",
+                "description": "Izvēlieties, ko vēlaties konfigurēt.",
+                "menu_options": {
+                    "connection": "Savienojuma iestatījumi (IP, ports, nosaukums, modelis)",
+                    "platforms": "Platformas iestatījumi (iespējot/atspējot funkcijas)"
+                }
+            },
+            "connection": {
+                "title": "Savienojuma iestatījumi",
+                "description": "Konfigurējiet savienojuma parametrus. Varat apskatīt un mainīt pašreizējos iestatījumus.",
+                "data": {
+                    "host": "Saimnieks",
+                    "port": "Ports",
+                    "name": "Nosaukums",
+                    "model": "Modelis (piem. AVR-3805, AVR-4306)"
+                }
+            },
+            "platforms": {
+                "title": "Platformas iestatījumi",
+                "description": "Konfigurējiet, kuras platformas iespējot.",
+                "data": {
+                    "binary_sensor": "Iespējot bināro sensoru",
+                    "sensor": "Iespējot sensorus",
+                    "switch": "Iespējot slēdžus",
+                    "media_player": "Iespējot multivides atskaņotāju"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nevar izveidot savienojumu ar AVR. Lūdzu pārbaudiet saimnieka un porta iestatījumus."
+        }
     },
-    "abort": {
-      "single_instance_allowed": "Atļauta tikai viena instance."
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Savienojamība",
+                "state": {
+                    "on": "Savienots",
+                    "off": "Atvienots"
+                }
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Skaļums"
+            },
+            "input": {
+                "name": "Ievade"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Barošana",
+                "state": {
+                    "on": "Ieslēgts",
+                    "off": "Izslēgts"
+                }
+            },
+            "mute": {
+                "name": "Klusināt",
+                "state": {
+                    "on": "Klusināts",
+                    "off": "Skaņa ieslēgta"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Multivides atskaņotājs",
+                "state": {
+                    "on": "Ieslēgts",
+                    "off": "Izslēgts",
+                    "playing": "Atskaņo",
+                    "paused": "Apturēts",
+                    "idle": "Neaktīvs"
+                }
+            }
+        }
     }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Denon AVR konfigurācija",
-        "description": "Izvēlieties, ko vēlaties konfigurēt.",
-        "menu_options": {
-          "connection": "Savienojuma iestatījumi (IP, ports, nosaukums, modelis)",
-          "platforms": "Platformas iestatījumi (iespējot/atspējot funkcijas)"
-        }
-      },
-      "connection": {
-        "title": "Savienojuma iestatījumi",
-        "description": "Konfigurējiet savienojuma parametrus. Varat apskatīt un mainīt pašreizējos iestatījumus.",
-        "data": {
-          "host": "Saimnieks",
-          "port": "Ports",
-          "name": "Nosaukums",
-          "model": "Modelis (piem. AVR-3805, AVR-4306)"
-        }
-      },
-      "platforms": {
-        "title": "Platformas iestatījumi",
-        "description": "Konfigurējiet, kuras platformas iespējot.",
-        "data": {
-          "binary_sensor": "Iespējot bināro sensoru",
-          "sensor": "Iespējot sensorus",
-          "switch": "Iespējot slēdžus",
-          "media_player": "Iespējot multivides atskaņotāju"
-        }
-      }
-    },
-    "error": {
-      "invalid_host": "Nevar izveidot savienojumu ar AVR. Lūdzu pārbaudiet saimnieka un porta iestatījumus."
-    }
-  },
-  "entity": {
-    "binary_sensor": {
-      "connectivity": {
-        "name": "Savienojamība",
-        "state": {
-          "on": "Savienots",
-          "off": "Atvienots"
-        }
-      }
-    },
-    "sensor": {
-      "volume": {
-        "name": "Skaļums"
-      },
-      "input": {
-        "name": "Ievade"
-      }
-    },
-    "switch": {
-      "power": {
-        "name": "Barošana",
-        "state": {
-          "on": "Ieslēgts",
-          "off": "Izslēgts"
-        }
-      },
-      "mute": {
-        "name": "Klusināt",
-        "state": {
-          "on": "Klusināts",
-          "off": "Skaņa ieslēgta"
-        }
-      }
-    },
-    "media_player": {
-      "media_player": {
-        "name": "Multivides atskaņotājs",
-        "state": {
-          "on": "Ieslēgts",
-          "off": "Izslēgts",
-          "playing": "Atskaņo",
-          "paused": "Apturēts",
-          "idle": "Neaktīvs"
-        }
-      }
-    }
-  }
 }

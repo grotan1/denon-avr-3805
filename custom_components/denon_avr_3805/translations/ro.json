@@ -1,104 +1,104 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Dacă aveți nevoie de ajutor cu configurarea, uitați-vă aici: https://github.com/grotan1/denon-avr-3805",
-        "data": {
-          "host": "Gazdă",
-          "port": "Port",
-          "name": "Nume",
-          "model": "Model (de ex. AVR-3805, AVR-4306)"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Dacă aveți nevoie de ajutor cu configurarea, uitați-vă aici: https://github.com/grotan1/denon-avr-3805",
+                "data": {
+                    "host": "Gazdă",
+                    "port": "Port",
+                    "name": "Nume",
+                    "model": "Model (de ex. AVR-3805, AVR-4306)"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nu se poate conecta la AVR. Verificați setările gazdei și portului."
+        },
+        "abort": {
+            "single_instance_allowed": "Este permisă doar o singură instanță."
         }
-      }
     },
-    "error": {
-      "invalid_host": "Nu se poate conecta la AVR. Verificați setările gazdei și portului."
+    "options": {
+        "step": {
+            "init": {
+                "title": "Configurație Denon AVR",
+                "description": "Alegeți ce doriți să configurați.",
+                "menu_options": {
+                    "connection": "Setări conexiune (IP, Port, Nume, Model)",
+                    "platforms": "Setări platformă (Activare/Dezactivare funcții)"
+                }
+            },
+            "connection": {
+                "title": "Setări conexiune",
+                "description": "Configurați parametrii conexiunii. Puteți vizualiza și modifica setările curente.",
+                "data": {
+                    "host": "Gazdă",
+                    "port": "Port",
+                    "name": "Nume",
+                    "model": "Model (de ex. AVR-3805, AVR-4306)"
+                }
+            },
+            "platforms": {
+                "title": "Setări platformă",
+                "description": "Configurați care platforme să fie activate.",
+                "data": {
+                    "binary_sensor": "Activați senzorul binar",
+                    "sensor": "Activați senzorii",
+                    "switch": "Activați comutatoarele",
+                    "media_player": "Activați playerul media"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Nu se poate conecta la AVR. Verificați setările gazdei și portului."
+        }
     },
-    "abort": {
-      "single_instance_allowed": "Este permisă doar o singură instanță."
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Conectivitate",
+                "state": {
+                    "on": "Conectat",
+                    "off": "Deconectat"
+                }
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Volum"
+            },
+            "input": {
+                "name": "Intrare"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Alimentare",
+                "state": {
+                    "on": "Pornit",
+                    "off": "Oprit"
+                }
+            },
+            "mute": {
+                "name": "Mut",
+                "state": {
+                    "on": "Mutat",
+                    "off": "Cu sunet"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Player Media",
+                "state": {
+                    "on": "Pornit",
+                    "off": "Oprit",
+                    "playing": "În redare",
+                    "paused": "În pauză",
+                    "idle": "Inactiv"
+                }
+            }
+        }
     }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Configurație Denon AVR",
-        "description": "Alegeți ce doriți să configurați.",
-        "menu_options": {
-          "connection": "Setări conexiune (IP, Port, Nume, Model)",
-          "platforms": "Setări platformă (Activare/Dezactivare funcții)"
-        }
-      },
-      "connection": {
-        "title": "Setări conexiune",
-        "description": "Configurați parametrii conexiunii. Puteți vizualiza și modifica setările curente.",
-        "data": {
-          "host": "Gazdă",
-          "port": "Port",
-          "name": "Nume",
-          "model": "Model (de ex. AVR-3805, AVR-4306)"
-        }
-      },
-      "platforms": {
-        "title": "Setări platformă",
-        "description": "Configurați care platforme să fie activate.",
-        "data": {
-          "binary_sensor": "Activați senzorul binar",
-          "sensor": "Activați senzorii",
-          "switch": "Activați comutatoarele",
-          "media_player": "Activați playerul media"
-        }
-      }
-    },
-    "error": {
-      "invalid_host": "Nu se poate conecta la AVR. Verificați setările gazdei și portului."
-    }
-  },
-  "entity": {
-    "binary_sensor": {
-      "connectivity": {
-        "name": "Conectivitate",
-        "state": {
-          "on": "Conectat",
-          "off": "Deconectat"
-        }
-      }
-    },
-    "sensor": {
-      "volume": {
-        "name": "Volum"
-      },
-      "input": {
-        "name": "Intrare"
-      }
-    },
-    "switch": {
-      "power": {
-        "name": "Alimentare",
-        "state": {
-          "on": "Pornit",
-          "off": "Oprit"
-        }
-      },
-      "mute": {
-        "name": "Mut",
-        "state": {
-          "on": "Mutat",
-          "off": "Cu sunet"
-        }
-      }
-    },
-    "media_player": {
-      "media_player": {
-        "name": "Player Media",
-        "state": {
-          "on": "Pornit",
-          "off": "Oprit",
-          "playing": "În redare",
-          "paused": "În pauză",
-          "idle": "Inactiv"
-        }
-      }
-    }
-  }
 }

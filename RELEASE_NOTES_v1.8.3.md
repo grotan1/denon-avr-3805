@@ -32,7 +32,7 @@ This release delivers **complete internationalization** for the enhanced options
 
 ### User Experience
 - **No Language Barriers**: Configure integration in your native language
-- **Professional Interface**: Enterprise-grade multilingual experience  
+- **Professional Interface**: Enterprise-grade multilingual experience
 - **Confident Configuration**: Clear understanding of all settings
 - **Global Accessibility**: Welcoming to international users
 
@@ -45,7 +45,7 @@ This release delivers **complete internationalization** for the enhanced options
 ## Preserved Features
 - ✅ 99%+ connection reliability with smart retry logic
 - ✅ Configurable device models and professional device info
-- ✅ Real-time monitoring and performance statistics  
+- ✅ Real-time monitoring and performance statistics
 - ✅ No-delete reconfiguration with connection testing
 - ✅ Granular platform control and historical data preservation
 

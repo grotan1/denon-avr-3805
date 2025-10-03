@@ -6,7 +6,7 @@ This maintenance release fixes a critical **configuration menu display issue** w
 ## Problem Fixed
 
 ### Configuration Menu Display Issue
-- **Issue**: Menu options showed as unlabeled buttons after v1.8.3 multilingual update  
+- **Issue**: Menu options showed as unlabeled buttons after v1.8.3 multilingual update
 - **Cause**: Duplicate options flow steps in `strings.json` causing display conflicts
 - **Impact**: Users couldn't identify what each configuration option did
 - **Solution**: Cleaned JSON structure and removed conflicting entries
@@ -16,7 +16,7 @@ This maintenance release fixes a critical **configuration menu display issue** w
 ```
 Denon AVR-3805
 [unlabeled button 1]
-[unlabeled button 2] 
+[unlabeled button 2]
 ```
 
 **After (v1.8.4):**
