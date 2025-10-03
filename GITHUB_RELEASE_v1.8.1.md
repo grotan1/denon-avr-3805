@@ -39,7 +39,7 @@ This enhancement builds on the rock-solid foundation from v1.8.0:
 - 🏷️ **Optional Update**: Can reconfigure to show actual model
 - 🛡️ **No Risk**: All functionality preserved
 
-### **For New Users** 
+### **For New Users**
 - 🎯 **Enhanced Setup**: Specify your exact model from the start
 - 📋 **Accurate Results**: Device info matches your hardware immediately
 - 💡 **Clear Guidance**: Setup form helps you choose the right model
@@ -48,7 +48,7 @@ This enhancement builds on the rock-solid foundation from v1.8.0:
 
 ### Popular Denon AVR Models (examples):
 - **Classic Series**: AVR-3805, AVR-3806, AVR-4306, AVR-4806, AVR-5805
-- **X-Series**: AVR-X4700H, AVR-X3700H, AVR-X2700H, AVR-X6700H  
+- **X-Series**: AVR-X4700H, AVR-X3700H, AVR-X2700H, AVR-X6700H
 - **Legacy Models**: AVR-888, AVR-1912, AVR-5308
 
 *Works with any Denon AVR supporting serial control via ser2net*
@@ -71,7 +71,7 @@ This enhancement builds on the rock-solid foundation from v1.8.0:
 ### 🏠 **Home Theater Setup**
 ```
 Living Room: AVR-X4700H
-Bedroom: AVR-3805  
+Bedroom: AVR-3805
 Office: AVR-4306
 ```
 Now each shows its actual model in Home Assistant!
@@ -92,7 +92,7 @@ Now each shows its actual model in Home Assistant!
 ```
 Setup Form Fields:
 ✅ Host: [IP address]
-✅ Port: [Serial port]  
+✅ Port: [Serial port]
 ✅ Name: [Device name]
 🆕 Model: [Your AVR model] ← NEW!
 ```
@@ -101,7 +101,7 @@ Setup Form Fields:
 ```python
 Device Registry Shows:
 - Name: "Living Room AVR" (your choice)
-- Model: "AVR-X4700H" (your actual model)  
+- Model: "AVR-X4700H" (your actual model)
 - Manufacturer: "Denon" (always accurate)
 - Config URL: http://192.168.1.100
 ```
@@ -115,13 +115,13 @@ Device Registry Shows:
 
 ### **Updating Your Model**
 1. Settings → Devices & Services → Denon AVR integration
-2. Click "Configure" 
+2. Click "Configure"
 3. Update "Model" field to your actual AVR
 4. Save - device info updates immediately
 
 ## 📋 **Compatibility**
 
-- ✅ **Home Assistant**: 2023.1.0+ (including 2025.12+)  
+- ✅ **Home Assistant**: 2023.1.0+ (including 2025.12+)
 - ✅ **HACS**: Fully compatible
 - ✅ **Existing Configs**: 100% backward compatible
 - ✅ **All Features**: Complete reliability suite maintained
@@ -135,7 +135,7 @@ Your Home Assistant setup now provides **professional-grade device identificatio
 
 ### **Bottom Line**
 - 🎯 **Accurate Device Info**: Your device registry finally shows your real AVR model
-- 🛡️ **Rock-Solid Performance**: All the reliability improvements preserved  
+- 🛡️ **Rock-Solid Performance**: All the reliability improvements preserved
 - 🎛️ **Professional Results**: Clean, accurate device identification
 - 🔄 **Zero Hassle**: Existing setups continue working unchanged
 

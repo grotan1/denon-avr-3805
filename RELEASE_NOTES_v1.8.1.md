@@ -74,7 +74,7 @@ This release adds **configurable device model** support, allowing users to prope
 ```python
 # Setup form now includes:
 CONF_HOST = "host"      # IP address
-CONF_PORT = "port"      # Serial port  
+CONF_PORT = "port"      # Serial port
 CONF_NAME = "name"      # Device name
 CONF_MODEL = "model"    # AVR model (NEW!)
 
@@ -101,7 +101,7 @@ This integration works with various Denon AVR models that support serial control
 - AVR-3805, AVR-3806, AVR-4306, AVR-4806
 - AVR-5805, AVR-5308, AVR-888, AVR-1912
 
-### 🔊 **X-Series** 
+### 🔊 **X-Series**
 - AVR-X4700H, AVR-X3700H, AVR-X2700H
 - AVR-X6700H, AVR-X8500H (with ser2net)
 
@@ -173,7 +173,7 @@ The configurable model foundation enables:
 - 📋 **Clear Identification**: Professional device registry presentation
 - 🎛️ **Proper Configuration**: Setup guides you to specify your exact model
 
-### **For Existing Users**  
+### **For Existing Users**
 - 🔄 **Seamless Continuation**: Everything works exactly as before
 - ✨ **Optional Enhancement**: Can update model if desired
 - 🛡️ **Preserved Reliability**: All connection improvements maintained
@@ -187,7 +187,7 @@ The configurable model foundation enables:
 
 ## 🏆 **Version Progression**
 
-- **v1.7.0**: Connection robustness enhancements  
+- **v1.7.0**: Connection robustness enhancements
 - **v1.7.1**: Config flow deprecation fix
 - **v1.8.0**: Complete reliability project with documentation
 - **v1.8.1**: Enhanced device customization ← **Current Release**
