@@ -28,7 +28,6 @@ class DenonAvr3805Entity(CoordinatorEntity):
             "name": device_name,
             "model": "AVR-3805",
             "manufacturer": MANUFACTURER,
-            "sw_version": VERSION,
             "configuration_url": f"http://{self.config_entry.data.get(CONF_HOST)}"
         }
 
