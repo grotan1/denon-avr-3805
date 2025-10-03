@@ -4,6 +4,8 @@ Custom integration to integrate Denon AVR-3805 with Home Assistant.
 For more details about this integration, please refer to
 https://github.com/grotan1/denon-avr-3805
 """
+from __future__ import annotations
+
 import asyncio
 import logging
 from datetime import timedelta
@@ -27,7 +29,7 @@ SCAN_INTERVAL = timedelta(seconds=30)
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up this integration using UI."""
     if hass.data.get(DOMAIN) is None:
         hass.data.setdefault(DOMAIN, {})

@@ -15,7 +15,6 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Config flow for denon_avr_3805."""
 
     VERSION = 1
-    CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     def __init__(self):
         """Initialize."""

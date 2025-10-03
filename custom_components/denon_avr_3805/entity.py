@@ -1,7 +1,10 @@
 """DenonAvr3805Entity class"""
+from __future__ import annotations
+
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION
+from .const import CONF_HOST
 from .const import CONF_NAME
 from .const import DOMAIN
 from .const import MANUFACTURER
@@ -25,13 +28,8 @@ class DenonAvr3805Entity(CoordinatorEntity):
             "name": device_name,
             "model": "AVR-3805",
             "manufacturer": MANUFACTURER,
+            "sw_version": VERSION,
+            "configuration_url": f"http://{self.config_entry.data.get(CONF_HOST)}"
         }
 
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return {
-            "attribution": ATTRIBUTION,
-            "id": str(self.coordinator.data.get("id")),
-            "integration": DOMAIN,
-        }
+
