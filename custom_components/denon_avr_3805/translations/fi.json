@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Yhteys"
+                "name": "Yhteys",
+                "state": {
+                    "on": "Yhdistetty",
+                    "off": "Ei yhteyttä"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Virta"
+                "name": "Virta",
+                "state": {
+                    "on": "Päällä",
+                    "off": "Pois päältä"
+                }
             },
             "mute": {
-                "name": "Mykistys"
+                "name": "Mykistys",
+                "state": {
+                    "on": "Mykistetty",
+                    "off": "Ääni päällä"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Mediasoitin",
+                "state": {
+                    "on": "Päällä",
+                    "off": "Pois päältä",
+                    "playing": "Toistaa",
+                    "paused": "Keskeytetty",
+                    "idle": "Ei käytössä"
+                }
             }
         }
     },

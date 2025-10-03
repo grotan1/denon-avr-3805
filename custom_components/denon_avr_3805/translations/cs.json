@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Připojení"
+                "name": "Připojení",
+                "state": {
+                    "on": "Připojeno",
+                    "off": "Odpojeno"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Napájení"
+                "name": "Napájení",
+                "state": {
+                    "on": "Zapnuto",
+                    "off": "Vypnuto"
+                }
             },
             "mute": {
-                "name": "Ztlumit"
+                "name": "Ztlumit",
+                "state": {
+                    "on": "Ztlumeno",
+                    "off": "Zvuk zapnut"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Přehrávač médií",
+                "state": {
+                    "on": "Zapnuto",
+                    "off": "Vypnuto",
+                    "playing": "Přehrává",
+                    "paused": "Pozastaveno",
+                    "idle": "Neaktivní"
+                }
             }
         }
     },

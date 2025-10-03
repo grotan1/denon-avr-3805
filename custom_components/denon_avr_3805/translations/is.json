@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Tenging"
+                "name": "Tenging",
+                "state": {
+                    "on": "Tengt",
+                    "off": "Aftengt"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Afl"
+                "name": "Afl",
+                "state": {
+                    "on": "Kveikt",
+                    "off": "Slökkt"
+                }
             },
             "mute": {
-                "name": "Þögn"
+                "name": "Þögn",
+                "state": {
+                    "on": "Þaggað",
+                    "off": "Hljóð í gangi"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Margmiðlunarspilari",
+                "state": {
+                    "on": "Kveikt",
+                    "off": "Slökkt",
+                    "playing": "Spilar",
+                    "paused": "Í biðstöðu",
+                    "idle": "Óvirkur"
+                }
             }
         }
     },

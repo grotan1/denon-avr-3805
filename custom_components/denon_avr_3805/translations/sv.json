@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Anslutning"
+                "name": "Anslutning",
+                "state": {
+                    "on": "Ansluten",
+                    "off": "Frånkopplad"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Ström"
+                "name": "Ström",
+                "state": {
+                    "on": "På",
+                    "off": "Av"
+                }
             },
             "mute": {
-                "name": "Tyst"
+                "name": "Tyst",
+                "state": {
+                    "on": "Tystad",
+                    "off": "Ljud på"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Mediaspelare",
+                "state": {
+                    "on": "På",
+                    "off": "Av",
+                    "playing": "Spelar",
+                    "paused": "Pausad",
+                    "idle": "Inaktiv"
+                }
             }
         }
     },

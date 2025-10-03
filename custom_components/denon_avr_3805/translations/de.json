@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Konnektivität"
+                "name": "Konnektivität",
+                "state": {
+                    "on": "Verbunden",
+                    "off": "Getrennt"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Strom"
+                "name": "Strom",
+                "state": {
+                    "on": "An",
+                    "off": "Aus"
+                }
             },
             "mute": {
-                "name": "Stumm"
+                "name": "Stumm",
+                "state": {
+                    "on": "Stummgeschaltet",
+                    "off": "Nicht stummgeschaltet"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Media Player",
+                "state": {
+                    "on": "An",
+                    "off": "Aus",
+                    "playing": "Spielend",
+                    "paused": "Pausiert",
+                    "idle": "Inaktiv"
+                }
             }
         }
     },

@@ -21,7 +21,11 @@
     "entity": {
         "binary_sensor": {
             "connectivity": {
-                "name": "Connectiviteit"
+                "name": "Connectiviteit",
+                "state": {
+                    "on": "Verbonden",
+                    "off": "Niet verbonden"
+                }
             }
         },
         "sensor": {
@@ -34,10 +38,30 @@
         },
         "switch": {
             "power": {
-                "name": "Stroom"
+                "name": "Stroom",
+                "state": {
+                    "on": "Aan",
+                    "off": "Uit"
+                }
             },
             "mute": {
-                "name": "Dempen"
+                "name": "Dempen",
+                "state": {
+                    "on": "Gedempt",
+                    "off": "Geluid aan"
+                }
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Mediaspeler",
+                "state": {
+                    "on": "Aan",
+                    "off": "Uit",
+                    "playing": "Afspeelt",
+                    "paused": "Gepauzeerd",
+                    "idle": "Inactief"
+                }
             }
         }
     },
