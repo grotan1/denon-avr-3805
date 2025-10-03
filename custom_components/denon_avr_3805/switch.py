@@ -42,6 +42,11 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
         await self.coordinator.async_request_refresh()
 
     @property
+    def name(self):
+        """Return the name of the switch."""
+        return "Power"
+
+    @property
     def translation_key(self):
         """Return the translation key for this entity."""
         return "power"
@@ -68,6 +73,11 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     def unique_id(self):
         """Return a unique ID for this entity."""
         return f"{self.config_entry.entry_id}_mute"
+
+    @property
+    def name(self):
+        """Return the name of the switch."""
+        return "Mute"
 
     @property
     def translation_key(self):
