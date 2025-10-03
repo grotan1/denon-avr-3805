@@ -182,10 +182,10 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Handle removal of an entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    
+
     # Only unload platforms that were actually set up
     platforms_to_unload = coordinator.platforms if hasattr(coordinator, 'platforms') else PLATFORMS
-    
+
     unloaded = all(
         await asyncio.gather(
             *[
@@ -204,11 +204,11 @@ async def async_update_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
     """Update config entry."""
     # Only reload if platform options changed, not if just connection data changed
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    
+
     # Check if platform configuration changed
     current_platforms = set(coordinator.platforms)
     new_platforms = {platform for platform in PLATFORMS if entry.options.get(platform, True)}
-    
+
     if current_platforms != new_platforms:
         # Platform configuration changed, need to reload
         await async_reload_entry(hass, entry)

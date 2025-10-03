@@ -21,7 +21,7 @@ This major release delivers **massive multilingual expansion** with 11 additiona
 - 🇸🇮 **Slovenian** (Slovenščina) - Native Slovenian interface
 - 🇸🇰 **Slovak** (Slovenčina) - Comprehensive Slovak support
 
-### 🇪🇺 **Baltic States** 
+### 🇪🇺 **Baltic States**
 - 🇱🇻 **Latvian** (Latviešu) - Complete Baltic language coverage
 - 🇱🇹 **Lithuanian** (Lietuvių) - Native Lithuanian terminology
 - 🇪🇪 **Estonian** (Eesti) - Professional Estonian localization
@@ -79,7 +79,7 @@ Enhanced device customization works in every language:
 No-compromise configuration experience in all languages:
 - ✅ **No-Delete Reconfiguration**: Modify settings without losing history
 - ✅ **Connection Testing**: Verify settings before applying changes
-- ✅ **Current Value Display**: See what's configured before editing  
+- ✅ **Current Value Display**: See what's configured before editing
 - ✅ **Granular Platform Control**: Individual sensor/switch management
 
 ## 🔄 **Seamless Upgrade Experience**
@@ -99,7 +99,7 @@ No-compromise configuration experience in all languages:
 4. Restart Home Assistant
 5. Configure in your preferred language
 
-# Manual Installation  
+# Manual Installation
 1. Download v1.8.5 release
 2. Replace existing custom_components/denon_avr_3805/
 3. Restart Home Assistant
@@ -111,7 +111,7 @@ No-compromise configuration experience in all languages:
 ### 🌍 **True European Integration**
 - **Universal Accessibility**: Removes language barriers for 500+ million Europeans
 - **Cultural Respect**: Native language interfaces feel natural and professional
-- **EU Inclusion**: Support for all major EU languages and member states  
+- **EU Inclusion**: Support for all major EU languages and member states
 - **Global Leadership**: Sets new standard for Home Assistant integration internationalization
 
 ### 💡 **User Experience Excellence**
@@ -159,7 +159,7 @@ Thanks to the international Home Assistant community for making multilingual sup
 
 ### 🎯 **Geographic Reach**
 - **Western Europe**: Complete coverage (English, German, French, Dutch, etc.)
-- **Eastern Europe**: Comprehensive support (Ukrainian, Polish, Czech, Slovak, etc.) 
+- **Eastern Europe**: Comprehensive support (Ukrainian, Polish, Czech, Slovak, etc.)
 - **Southern Europe**: Full coverage (Italian, Spanish, Portuguese, Greek, Maltese)
 - **Northern Europe**: Complete support (Swedish, Norwegian, Danish, Finnish, Icelandic)
 - **Central Europe**: Native support (Hungarian, Croatian, Slovenian)

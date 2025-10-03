@@ -8,7 +8,7 @@ This major release delivers **comprehensive European multilingual support** by a
 ### 🌍 Massive Language Expansion (26 Total Languages)
 **11 New European Languages Added:**
 - 🇭🇺 **Hungarian** (Magyar) - Central European support
-- 🇷🇴 **Romanian** (Română) - Eastern European coverage  
+- 🇷🇴 **Romanian** (Română) - Eastern European coverage
 - 🇧🇬 **Bulgarian** (Български) - Cyrillic script support
 - 🇭🇷 **Croatian** (Hrvatski) - Balkan region support
 - 🇸🇮 **Slovenian** (Slovenščina) - Alpine region coverage
@@ -48,7 +48,7 @@ All 26 languages include complete localization:
 ### Geographic Coverage Expansion
 - **Western Europe**: Complete (English, German, French, Dutch, etc.)
 - **Eastern Europe**: Comprehensive (Ukrainian, Polish, Czech, Slovak, Hungarian, Romanian, Bulgarian)
-- **Southern Europe**: Full (Italian, Spanish, Portuguese, Greek, Maltese)  
+- **Southern Europe**: Full (Italian, Spanish, Portuguese, Greek, Maltese)
 - **Northern Europe**: Complete (Swedish, Norwegian, Danish, Finnish, Icelandic)
 - **Baltic Region**: All three Baltic languages (Latvian, Lithuanian, Estonian)
 
@@ -68,7 +68,7 @@ All 26 languages include complete localization:
 
 ### Community Impact
 - **EU Inclusion**: Support for nearly all European Union member states
-- **Global Leadership**: Sets new standard for HA integration internationalization  
+- **Global Leadership**: Sets new standard for HA integration internationalization
 - **Reduced Barriers**: Welcomes new users from across Europe
 - **Cultural Respect**: Honors linguistic diversity while providing unity
 
@@ -90,7 +90,7 @@ All 26 languages include complete localization:
 
 ### For Existing Users (v1.8.4 → v1.8.5)
 1. **Update via HACS** or download manually
-2. **Restart Home Assistant** 
+2. **Restart Home Assistant**
 3. **Language Support Activates** immediately
 4. **No Configuration Changes** required
 
