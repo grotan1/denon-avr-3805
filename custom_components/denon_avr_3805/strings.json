@@ -1,63 +1,63 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805",
-        "description": "Configure your Denon AVR-3805 receiver. Enter the IP address and port of your device.",
-        "data": {
-          "host": "Host",
-          "port": "Port", 
-          "name": "Name"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805",
+                "description": "Configure your Denon AVR-3805 receiver. Enter the IP address and port of your device.",
+                "data": {
+                    "host": "Host",
+                    "port": "Port",
+                    "name": "Name"
+                }
+            }
+        },
+        "error": {
+            "invalid_host": "Cannot connect to the AVR. Please check the host and port settings."
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single instance is allowed."
         }
-      }
     },
-    "error": {
-      "invalid_host": "Cannot connect to the AVR. Please check the host and port settings."
-    },
-    "abort": {
-      "single_instance_allowed": "Only a single instance is allowed."
-    }
-  },
-  "options": {
-    "step": {
-      "user": {
-        "title": "Denon AVR-3805 Options",
-        "description": "Configure which platforms to enable.",
-        "data": {
-          "binary_sensor": "Enable binary sensor",
-          "sensor": "Enable sensors",
-          "switch": "Enable switches",
-          "media_player": "Enable media player"
+    "options": {
+        "step": {
+            "user": {
+                "title": "Denon AVR-3805 Options",
+                "description": "Configure which platforms to enable.",
+                "data": {
+                    "binary_sensor": "Enable binary sensor",
+                    "sensor": "Enable sensors",
+                    "switch": "Enable switches",
+                    "media_player": "Enable media player"
+                }
+            }
         }
-      }
+    },
+    "entity": {
+        "binary_sensor": {
+            "connectivity": {
+                "name": "Connectivity"
+            }
+        },
+        "sensor": {
+            "volume": {
+                "name": "Volume"
+            },
+            "input": {
+                "name": "Input"
+            }
+        },
+        "switch": {
+            "power": {
+                "name": "Power"
+            },
+            "mute": {
+                "name": "Mute"
+            }
+        },
+        "media_player": {
+            "media_player": {
+                "name": "Media Player"
+            }
+        }
     }
-  },
-  "entity": {
-    "binary_sensor": {
-      "connectivity": {
-        "name": "Connectivity"
-      }
-    },
-    "sensor": {
-      "volume": {
-        "name": "Volume"
-      },
-      "input": {
-        "name": "Input"
-      }
-    },
-    "switch": {
-      "power": {
-        "name": "Power"
-      },
-      "mute": {
-        "name": "Mute"
-      }
-    },
-    "media_player": {
-      "media_player": {
-        "name": "Media Player"
-      }
-    }
-  }
 }
