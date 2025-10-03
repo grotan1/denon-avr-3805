@@ -8,7 +8,7 @@ This release **completes** the comprehensive connection robustness enhancement p
 
 ### ✨ **Enterprise Reliability Achieved**
 - 🎯 **99%+ Success Rate**: Up from ~85% with intelligent retry logic
-- ⚡ **10x Faster Recovery**: 1-8 seconds vs previous 30-60 seconds  
+- ⚡ **10x Faster Recovery**: 1-8 seconds vs previous 30-60 seconds
 - 🔄 **Smart Retry Logic**: Exponential backoff with 3 attempts (1s, 2s, 4s delays)
 - 🛡️ **Auto-Recovery**: Self-healing connections with health monitoring
 
@@ -18,7 +18,7 @@ This release **completes** the comprehensive connection robustness enhancement p
 - 📋 **Diagnostic Logging**: Detailed troubleshooting information
 - 🎛️ **Performance Visibility**: Clear insight into connection health
 
-### ⚡ **Optimized Performance** 
+### ⚡ **Optimized Performance**
 - 🚀 **Faster Updates**: Reduced delays (0.3s startup, 0.1s between commands)
 - 🌐 **Enhanced Timeouts**: Connection (8s), Read (3s), Command (10s)
 - 🔧 **Smart Delays**: Prevents AVR overwhelming with optimized timing
@@ -43,11 +43,11 @@ This release **completes** the comprehensive connection robustness enhancement p
 
 ### **Rock-Solid Reliability**
 - 🎪 **Just Works**: Your AVR controls respond consistently and reliably
-- 🚫 **Fewer "Unavailable" States**: Entities stay connected more consistently  
+- 🚫 **Fewer "Unavailable" States**: Entities stay connected more consistently
 - ⚡ **Lightning Recovery**: Network hiccups become nearly invisible
 - 🏢 **Professional Experience**: Performance rivals commercial products
 
-### **Enhanced Visibility**  
+### **Enhanced Visibility**
 - 📊 **Performance Monitoring**: See connection health in Home Assistant logs
 - 🔧 **Troubleshooting**: Detailed diagnostic information when needed
 - 📈 **Statistics**: Real-time success rates and performance metrics
@@ -57,7 +57,7 @@ This release **completes** the comprehensive connection robustness enhancement p
 
 ### **HACS (Recommended)**
 1. Update through HACS to version **1.8.0**
-2. Restart Home Assistant  
+2. Restart Home Assistant
 3. Enjoy enterprise-grade reliability!
 
 ### **Manual Installation**
@@ -69,7 +69,7 @@ This release **completes** the comprehensive connection robustness enhancement p
 
 - ✅ **Home Assistant**: 2023.1.0+ (including 2025.12+)
 - ✅ **HACS**: Fully compatible
-- ✅ **Existing Configs**: 100% backward compatible  
+- ✅ **Existing Configs**: 100% backward compatible
 - ✅ **All Networks**: Enhanced compatibility with slow/congested networks
 - ✅ **Ser2net**: Compatible with all common configurations
 
@@ -85,14 +85,14 @@ This release **completes** the comprehensive connection robustness enhancement p
 
 The robust foundation in v1.8.0 enables future enhancements:
 - 🎯 **Adaptive Intervals**: Dynamic update frequency based on health
-- 🔄 **Connection Pooling**: Optional persistent connections  
+- 🔄 **Connection Pooling**: Optional persistent connections
 - 📊 **Advanced Analytics**: Enhanced monitoring and reporting
 - ⚙️ **Custom Configuration**: User-tunable parameters
 
 ## 📚 Documentation
 
 - 📖 [Complete Release Notes](RELEASE_NOTES_v1.8.0.md) - Comprehensive project details
-- 🔧 [Technical Specifications](CONNECTION_ENHANCEMENT_PROPOSAL.md) - Implementation details  
+- 🔧 [Technical Specifications](CONNECTION_ENHANCEMENT_PROPOSAL.md) - Implementation details
 - 📊 [Performance Analysis](RELEASE_NOTES_v1.7.0.md) - Before/after comparisons
 - 🛠️ [API Documentation](custom_components/denon_avr_3805/api.py) - Connection management details
 

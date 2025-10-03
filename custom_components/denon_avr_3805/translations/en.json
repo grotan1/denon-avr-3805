@@ -7,7 +7,8 @@
         "data": {
           "host": "Host",
           "port": "Port",
-          "name": "Name"
+          "name": "Name",
+          "model": "Model (e.g., AVR-3805, AVR-4306)"
         }
       }
     },

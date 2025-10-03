@@ -28,9 +28,11 @@ CONF_ENABLED = "enabled"
 CONF_HOST = "host"
 CONF_NAME = "name"
 CONF_PORT = "port"
+CONF_MODEL = "model"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
+DEFAULT_MODEL = "AVR-3805"
 
 
 STARTUP_MESSAGE = f"""

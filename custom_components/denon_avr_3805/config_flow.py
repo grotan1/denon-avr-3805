@@ -7,6 +7,8 @@ from .api import DenonAvr3805ApiClient
 from .const import CONF_HOST
 from .const import CONF_NAME
 from .const import CONF_PORT
+from .const import CONF_MODEL
+from .const import DEFAULT_MODEL
 from .const import DOMAIN
 from .const import PLATFORMS
 
@@ -57,6 +59,7 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     vol.Required(CONF_HOST, default=user_input.get(CONF_HOST, "") if user_input else ""): str,
                     vol.Required(CONF_PORT, default=user_input.get(CONF_PORT, 2000) if user_input else 2000): int,
                     vol.Optional(CONF_NAME, default=user_input.get(CONF_NAME, "Denon") if user_input else "Denon"): str,
+                    vol.Optional(CONF_MODEL, default=user_input.get(CONF_MODEL, DEFAULT_MODEL) if user_input else DEFAULT_MODEL): str,
                 }
             ),
             errors=self._errors,
