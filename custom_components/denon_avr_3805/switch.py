@@ -47,11 +47,6 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
         return "power"
 
     @property
-    def name(self):
-        """Return the name of the switch."""
-        return None
-
-    @property
     def icon(self):
         """Return the icon of this switch."""
         return "mdi:power"
@@ -97,11 +92,6 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     def translation_key(self):
         """Return the translation key for this entity."""
         return "mute"
-
-    @property
-    def name(self):
-        """Return the name of the switch."""
-        return None
 
     @property
     def icon(self):

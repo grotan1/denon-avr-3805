@@ -30,11 +30,6 @@ class DenonAvr3805BinarySensor(DenonAvr3805Entity, BinarySensorEntity):
         return "connectivity"
 
     @property
-    def name(self):
-        """Return the name of the binary_sensor."""
-        return None
-
-    @property
     def device_class(self):
         """Return the class of this binary_sensor."""
         return "connectivity"

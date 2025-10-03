@@ -31,11 +31,6 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
         return "volume"
 
     @property
-    def name(self):
-        """Return the name of the sensor."""
-        return None
-
-    @property
     def state(self):
         """Return the state of the sensor."""
         volume_response = self.coordinator.data.get("volume")
@@ -95,11 +90,6 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
     def translation_key(self):
         """Return the translation key for this entity."""
         return "input"
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return None
 
     @property
     def state(self):
