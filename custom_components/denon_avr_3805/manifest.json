@@ -1,7 +1,7 @@
 {
   "domain": "denon_avr_3805",
   "name": "Denon AVR-3805",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "documentation": "https://github.com/grotan1/denon-avr-3805",
   "issue_tracker": "https://github.com/grotan1/denon-avr-3805/issues",
   "dependencies": [],
