@@ -76,12 +76,18 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
         super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=SCAN_INTERVAL)
 
     async def _async_update_data(self):
-        """Update data via library."""
+        """Enhanced update with better error handling and retry logic."""
         try:
-            await self.api.connect()
+            # Use enhanced connection with retry logic
+            if not await self.api.connect_with_retry():
+                raise UpdateFailed("Failed to connect to AVR after retries")
+            
             # Give AVR time to be ready after connection
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(0.3)  # Reduced from 0.5s for efficiency
+            
             data = {}
+            
+            # Query power status with fallback
             try:
                 power_status = await self.api.async_get_power_status()
                 if not power_status:
@@ -94,7 +100,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 data["power"] = None
 
             # Small delay between queries to avoid overwhelming the AVR
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)  # Reduced from 0.2s
 
             try:
                 volume_status = await self.api.async_get_volume()
@@ -108,7 +114,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 data["volume"] = None
 
             # Small delay between queries to avoid overwhelming the AVR
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
 
             try:
                 mute_status = await self.api.async_get_mute_status()
@@ -118,7 +124,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Mute status query failed: %s", e)
                 data["mute"] = None
 
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
 
             try:
                 input_status = await self.api.async_get_input()
@@ -128,7 +134,7 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Input status query failed: %s", e)
                 data["input"] = None
 
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
 
             # Try additional queries that might work better with this AVR
             try:
@@ -142,12 +148,35 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Alternative input query failed: %s", e)
 
             await self.api.disconnect()
-            _LOGGER.info("Coordinator update completed - Power: %s, Volume: %s, Mute: %s, Input: %s",
-                        data.get("power"), data.get("volume"), data.get("mute"), data.get("input"))
+            
+            # Log diagnostics periodically for troubleshooting
+            if self.api.connection_stats.total_commands % 50 == 0:
+                stats = self.api.connection_stats
+                _LOGGER.info("Connection stats - Success rate: %.1f%%, Commands: %d, Failures: %d", 
+                           stats.success_rate * 100, stats.total_commands, stats.failed_commands)
+            
+            _LOGGER.debug("Coordinator update completed - Power: %s, Volume: %s, Mute: %s, Input: %s",
+                         data.get("power"), data.get("volume"), data.get("mute"), data.get("input"))
             return data
+            
+        except UpdateFailed:
+            # Re-raise UpdateFailed exceptions
+            raise
         except Exception as exception:
-            _LOGGER.error("Failed to update AVR data: %s", exception)
-            raise UpdateFailed() from exception
+            _LOGGER.error("Unexpected error during update: %s", exception)
+            raise UpdateFailed(f"Unexpected error: {exception}") from exception
+
+    def get_diagnostics(self):
+        """Get diagnostic information."""
+        return {
+            "coordinator": {
+                "last_update_success": self.last_update_success,
+                "last_exception": str(self.last_exception) if self.last_exception else None,
+                "update_interval": str(self.update_interval),
+                "data": self.data if self.data else {},
+            },
+            "api": self.api.get_diagnostics(),
+        }
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
