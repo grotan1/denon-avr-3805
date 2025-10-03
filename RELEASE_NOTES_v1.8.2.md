@@ -129,7 +129,7 @@ All the excellent performance metrics from previous releases remain:
 
 ## 🏆 **Quality Focus**
 
-Version 1.8.2 represents our commitment to **comprehensive quality** - not just robust functionality, but also **clear documentation** and **professional presentation**. 
+Version 1.8.2 represents our commitment to **comprehensive quality** - not just robust functionality, but also **clear documentation** and **professional presentation**.
 
 This ensures that the integration's excellent technical capabilities are matched by equally excellent user guidance and support materials.
 

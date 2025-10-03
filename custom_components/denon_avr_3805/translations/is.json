@@ -67,13 +67,36 @@
     },
     "options": {
         "step": {
-            "user": {
+            "init": {
+                "title": "Stillingar valkostir",
+                "description": "Veldu hvað þú vilt stilla",
+                "menu_options": {
+                    "connection": "Tengingarstillingar (IP, gátt, nafn, gerð)",
+                    "platforms": "Pallstillingar (skopparar, rofar)"
+                }
+            },
+            "connection": {
+                "title": "Tengingarstillingar",
+                "description": "Stilltu tengingu við þinn Denon AVR",
+                "data": {
+                    "host": "IP vistfang",
+                    "port": "Gátt",
+                    "name": "Nafn",
+                    "model": "Gerð"
+                }
+            },
+            "platforms": {
+                "title": "Pallstillingar",
+                "description": "Virkja eða afvirkja mismunandi einingar",
                 "data": {
                     "binary_sensor": "Tvíundarskoppari virkjaður",
                     "sensor": "Skoppari virkjaður",
                     "switch": "Rofi virkjaður"
                 }
             }
+        },
+        "error": {
+            "invalid_host": "Get ekki tengst AVR. Vinsamlegast athugaðu hýsils- og gáttarstillingar."
         }
     }
 }

@@ -64,5 +64,39 @@
         }
       }
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options de configuration",
+        "description": "Sélectionnez ce que vous souhaitez configurer",
+        "menu_options": {
+          "connection": "Paramètres de connexion (IP, port, nom, modèle)",
+          "platforms": "Paramètres de plateforme (capteurs, interrupteurs)"
+        }
+      },
+      "connection": {
+        "title": "Paramètres de connexion",
+        "description": "Configurez la connexion à votre Denon AVR",
+        "data": {
+          "host": "Adresse IP",
+          "port": "Port",
+          "name": "Nom",
+          "model": "Modèle"
+        }
+      },
+      "platforms": {
+        "title": "Paramètres de plateforme",
+        "description": "Activez ou désactivez différents types d'entités",
+        "data": {
+          "binary_sensor": "Capteur binaire activé",
+          "sensor": "Capteur activé",
+          "switch": "Interrupteur activé"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Impossible de se connecter à l'ampli. Vérifiez les paramètres d'hôte et de port."
+    }
   }
 }

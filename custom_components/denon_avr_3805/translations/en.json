@@ -35,7 +35,7 @@
         "data": {
           "host": "Host",
           "port": "Port",
-          "name": "Name", 
+          "name": "Name",
           "model": "Model (e.g., AVR-3805, AVR-4306)"
         }
       },
@@ -45,10 +45,13 @@
         "data": {
           "binary_sensor": "Enable binary sensor",
           "sensor": "Enable sensors",
-          "switch": "Enable switches", 
+          "switch": "Enable switches",
           "media_player": "Enable media player"
         }
       }
+    },
+    "error": {
+      "invalid_host": "Cannot connect to the AVR. Please check the host and port settings."
     }
   },
   "entity": {

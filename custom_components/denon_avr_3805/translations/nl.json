@@ -67,13 +67,36 @@
     },
     "options": {
         "step": {
-            "user": {
+            "init": {
+                "title": "Configuratie opties",
+                "description": "Selecteer wat je wilt configureren",
+                "menu_options": {
+                    "connection": "Verbindingsinstellingen (IP, poort, naam, model)",
+                    "platforms": "Platform instellingen (sensoren, schakelaars)"
+                }
+            },
+            "connection": {
+                "title": "Verbindingsinstellingen",
+                "description": "Configureer de verbinding met je Denon AVR",
+                "data": {
+                    "host": "IP-adres",
+                    "port": "Poort",
+                    "name": "Naam",
+                    "model": "Model"
+                }
+            },
+            "platforms": {
+                "title": "Platform instellingen",
+                "description": "Schakel verschillende entiteitstypen in of uit",
                 "data": {
                     "binary_sensor": "Binaire sensor ingeschakeld",
                     "sensor": "Sensor ingeschakeld",
                     "switch": "Schakelaar ingeschakeld"
                 }
             }
+        },
+        "error": {
+            "invalid_host": "Kan geen verbinding maken met AVR. Controleer de host- en poortinstellingen."
         }
     }
 }

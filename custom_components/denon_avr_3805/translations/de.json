@@ -67,13 +67,36 @@
     },
     "options": {
         "step": {
-            "user": {
+            "init": {
+                "title": "Konfigurationsoptionen",
+                "description": "Wählen Sie aus, was Sie konfigurieren möchten",
+                "menu_options": {
+                    "connection": "Verbindungseinstellungen (IP, Port, Name, Modell)",
+                    "platforms": "Plattformeinstellungen (Sensoren, Schalter)"
+                }
+            },
+            "connection": {
+                "title": "Verbindungseinstellungen",
+                "description": "Konfigurieren Sie die Verbindung zu Ihrem Denon AVR",
+                "data": {
+                    "host": "IP-Adresse",
+                    "port": "Port",
+                    "name": "Name",
+                    "model": "Modell"
+                }
+            },
+            "platforms": {
+                "title": "Plattformeinstellungen",
+                "description": "Verschiedene Entitätstypen aktivieren oder deaktivieren",
                 "data": {
                     "binary_sensor": "Binärsensor aktiviert",
                     "sensor": "Sensor aktiviert",
                     "switch": "Schalter aktiviert"
                 }
             }
+        },
+        "error": {
+            "invalid_host": "Kann keine Verbindung zum AVR herstellen. Überprüfen Sie die Host- und Port-Einstellungen."
         }
     }
 }

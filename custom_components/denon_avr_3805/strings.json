@@ -34,13 +34,13 @@
                 "description": "Configure connection parameters. You can see and modify your current settings.",
                 "data": {
                     "host": "Host",
-                    "port": "Port", 
+                    "port": "Port",
                     "name": "Name",
                     "model": "Model"
                 }
             },
             "platforms": {
-                "title": "Platform Settings", 
+                "title": "Platform Settings",
                 "description": "Configure which platforms to enable.",
                 "data": {
                     "binary_sensor": "Enable binary sensor",
@@ -54,7 +54,7 @@
                 "description": "Configure which platforms to enable.",
                 "data": {
                     "binary_sensor": "Enable binary sensor",
-                    "sensor": "Enable sensors", 
+                    "sensor": "Enable sensors",
                     "switch": "Enable switches",
                     "media_player": "Enable media player"
                 }

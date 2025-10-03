@@ -67,13 +67,36 @@
     },
     "options": {
         "step": {
-            "user": {
+            "init": {
+                "title": "Konfiguraatiovaihtoehdot",
+                "description": "Valitse mitä haluat määrittää",
+                "menu_options": {
+                    "connection": "Yhteyden asetukset (IP, portti, nimi, malli)",
+                    "platforms": "Alustan asetukset (anturit, kytkimet)"
+                }
+            },
+            "connection": {
+                "title": "Yhteyden asetukset",
+                "description": "Määritä yhteys Denon AVR:ääsi",
+                "data": {
+                    "host": "IP-osoite",
+                    "port": "Portti",
+                    "name": "Nimi",
+                    "model": "Malli"
+                }
+            },
+            "platforms": {
+                "title": "Alustan asetukset",
+                "description": "Ota käyttöön tai poista käytöstä erilaisia entiteettityyppejä",
                 "data": {
                     "binary_sensor": "Binäärianturi käytössä",
                     "sensor": "Anturi käytössä",
                     "switch": "Kytkin käytössä"
                 }
             }
+        },
+        "error": {
+            "invalid_host": "Ei voida muodostaa yhteyttä AVR:ään. Tarkista isännän ja portin asetukset."
         }
     }
 }

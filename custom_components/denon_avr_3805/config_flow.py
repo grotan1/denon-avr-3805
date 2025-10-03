@@ -104,7 +104,7 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
             # Update the config entry data (not options)
             new_data = dict(self.config_entry.data)
             new_data.update(user_input)
-            
+
             # Test the connection before saving
             valid = await self._test_connection(
                 user_input[CONF_HOST], user_input[CONF_PORT]
@@ -115,7 +115,7 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
                     data_schema=self._get_connection_schema(user_input),
                     errors={"base": "invalid_host"}
                 )
-            
+
             self.hass.config_entries.async_update_entry(
                 self.config_entry, data=new_data
             )
@@ -145,23 +145,23 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
     def _get_connection_schema(self, user_input=None):
         """Get connection configuration schema with current values."""
         current_data = self.config_entry.data
-        
+
         return vol.Schema(
             {
                 vol.Required(
-                    CONF_HOST, 
+                    CONF_HOST,
                     default=user_input.get(CONF_HOST) if user_input else current_data.get(CONF_HOST, "")
                 ): str,
                 vol.Required(
-                    CONF_PORT, 
+                    CONF_PORT,
                     default=user_input.get(CONF_PORT) if user_input else current_data.get(CONF_PORT, 2000)
                 ): int,
                 vol.Optional(
-                    CONF_NAME, 
+                    CONF_NAME,
                     default=user_input.get(CONF_NAME) if user_input else current_data.get(CONF_NAME, "Denon")
                 ): str,
                 vol.Optional(
-                    CONF_MODEL, 
+                    CONF_MODEL,
                     default=user_input.get(CONF_MODEL) if user_input else current_data.get(CONF_MODEL, DEFAULT_MODEL)
                 ): str,
             }
