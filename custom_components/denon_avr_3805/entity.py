@@ -16,14 +16,13 @@ from .const import NAME
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
-
     from . import DenonAvr3805DataUpdateCoordinator
 
 
-class DenonAvr3805Entity(CoordinatorEntity[DenonAvr3805DataUpdateCoordinator]):
+class DenonAvr3805Entity(CoordinatorEntity["DenonAvr3805DataUpdateCoordinator"]):
     _attr_has_entity_name = True
 
-    def __init__(self, coordinator: DenonAvr3805DataUpdateCoordinator, config_entry: ConfigEntry) -> None:
+    def __init__(self, coordinator: "DenonAvr3805DataUpdateCoordinator", config_entry: ConfigEntry) -> None:
         super().__init__(coordinator)
         self.config_entry = config_entry
 
