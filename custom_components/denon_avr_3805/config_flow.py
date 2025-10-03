@@ -80,8 +80,8 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
     """Config flow options handler for denon_avr_3805."""
 
     def __init__(self, config_entry):
-        """Initialize HACS options flow."""
-        self.config_entry = config_entry
+        """Initialize options flow."""
+        super().__init__()
         self.options = dict(config_entry.options)
 
     async def async_step_init(self, user_input=None):  # pylint: disable=unused-argument
@@ -107,5 +107,5 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
     async def _update_options(self):
         """Update config entry options."""
         return self.async_create_entry(
-            title=self.config_entry.data.get(CONF_HOST), data=self.options
+            title="", data=self.options
         )
