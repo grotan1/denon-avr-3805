@@ -1,7 +1,14 @@
 """Adds config flow for Denon AVR-3805."""
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any
+
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
+
+if TYPE_CHECKING:
+    from homeassistant.data_entry_flow import FlowResult
 
 from .api import DenonAvr3805ApiClient
 from .const import CONF_HOST
@@ -18,11 +25,11 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize."""
-        self._errors = {}
+        self._errors: dict[str, str] = {}
 
-    async def async_step_user(self, user_input=None):
+    async def async_step_user(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         """Handle a flow initialized by the user."""
         self._errors = {}
 
@@ -65,7 +72,7 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             errors=self._errors,
         )
 
-    async def _test_connection(self, host, port):
+    async def _test_connection(self, host: str, port: int) -> bool:
         """Return true if connection to AVR is successful."""
         try:
             client = DenonAvr3805ApiClient(host, port)
@@ -82,10 +89,10 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
     """Config flow options handler for denon_avr_3805."""
 
-    def __init__(self, config_entry):
+    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         """Initialize options flow."""
         super().__init__()
-        self.options = dict(config_entry.options)
+        self.options: dict[str, Any] = dict(config_entry.options)
 
     async def async_step_init(self, user_input=None):
         """Manage the options."""

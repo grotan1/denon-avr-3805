@@ -1,20 +1,34 @@
-"""Sensor platform for Denon AVR-3805."""
-from .const import CONF_NAME
-from .const import DEFAULT_NAME
+"""Support for Denon AVR-3805 sensors."""
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any
+
+from homeassistant.components.sensor import SensorEntity
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
 from .const import DOMAIN
-from .const import ICON
-from .const import NAME
-from .const import SENSOR
 from .entity import DenonAvr3805Entity
 
+if TYPE_CHECKING:
+    from . import DenonAvr3805DataUpdateCoordinator
 
-async def async_setup_entry(hass, entry, async_add_devices):
+
+async def async_setup_entry(
+    hass: HomeAssistant,
+    entry: ConfigEntry,
+    async_add_devices: AddEntitiesCallback
+) -> None:
     """Setup sensor platform."""
-    coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_devices([
+    coordinator: DenonAvr3805DataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
+
+    entities = [
         DenonAvr3805VolumeSensor(coordinator, entry),
         DenonAvr3805InputSensor(coordinator, entry),
-    ])
+    ]
+
+    async_add_devices(entities)
 
 
 class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
@@ -26,46 +40,16 @@ class DenonAvr3805VolumeSensor(DenonAvr3805Entity):
         return f"{self.config_entry.entry_id}_volume"
 
     @property
-    def translation_key(self):
+    def translation_key(self) -> str:
         """Return the translation key for this entity."""
         return "volume"
 
     @property
-    def state(self):
+    def native_value(self) -> int | None:
         """Return the state of the sensor."""
-        volume_response = self.coordinator.data.get("volume")
-        if volume_response and isinstance(volume_response, str):
-            # Handle different volume response formats
-            if volume_response.startswith("MV"):
-                try:
-                    # MVxx format (xx is volume level)
-                    vol_str = volume_response[2:]
-                    if vol_str.isdigit():
-                        vol_int = int(vol_str)
-                        # Validate volume range (0-98 for Denon)
-                        if 0 <= vol_int <= 98:
-                            return vol_int
-                except (ValueError, IndexError):
-                    pass
-            elif volume_response.startswith("CV"):
-                try:
-                    # CVxx format (channel volume)
-                    vol_str = volume_response[2:]
-                    if vol_str.isdigit():
-                        vol_int = int(vol_str)
-                        if 0 <= vol_int <= 98:
-                            return vol_int
-                except (ValueError, IndexError):
-                    pass
-            elif volume_response.isdigit():
-                # Just digits (raw volume level)
-                try:
-                    vol_int = int(volume_response)
-                    if 0 <= vol_int <= 98:
-                        return vol_int
-                except ValueError:
-                    pass
-        return None
+        if self.coordinator.data is None:
+            return None
+        return self.coordinator.data.get("volume")
 
     @property
     def unit_of_measurement(self):
@@ -92,31 +76,11 @@ class DenonAvr3805InputSensor(DenonAvr3805Entity):
         return "input"
 
     @property
-    def state(self):
+    def native_value(self) -> str | None:
         """Return the state of the sensor."""
-        input_response = self.coordinator.data.get("input")
-        if input_response and isinstance(input_response, str):
-            # Handle different input response formats
-            if input_response.startswith("SI"):
-                # SI<source> format - extract source after SI
-                source = input_response[2:]
-                # Only return if we have a non-empty source
-                return source if source else None
-            elif len(input_response) > 0:
-                # Raw input name - but filter out obviously invalid responses
-                # Some AVRs might return status messages instead of input names
-                invalid_responses = [
-                    "ON", "OFF", "STANDBY", "PWON", "PWSTANDBY",
-                    "MUON", "MUOFF", "MV", "CV", "ZM", "ZMON", "ZMOFF"
-                ]
-                # Check if response starts with any invalid prefix
-                if any(input_response.startswith(invalid) for invalid in invalid_responses):
-                    return None
-                # Check if response is exactly an invalid response
-                if input_response in invalid_responses:
-                    return None
-                return input_response
-        return None
+        if self.coordinator.data is None:
+            return None
+        return self.coordinator.data.get("input")
 
     @property
     def icon(self):

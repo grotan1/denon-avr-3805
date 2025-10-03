@@ -1,6 +1,8 @@
 """DenonAvr3805Entity class"""
 from __future__ import annotations
 
+from typing import TYPE_CHECKING, Any
+
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ATTRIBUTION
@@ -12,16 +14,21 @@ from .const import DOMAIN
 from .const import MANUFACTURER
 from .const import NAME
 
+if TYPE_CHECKING:
+    from homeassistant.config_entries import ConfigEntry
 
-class DenonAvr3805Entity(CoordinatorEntity):
+    from . import DenonAvr3805DataUpdateCoordinator
+
+
+class DenonAvr3805Entity(CoordinatorEntity[DenonAvr3805DataUpdateCoordinator]):
     _attr_has_entity_name = True
 
-    def __init__(self, coordinator, config_entry):
+    def __init__(self, coordinator: DenonAvr3805DataUpdateCoordinator, config_entry: ConfigEntry) -> None:
         super().__init__(coordinator)
         self.config_entry = config_entry
 
     @property
-    def device_info(self):
+    def device_info(self) -> dict[str, Any]:
         """Return device information."""
         device_name = self.config_entry.data.get(CONF_NAME, "Denon")
         device_model = self.config_entry.data.get(CONF_MODEL, DEFAULT_MODEL)

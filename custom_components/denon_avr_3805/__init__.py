@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from datetime import timedelta
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -61,7 +62,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return True
 
 
-class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
+class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     """Class to manage fetching data from the API."""
 
     def __init__(
@@ -70,8 +71,8 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
         client: DenonAvr3805ApiClient,
     ) -> None:
         """Initialize."""
-        self.api = client
-        self.platforms = []
+        self.api: DenonAvr3805ApiClient = client
+        self.platforms: list[str] = []
 
         super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=SCAN_INTERVAL)
 
@@ -166,16 +167,21 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             _LOGGER.error("Unexpected error during update: %s", exception)
             raise UpdateFailed(f"Unexpected error: {exception}") from exception
 
-    def get_diagnostics(self):
-        """Get diagnostic information."""
+    def get_diagnostics(self) -> dict[str, Any]:
+        """Get diagnostics for this coordinator."""
+        platform_info: dict[str, Any] = {}
+        for platform in self.platforms:
+            platform_info[platform] = {
+                "enabled": True,
+                "last_update": self.last_update_success_time,
+            }
+
         return {
-            "coordinator": {
-                "last_update_success": self.last_update_success,
-                "last_exception": str(self.last_exception) if self.last_exception else None,
-                "update_interval": str(self.update_interval),
-                "data": self.data if self.data else {},
-            },
             "api": self.api.get_diagnostics(),
+            "platforms": platform_info,
+            "last_update_success": self.last_update_success,
+            "last_exception": str(self.last_exception) if self.last_exception else None,
+            "update_count": getattr(self, "_update_count", 0),
         }
 
 

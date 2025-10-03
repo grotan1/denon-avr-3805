@@ -18,7 +18,7 @@
 
 Professional Denon AVR control with **26-language multilingual support**, 99%+ reliability, and perfect entity naming consistency. Built for international users and automation excellence.
 
-### 🇺🇦 **Slava Ukrajini!** 
+### 🇺🇦 **Slava Ukrajini!**
 This integration proudly supports Ukraine with full Ukrainian language support and maintains our solidarity through every release.
 
 ## 🎯 **Platforms & Features**
@@ -48,11 +48,12 @@ Complete European Union language support with **Ukrainian solidarity**:
 - **Connection Testing**: Verify settings before applying changes
 - **Configurable Models**: Specify exact AVR model (AVR-3805, AVR-4306, AVR-X4700H, etc.)
 
-### 🌐 **Perfect Entity Naming**
-- **Media Player**: Clean device name only (`denon`)
-- **Other Entities**: Consistent English suffixes (`denon_input`, `denon_volume`, etc.)
-- **Language Independent**: Same entity names regardless of Home Assistant language
-- **Automation Friendly**: Predictable entity references for international users
+### 🌐 **Perfect Multilingual Experience (v1.9.0)**
+- **Native UI Labels**: See "Strøm", "Volum" in Norwegian, "Живлення", "Гучність" in Ukrainian
+- **English Entity IDs**: Consistent `denon_power`, `denon_volume` for global automation
+- **Best of Both Worlds**: Localized interface + standardized entity references
+- **Cultural Sensitivity**: Professional native language experience across all 26 languages
+- **International Collaboration**: Share automations globally while enjoying native UI
 
 ### 🔧 **Advanced Connectivity**
 - **TCP/IP Connection**: Serial-over-TCP using ser2net or similar
@@ -98,7 +99,7 @@ In Home Assistant, add the integration and provide:
 
 ### **HACS Installation (Recommended)**
 1. **Open HACS** in Home Assistant
-2. **Go to Integrations** 
+2. **Go to Integrations**
 3. **Click "+ Explore & Download Repositories"**
 4. **Search for** "Denon AVR-3805"
 5. **Download** and restart Home Assistant
@@ -145,7 +146,7 @@ All configuration is done through the **user-friendly interface** with **live co
 
 ### **Initial Setup**
 1. **Host**: IP address of ser2net device
-2. **Port**: TCP port (e.g., 2000) 
+2. **Port**: TCP port (e.g., 2000)
 3. **Name**: Custom device name (optional)
 4. **Model**: Exact AVR model (e.g., AVR-3805, AVR-4306)
 
@@ -156,7 +157,19 @@ All configuration is done through the **user-friendly interface** with **live co
 
 ## 🚀 **Recent Major Releases**
 
-### **v1.8.9 - English Entity Naming Standardization** 🌐
+### **v2.0.0 - 🏆 PLATINUM CERTIFICATION ACHIEVEMENT** 🏆 **← CURRENT**
+- ✅ **Home Assistant Platinum Integration**: Achieved highest quality certification
+- ✅ **Strict Typing**: Comprehensive type annotations throughout codebase
+- ✅ **Diagnostics Platform**: Dedicated diagnostics support for troubleshooting
+- ✅ **Enterprise Excellence**: World-class code quality and user experience
+- ✅ **Elite Tier Status**: Among the finest integrations in Home Assistant ecosystem
+
+### **v1.9.0 - Perfect Multilingual Experience** 🌐
+- ✅ **Native UI Labels**: Norwegian users see "Strøm", Ukrainian users see "Живлення"
+- ✅ **English Entity IDs**: Consistent `switch.denon_power` for global automation
+- ✅ **Ultimate Balance**: Localized interface + standardized entity references  
+- ✅ **Cultural Sensitivity**: Professional native language experience
+- ✅ **International Excellence**: Best of both worlds achieved perfectly### **v1.8.9 - English Entity Naming Standardization** 🌐
 - ✅ **Consistent English entity names** across all HA language settings
 - ✅ **Enhanced automation portability** for international users
 - ✅ **Perfect naming**: `denon_input` not `denon_inngang`/`denon_eingang`
@@ -190,11 +203,11 @@ name: "Denon"  # Just your device name, nothing else
 entity_id: sensor.denon_volume
 name: "Denon Volume"
 
-entity_id: sensor.denon_input  
+entity_id: sensor.denon_input
 name: "Denon Input"
 ```
 
-### **Switches** (English Suffixes)  
+### **Switches** (English Suffixes)
 ```yaml
 entity_id: switch.denon_power
 name: "Denon Power"

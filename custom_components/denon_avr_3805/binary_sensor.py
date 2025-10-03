@@ -1,5 +1,12 @@
 """Binary sensor platform for Denon AVR-3805."""
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from homeassistant.components.binary_sensor import BinarySensorEntity
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import BINARY_SENSOR
 from .const import BINARY_SENSOR_DEVICE_CLASS
@@ -9,10 +16,18 @@ from .const import DOMAIN
 from .const import NAME
 from .entity import DenonAvr3805Entity
 
+if TYPE_CHECKING:
+    from . import DenonAvr3805DataUpdateCoordinator
 
-async def async_setup_entry(hass, entry, async_add_devices):
-    """Setup binary_sensor platform."""
-    coordinator = hass.data[DOMAIN][entry.entry_id]
+
+async def async_setup_entry(
+    hass: HomeAssistant,
+    entry: ConfigEntry,
+    async_add_devices: AddEntitiesCallback
+) -> None:
+    """Setup binary_sensor from a config entry."""
+    coordinator: DenonAvr3805DataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
+
     async_add_devices([DenonAvr3805BinarySensor(coordinator, entry)])
 
 

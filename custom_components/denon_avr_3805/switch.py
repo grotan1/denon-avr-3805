@@ -1,5 +1,12 @@
 """Switch platform for Denon AVR-3805."""
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any
+
 from homeassistant.components.switch import SwitchEntity
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import CONF_NAME
 from .const import DEFAULT_NAME
@@ -9,14 +16,24 @@ from .const import NAME
 from .const import SWITCH
 from .entity import DenonAvr3805Entity
 
+if TYPE_CHECKING:
+    from . import DenonAvr3805DataUpdateCoordinator
 
-async def async_setup_entry(hass, entry, async_add_devices):
-    """Setup sensor platform."""
-    coordinator = hass.data[DOMAIN][entry.entry_id]
-    async_add_devices([
+
+async def async_setup_entry(
+    hass: HomeAssistant,
+    entry: ConfigEntry,
+    async_add_devices: AddEntitiesCallback
+) -> None:
+    """Setup switches from a config entry."""
+    coordinator: DenonAvr3805DataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
+
+    entities = [
         DenonAvr3805PowerSwitch(coordinator, entry),
         DenonAvr3805MuteSwitch(coordinator, entry),
-    ])
+    ]
+
+    async_add_devices(entities)
 
 
 class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):

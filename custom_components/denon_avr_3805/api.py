@@ -6,7 +6,10 @@ import logging
 import socket
 import time
 from dataclasses import dataclass
-from typing import Optional, Dict, Any
+from typing import TYPE_CHECKING, Any, Dict, Optional, Union
+
+if TYPE_CHECKING:
+    from collections.abc import Coroutine
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
@@ -19,8 +22,8 @@ class ConnectionStats:
     total_commands: int = 0
     failed_commands: int = 0
     consecutive_failures: int = 0
-    last_successful_connection: Optional[float] = None
-    last_failed_connection: Optional[float] = None
+    last_successful_connection: float | None = None
+    last_failed_connection: float | None = None
 
     @property
     def success_rate(self) -> float:
@@ -37,13 +40,13 @@ class ConnectionStats:
 
 
 class DenonAvr3805ApiClient:
-    def __init__(self, host: str, port: int, config: Optional[Dict[str, Any]] = None) -> None:
+    def __init__(self, host: str, port: int, config: dict[str, Any] | None = None) -> None:
         """Initialize the API client for TCP connection to ser2net."""
-        self._host = host
-        self._port = port
-        self._reader: Optional[asyncio.StreamReader] = None
-        self._writer: Optional[asyncio.StreamWriter] = None
-        self._lock = asyncio.Lock()  # To serialize commands
+        self._host: str = host
+        self._port: int = port
+        self._reader: asyncio.StreamReader | None = None
+        self._writer: asyncio.StreamWriter | None = None
+        self._lock: asyncio.Lock = asyncio.Lock()  # To serialize commands
 
         # Enhanced configuration with defaults
         self._config = {
@@ -115,26 +118,25 @@ class DenonAvr3805ApiClient:
         self._stats.last_failed_connection = time.time()
         return False
 
-    async def _attempt_connection(self) -> bool:
-        """Single connection attempt."""
+    async def _connect_tcp(self) -> None:
+        """Establish TCP connection."""
         try:
-            # Close any existing connection
-            await self.disconnect()
-
-            # Establish new connection with enhanced timeout
             self._reader, self._writer = await asyncio.wait_for(
                 asyncio.open_connection(self._host, self._port),
                 timeout=self._config['connection_timeout']
             )
 
-            _LOGGER.info("Successfully connected to Denon AVR at %s:%s",
-                       self._host, self._port)
-            return True
+            # Drain any initial data
+            await self._drain_input()
 
-        except (asyncio.TimeoutError, OSError, ConnectionError) as e:
-            await self.disconnect()
-            _LOGGER.debug("Connection attempt failed: %s", e)
-            return False
+        except asyncio.TimeoutError:
+            raise ConnectionError(f"Timeout connecting to {self._host}:{self._port}")
+        except socket.gaierror as e:
+            raise ConnectionError(f"DNS resolution failed for {self._host}: {e}")
+        except ConnectionRefusedError:
+            raise ConnectionError(f"Connection refused by {self._host}:{self._port}")
+        except Exception as e:
+            raise ConnectionError(f"Failed to connect to {self._host}:{self._port}: {e}")
 
     async def disconnect(self) -> None:
         """Enhanced disconnect with proper cleanup."""
@@ -343,7 +345,7 @@ class DenonAvr3805ApiClient:
         # Some AVRs use ZM? for main zone power
         return await self._send_command("ZM?", "ZM")
 
-    def get_diagnostics(self) -> Dict[str, Any]:
+    def get_diagnostics(self) -> dict[str, Any]:
         """Get diagnostic information for troubleshooting."""
         return {
             "connection": {
