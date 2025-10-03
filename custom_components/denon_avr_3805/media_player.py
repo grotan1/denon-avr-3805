@@ -28,12 +28,8 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
     @property
     def name(self):
         """Return the name of the media player."""
-        return None
-
-    @property
-    def translation_key(self):
-        """Return the translation key for this entity."""
-        return "media_player"
+        device_name = self.config_entry.data.get(CONF_NAME, "Denon")
+        return device_name  # Main device entity just uses device name
 
     @property
     def icon(self):

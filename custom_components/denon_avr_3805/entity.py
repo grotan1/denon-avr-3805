@@ -10,25 +10,20 @@ from .const import VERSION
 
 
 class DenonAvr3805Entity(CoordinatorEntity):
-    _attr_has_entity_name = True
+    _attr_has_entity_name = False
     
     def __init__(self, coordinator, config_entry):
         super().__init__(coordinator)
         self.config_entry = config_entry
 
     @property
-    def unique_id(self):
-        """Return a unique ID to use for this entity."""
-        return self.config_entry.entry_id
-
-    @property
     def device_info(self):
         """Return device information."""
-        device_name = self.config_entry.data.get(CONF_NAME, NAME)
+        device_name = self.config_entry.data.get(CONF_NAME, "Denon")
         return {
             "identifiers": {(DOMAIN, self.config_entry.entry_id)},
             "name": device_name,
-            "model": VERSION,
+            "model": "AVR-3805",
             "manufacturer": MANUFACTURER,
         }
 

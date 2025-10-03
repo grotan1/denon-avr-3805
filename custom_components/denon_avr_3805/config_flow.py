@@ -35,7 +35,7 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             )
             if valid:
                 return self.async_create_entry(
-                    title=user_input.get(CONF_NAME, f"{user_input[CONF_HOST]}:{user_input[CONF_PORT]}"), data=user_input
+                    title=user_input.get(CONF_NAME, "Denon"), data=user_input
                 )
             else:
                 self._errors["base"] = "invalid_host"
@@ -57,7 +57,7 @@ class DenonAvr3805FlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 {
                     vol.Required(CONF_HOST, default=user_input.get(CONF_HOST, "") if user_input else ""): str,
                     vol.Required(CONF_PORT, default=user_input.get(CONF_PORT, 2000) if user_input else 2000): int,
-                    vol.Optional(CONF_NAME, default=user_input.get(CONF_NAME, "Denon AVR-3805") if user_input else "Denon AVR-3805"): str,
+                    vol.Optional(CONF_NAME, default=user_input.get(CONF_NAME, "Denon") if user_input else "Denon"): str,
                 }
             ),
             errors=self._errors,

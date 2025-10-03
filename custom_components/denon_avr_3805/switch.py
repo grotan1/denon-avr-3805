@@ -27,11 +27,6 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
         """Return a unique ID for this entity."""
         return f"{self.config_entry.entry_id}_power"
 
-    @property
-    def translation_key(self):
-        """Return the translation key for this entity."""
-        return "power"
-
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Turn on the AVR."""
         await self.coordinator.api.connect()
@@ -49,7 +44,8 @@ class DenonAvr3805PowerSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        return None
+        device_name = self.config_entry.data.get(CONF_NAME, "Denon")
+        return f"{device_name} - Power"
 
     @property
     def icon(self):
@@ -96,7 +92,8 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
     @property
     def name(self):
         """Return the name of the switch."""
-        return None
+        device_name = self.config_entry.data.get(CONF_NAME, "Denon")
+        return f"{device_name} - Mute"
 
     @property
     def icon(self):
