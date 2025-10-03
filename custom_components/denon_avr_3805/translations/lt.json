@@ -1,0 +1,104 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Jei reikia pagalbos konfigūruojant, žiūrėkite čia: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Šeimininkas",
+          "port": "Prievadas",
+          "name": "Pavadinimas",
+          "model": "Modelis (pvz. AVR-3805, AVR-4306)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Nepavyksta prisijungti prie AVR. Patikrinkite šeimininko ir prievado nustatymus."
+    },
+    "abort": {
+      "single_instance_allowed": "Leidžiamas tik vienas egzempliorius."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Denon AVR konfigūracija",
+        "description": "Pasirinkite, ką norite konfigūruoti.",
+        "menu_options": {
+          "connection": "Ryšio nustatymai (IP, prievadas, pavadinimas, modelis)",
+          "platforms": "Platformos nustatymai (įjungti/išjungti funkcijas)"
+        }
+      },
+      "connection": {
+        "title": "Ryšio nustatymai",
+        "description": "Konfigūruokite ryšio parametrus. Galite peržiūrėti ir keisti dabartinius nustatymus.",
+        "data": {
+          "host": "Šeimininkas",
+          "port": "Prievadas",
+          "name": "Pavadinimas",
+          "model": "Modelis (pvz. AVR-3805, AVR-4306)"
+        }
+      },
+      "platforms": {
+        "title": "Platformos nustatymai",
+        "description": "Konfigūruokite, kurias platformas įjungti.",
+        "data": {
+          "binary_sensor": "Įjungti dvejetainį jutiklį",
+          "sensor": "Įjungti jutiklius",
+          "switch": "Įjungti jungiklius",
+          "media_player": "Įjungti medijos grotuvą"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Nepavyksta prisijungti prie AVR. Patikrinkite šeimininko ir prievado nustatymus."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Ryšys",
+        "state": {
+          "on": "Prijungta",
+          "off": "Atjungta"
+        }
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Garsumas"
+      },
+      "input": {
+        "name": "Įvestis"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Maitinimas",
+        "state": {
+          "on": "Įjungta",
+          "off": "Išjungta"
+        }
+      },
+      "mute": {
+        "name": "Nutildyti",
+        "state": {
+          "on": "Nutildyta",
+          "off": "Garsas įjungtas"
+        }
+      }
+    },
+    "media_player": {
+      "media_player": {
+        "name": "Medijos grotuvas",
+        "state": {
+          "on": "Įjungta",
+          "off": "Išjungta",
+          "playing": "Groja",
+          "paused": "Pristabdyta",
+          "idle": "Neaktyvus"
+        }
+      }
+    }
+  }
+}

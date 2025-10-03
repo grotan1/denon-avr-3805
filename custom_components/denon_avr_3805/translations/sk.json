@@ -1,0 +1,104 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Ak potrebujete pomoc s konfiguráciou, pozrite sa sem: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Hostiteľ",
+          "port": "Port",
+          "name": "Názov",
+          "model": "Model (napr. AVR-3805, AVR-4306)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Nemožno sa pripojiť k AVR. Skontrolujte nastavenia hostiteľa a portu."
+    },
+    "abort": {
+      "single_instance_allowed": "Povolená je iba jedna inštancia."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Konfigurácia Denon AVR",
+        "description": "Vyberte si, čo chcete konfigurovať.",
+        "menu_options": {
+          "connection": "Nastavenia pripojenia (IP, port, názov, model)",
+          "platforms": "Nastavenia platformy (povolenie/zakázanie funkcií)"
+        }
+      },
+      "connection": {
+        "title": "Nastavenia pripojenia",
+        "description": "Konfigurujte parametre pripojenia. Môžete si prezerať a upravovať vaše aktuálne nastavenia.",
+        "data": {
+          "host": "Hostiteľ",
+          "port": "Port",
+          "name": "Názov",
+          "model": "Model (napr. AVR-3805, AVR-4306)"
+        }
+      },
+      "platforms": {
+        "title": "Nastavenia platformy",
+        "description": "Konfigurujte, ktoré platformy povoliť.",
+        "data": {
+          "binary_sensor": "Povoliť binárny senzor",
+          "sensor": "Povoliť senzory",
+          "switch": "Povoliť spínače",
+          "media_player": "Povoliť mediálny prehrávač"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Nemožno sa pripojiť k AVR. Skontrolujte nastavenia hostiteľa a portu."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Pripojiteľnosť",
+        "state": {
+          "on": "Pripojené",
+          "off": "Odpojené"
+        }
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Hlasitosť"
+      },
+      "input": {
+        "name": "Vstup"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Napájanie",
+        "state": {
+          "on": "Zapnuté",
+          "off": "Vypnuté"
+        }
+      },
+      "mute": {
+        "name": "Stíšenie",
+        "state": {
+          "on": "Stíšené",
+          "off": "Zvuk zapnutý"
+        }
+      }
+    },
+    "media_player": {
+      "media_player": {
+        "name": "Mediálny prehrávač",
+        "state": {
+          "on": "Zapnuté",
+          "off": "Vypnuté",
+          "playing": "Prehráva",
+          "paused": "Pozastavené",
+          "idle": "Neaktívny"
+        }
+      }
+    }
+  }
+}

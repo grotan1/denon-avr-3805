@@ -1,0 +1,104 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Ako trebate pomoć s konfiguracijom, pogledajte ovdje: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Glavno računalo",
+          "port": "Port",
+          "name": "Naziv",
+          "model": "Model (npr. AVR-3805, AVR-4306)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Ne mogu se povezati s AVR-om. Molimo provjerite postavke glavnog računala i porta."
+    },
+    "abort": {
+      "single_instance_allowed": "Dozvoljena je samo jedna instanca."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Konfiguracija Denon AVR",
+        "description": "Odaberite što želite konfigurirati.",
+        "menu_options": {
+          "connection": "Postavke veze (IP, port, naziv, model)",
+          "platforms": "Postavke platforme (omogućavanje/onemogućavanje značajki)"
+        }
+      },
+      "connection": {
+        "title": "Postavke veze",
+        "description": "Konfigurirajte parametre veze. Možete vidjeti i modificirati svoje trenutne postavke.",
+        "data": {
+          "host": "Glavno računalo",
+          "port": "Port",
+          "name": "Naziv",
+          "model": "Model (npr. AVR-3805, AVR-4306)"
+        }
+      },
+      "platforms": {
+        "title": "Postavke platforme",
+        "description": "Konfigurirajte koje platforme omogućiti.",
+        "data": {
+          "binary_sensor": "Omogući binarni senzor",
+          "sensor": "Omogući senzore",
+          "switch": "Omogući prekidače",
+          "media_player": "Omogući medijski reproduktor"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Ne mogu se povezati s AVR-om. Molimo provjerite postavke glavnog računala i porta."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Povezanost",
+        "state": {
+          "on": "Povezano",
+          "off": "Odspojen"
+        }
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Glasnoća"
+      },
+      "input": {
+        "name": "Ulaz"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Napajanje",
+        "state": {
+          "on": "Uključeno",
+          "off": "Isključeno"
+        }
+      },
+      "mute": {
+        "name": "Utišaj",
+        "state": {
+          "on": "Utišano",
+          "off": "Zvuk uključen"
+        }
+      }
+    },
+    "media_player": {
+      "media_player": {
+        "name": "Medijski reproduktor",
+        "state": {
+          "on": "Uključeno",
+          "off": "Isključeno",
+          "playing": "Reproducirajući",
+          "paused": "Pauziran",
+          "idle": "Neaktivan"
+        }
+      }
+    }
+  }
+}

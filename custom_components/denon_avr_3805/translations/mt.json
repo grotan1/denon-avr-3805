@@ -1,0 +1,104 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Denon AVR-3805",
+        "description": "Jekk għandek bżonn għajnuna bil-konfigurazzjoni, ara hawn: https://github.com/grotan1/denon-avr-3805",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "name": "Isem",
+          "model": "Mudell (eż. AVR-3805, AVR-4306)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Ma nistax nikkonnettja mal-AVR. Jekk jogħġbok iċċekkja s-settings tal-host u l-port."
+    },
+    "abort": {
+      "single_instance_allowed": "Instanza waħda biss hija permessa."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Konfigurazzjoni Denon AVR",
+        "description": "Agħżel dak li trid tikkonfigura.",
+        "menu_options": {
+          "connection": "Settings tal-konnessjoni (IP, port, isem, mudell)",
+          "platforms": "Settings tal-pjattaforma (jippermettu/jipprevjenu l-karatteristiċi)"
+        }
+      },
+      "connection": {
+        "title": "Settings tal-konnessjoni",
+        "description": "Ikkonfigura l-parametri tal-konnessjoni. Tista' tara u timmodifika s-settings attwali tiegħek.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "name": "Isem",
+          "model": "Mudell (eż. AVR-3805, AVR-4306)"
+        }
+      },
+      "platforms": {
+        "title": "Settings tal-pjattaforma",
+        "description": "Ikkonfigura liema pjattaformi għandhom jiġu ppermessi.",
+        "data": {
+          "binary_sensor": "Ippermetti sensor binarju",
+          "sensor": "Ippermetti sensors",
+          "switch": "Ippermetti switches",
+          "media_player": "Ippermetti media player"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Ma nistax nikkonnettja mal-AVR. Jekk jogħġbok iċċekkja s-settings tal-host u l-port."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Konnettività",
+        "state": {
+          "on": "Konnett",
+          "off": "Maqtugħ"
+        }
+      }
+    },
+    "sensor": {
+      "volume": {
+        "name": "Volum"
+      },
+      "input": {
+        "name": "Input"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Power",
+        "state": {
+          "on": "Mixgħul",
+          "off": "Mitfi"
+        }
+      },
+      "mute": {
+        "name": "Mute",
+        "state": {
+          "on": "Muted",
+          "off": "Ħoss mixgħul"
+        }
+      }
+    },
+    "media_player": {
+      "media_player": {
+        "name": "Media Player",
+        "state": {
+          "on": "Mixgħul",
+          "off": "Mitfi",
+          "playing": "Qed jitħaddem",
+          "paused": "Pawżat",
+          "idle": "Idle"
+        }
+      }
+    }
+  }
+}
