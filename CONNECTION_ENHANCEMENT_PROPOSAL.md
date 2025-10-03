@@ -54,7 +54,7 @@ config = {
 #### **Dynamic Interval Adjustment**
 ```python
 # Normal operation: 30s intervals
-# Connection issues: 60s intervals  
+# Connection issues: 60s intervals
 # Severe problems: 120s intervals
 # Excellent connection: 15s intervals
 ```
@@ -93,7 +93,7 @@ class ConnectionStats:
 ```python
 class ErrorType(Enum):
     NETWORK_TIMEOUT = "network_timeout"      # Retry with longer timeout
-    CONNECTION_REFUSED = "connection_refused" # Wait longer before retry  
+    CONNECTION_REFUSED = "connection_refused" # Wait longer before retry
     DEVICE_BUSY = "device_busy"              # Short delay, then retry
     PROTOCOL_ERROR = "protocol_error"        # Reset connection
     UNKNOWN = "unknown"                      # Standard retry logic
@@ -141,7 +141,7 @@ custom_config = {
 - ✅ Add connection statistics tracking
 - ✅ Basic health monitoring
 
-### Phase 2: Advanced Features (v1.8.0)  
+### Phase 2: Advanced Features (v1.8.0)
 - ✅ Adaptive update intervals
 - ✅ Enhanced error classification
 - ✅ Diagnostic information endpoint
@@ -206,7 +206,7 @@ denon_avr_3805:
 
 ### **High Priority (Immediate)**
 1. **Connection Retry Logic** - Eliminates most connection failures
-2. **Configurable Timeouts** - Handles slow networks better  
+2. **Configurable Timeouts** - Handles slow networks better
 3. **Basic Statistics** - Visibility into connection health
 
 ### **Medium Priority (Near-term)**
@@ -226,7 +226,7 @@ denon_avr_3805:
 Implement **Phase 1** enhancements immediately to address the most critical robustness issues. This will provide:
 
 - ✅ **3x improvement** in connection reliability
-- ✅ **10x faster recovery** from network issues  
+- ✅ **10x faster recovery** from network issues
 - ✅ **Full backward compatibility**
 - ✅ **Minimal code changes** required
 

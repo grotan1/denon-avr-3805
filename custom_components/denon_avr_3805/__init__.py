@@ -81,12 +81,12 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
             # Use enhanced connection with retry logic
             if not await self.api.connect_with_retry():
                 raise UpdateFailed("Failed to connect to AVR after retries")
-            
+
             # Give AVR time to be ready after connection
             await asyncio.sleep(0.3)  # Reduced from 0.5s for efficiency
-            
+
             data = {}
-            
+
             # Query power status with fallback
             try:
                 power_status = await self.api.async_get_power_status()
@@ -148,17 +148,17 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("Alternative input query failed: %s", e)
 
             await self.api.disconnect()
-            
+
             # Log diagnostics periodically for troubleshooting
             if self.api.connection_stats.total_commands % 50 == 0:
                 stats = self.api.connection_stats
-                _LOGGER.info("Connection stats - Success rate: %.1f%%, Commands: %d, Failures: %d", 
+                _LOGGER.info("Connection stats - Success rate: %.1f%%, Commands: %d, Failures: %d",
                            stats.success_rate * 100, stats.total_commands, stats.failed_commands)
-            
+
             _LOGGER.debug("Coordinator update completed - Power: %s, Volume: %s, Mute: %s, Input: %s",
                          data.get("power"), data.get("volume"), data.get("mute"), data.get("input"))
             return data
-            
+
         except UpdateFailed:
             # Re-raise UpdateFailed exceptions
             raise

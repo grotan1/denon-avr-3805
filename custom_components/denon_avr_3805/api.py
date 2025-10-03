@@ -21,7 +21,7 @@ class ConnectionStats:
     consecutive_failures: int = 0
     last_successful_connection: Optional[float] = None
     last_failed_connection: Optional[float] = None
-    
+
     @property
     def success_rate(self) -> float:
         """Calculate connection success rate."""
@@ -29,7 +29,7 @@ class ConnectionStats:
         if total == 0:
             return 1.0
         return self.successful_connections / total
-    
+
     @property
     def is_healthy(self) -> bool:
         """Determine if connection is healthy."""
@@ -44,7 +44,7 @@ class DenonAvr3805ApiClient:
         self._reader: Optional[asyncio.StreamReader] = None
         self._writer: Optional[asyncio.StreamWriter] = None
         self._lock = asyncio.Lock()  # To serialize commands
-        
+
         # Enhanced configuration with defaults
         self._config = {
             'connection_timeout': 8.0,      # Increased from 5s
@@ -56,19 +56,19 @@ class DenonAvr3805ApiClient:
             'max_backoff': 30.0,
             **(config or {})
         }
-        
+
         # Connection statistics
         self._stats = ConnectionStats()
-    
+
     @property
     def connection_stats(self) -> ConnectionStats:
         """Get connection statistics."""
         return self._stats
-    
+
     @property
     def is_connected(self) -> bool:
         """Check if currently connected."""
-        return (self._writer is not None and 
+        return (self._writer is not None and
                 not self._writer.is_closing())
 
     async def connect(self) -> None:
@@ -76,15 +76,15 @@ class DenonAvr3805ApiClient:
         success = await self.connect_with_retry()
         if not success:
             raise ConnectionError(f"Failed to connect to {self._host}:{self._port} after retries")
-    
+
     async def connect_with_retry(self) -> bool:
         """Connect with retry logic and exponential backoff."""
         if self.is_connected:
             return True
-            
+
         max_retries = self._config['max_retries']
         base_delay = self._config['retry_delay']
-        
+
         for attempt in range(max_retries):
             try:
                 success = await self._attempt_connection()
@@ -93,44 +93,44 @@ class DenonAvr3805ApiClient:
                     self._stats.consecutive_failures = 0
                     self._stats.last_successful_connection = time.time()
                     return True
-                    
+
             except Exception as e:
-                _LOGGER.debug("Connection attempt %d/%d failed: %s", 
+                _LOGGER.debug("Connection attempt %d/%d failed: %s",
                               attempt + 1, max_retries, e)
-                
+
             # Calculate backoff delay
             if attempt < max_retries - 1:  # Don't delay after last attempt
                 if self._config['exponential_backoff']:
                     delay = min(base_delay * (2 ** attempt), self._config['max_backoff'])
                 else:
                     delay = base_delay
-                    
-                _LOGGER.debug("Waiting %.1fs before retry %d/%d", 
+
+                _LOGGER.debug("Waiting %.1fs before retry %d/%d",
                             delay, attempt + 2, max_retries)
                 await asyncio.sleep(delay)
-        
+
         # All attempts failed
         self._stats.failed_connections += 1
         self._stats.consecutive_failures += 1
         self._stats.last_failed_connection = time.time()
         return False
-    
+
     async def _attempt_connection(self) -> bool:
         """Single connection attempt."""
         try:
             # Close any existing connection
             await self.disconnect()
-            
+
             # Establish new connection with enhanced timeout
             self._reader, self._writer = await asyncio.wait_for(
-                asyncio.open_connection(self._host, self._port), 
+                asyncio.open_connection(self._host, self._port),
                 timeout=self._config['connection_timeout']
             )
-            
-            _LOGGER.info("Successfully connected to Denon AVR at %s:%s", 
+
+            _LOGGER.info("Successfully connected to Denon AVR at %s:%s",
                        self._host, self._port)
             return True
-                
+
         except (asyncio.TimeoutError, OSError, ConnectionError) as e:
             await self.disconnect()
             _LOGGER.debug("Connection attempt failed: %s", e)
@@ -143,7 +143,7 @@ class DenonAvr3805ApiClient:
                 if not self._writer.is_closing():
                     self._writer.close()
                     await asyncio.wait_for(
-                        self._writer.wait_closed(), 
+                        self._writer.wait_closed(),
                         timeout=2.0
                     )
             except Exception as e:
@@ -161,11 +161,11 @@ class DenonAvr3805ApiClient:
         async with self._lock:
             try:
                 self._stats.total_commands += 1
-                
+
                 # Send command with carriage return
                 full_command = (command + "\r").encode()
                 _LOGGER.debug("Sending command: %s", command)
-                
+
                 self._writer.write(full_command)
                 await asyncio.wait_for(
                     self._writer.drain(),
@@ -182,9 +182,9 @@ class DenonAvr3805ApiClient:
                     self._read_expected_response(expected_prefix),
                     timeout=self._config['command_timeout']
                 )
-                
+
                 return response
-                
+
             except asyncio.TimeoutError:
                 self._stats.failed_commands += 1
                 _LOGGER.warning("Command timeout: %s", command)
@@ -198,14 +198,14 @@ class DenonAvr3805ApiClient:
         """Enhanced response reading with better timeout handling."""
         start_time = time.time()
         timeout = self._config['read_timeout']
-        
+
         while time.time() - start_time < timeout:
             try:
                 response = await asyncio.wait_for(
-                    self._reader.readuntil(b"\r"), 
+                    self._reader.readuntil(b"\r"),
                     timeout=min(1.0, timeout - (time.time() - start_time))
                 )
-                
+
                 decoded = response.decode().strip()
                 _LOGGER.debug("Received response: %s", decoded)
 
@@ -231,7 +231,7 @@ class DenonAvr3805ApiClient:
 
         _LOGGER.debug("Failed to find expected response with prefix: %s", expected_prefix)
         return None
-    
+
     def _should_skip_response(self, response: str) -> bool:
         """Determine if response should be skipped."""
         skip_patterns = [
