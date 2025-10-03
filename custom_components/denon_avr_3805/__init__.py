@@ -57,7 +57,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if platforms_to_setup:
         await hass.config_entries.async_forward_entry_setups(entry, platforms_to_setup)
 
-    entry.add_update_listener(async_reload_entry)
+    entry.add_update_listener(async_update_entry)
     return True
 
 
@@ -182,12 +182,15 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Handle removal of an entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
+    
+    # Only unload platforms that were actually set up
+    platforms_to_unload = coordinator.platforms if hasattr(coordinator, 'platforms') else PLATFORMS
+    
     unloaded = all(
         await asyncio.gather(
             *[
                 hass.config_entries.async_forward_entry_unload(entry, platform)
-                for platform in PLATFORMS
-                if platform in coordinator.platforms
+                for platform in platforms_to_unload
             ]
         )
     )
@@ -195,6 +198,24 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.data[DOMAIN].pop(entry.entry_id)
 
     return unloaded
+
+
+async def async_update_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:
+    """Update config entry."""
+    # Only reload if platform options changed, not if just connection data changed
+    coordinator = hass.data[DOMAIN][entry.entry_id]
+    
+    # Check if platform configuration changed
+    current_platforms = set(coordinator.platforms)
+    new_platforms = {platform for platform in PLATFORMS if entry.options.get(platform, True)}
+    
+    if current_platforms != new_platforms:
+        # Platform configuration changed, need to reload
+        await async_reload_entry(hass, entry)
+    else:
+        # Only connection data changed, just update coordinator
+        coordinator.api.host = entry.data.get(CONF_HOST)
+        coordinator.api.port = entry.data.get(CONF_PORT)
 
 
 async def async_reload_entry(hass: HomeAssistant, entry: ConfigEntry) -> None:

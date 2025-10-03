@@ -87,10 +87,6 @@ class DenonAvr3805OptionsFlowHandler(config_entries.OptionsFlow):
         super().__init__()
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input=None):  # pylint: disable=unused-argument
-        """Manage the options."""
-        return await self.async_step_user()
-
     async def async_step_init(self, user_input=None):
         """Manage the options."""
         return self.async_show_menu(
