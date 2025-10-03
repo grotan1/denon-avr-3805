@@ -90,12 +90,11 @@ class DenonAvr3805ApiClient:
 
         for attempt in range(max_retries):
             try:
-                success = await self._attempt_connection()
-                if success:
-                    self._stats.successful_connections += 1
-                    self._stats.consecutive_failures = 0
-                    self._stats.last_successful_connection = time.time()
-                    return True
+                await self._connect_tcp()
+                self._stats.successful_connections += 1
+                self._stats.consecutive_failures = 0
+                self._stats.last_successful_connection = time.time()
+                return True
 
             except Exception as e:
                 _LOGGER.debug("Connection attempt %d/%d failed: %s",
