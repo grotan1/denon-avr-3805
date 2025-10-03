@@ -14,9 +14,12 @@
 [![Discord][discord-shield]][discord]
 [![Community Forum][forum-shield]][forum]
 
-## 🌟 **Enterprise-Grade Home Assistant Integration**
+## 🌟 **Reliable Home Assistant Integration**
 
-Professional Denon AVR control with **26-language multilingual support**, 99%+ reliability, and perfect entity naming consistency. Built for international users and automation excellence.
+Professional Denon AVR control with **26-language multilingual support**, stable connectivity, and consistent entity naming. Built for international users and reliable automation.
+
+### 🔄 **v2.0.3 - Stable Release**
+**Emergency revert completed!** After critical issues in v2.0.0-v2.0.2, we've restored the proven stable codebase. The integration now works reliably with all original functionality intact.
 
 ### 🇺🇦 **Slava Ukrajini!** 
 This integration proudly supports Ukraine with full Ukrainian language support and maintains our solidarity through every release.
@@ -36,17 +39,17 @@ This integration proudly supports Ukraine with full Ukrainian language support a
 Complete European Union language support with **Ukrainian solidarity**:
 🇺🇦 Ukrainian, 🇭🇺 Hungarian, 🇷🇴 Romanian, 🇧🇬 Bulgarian, 🇭🇷 Croatian, 🇸🇮 Slovenian, 🇸🇰 Slovak, 🇱🇻 Latvian, 🇱🇹 Lithuanian, 🇪🇪 Estonian, 🇬🇷 Greek, 🇲🇹 Maltese, 🇨🇿 Czech, 🇩🇰 Danish, 🇩🇪 German, 🇪🇸 Spanish, 🇫🇮 Finnish, 🇫🇷 French, 🇮🇸 Icelandic, 🇮🇹 Italian, 🇳🇴 Norwegian, 🇳🇱 Dutch, 🇵🇱 Polish, 🇵🇹 Portuguese, 🇸🇪 Swedish, 🇺🇸 English
 
-### 🛡️ **Enterprise-Grade Reliability**
-- **99%+ Success Rate**: Rock-solid connection stability with intelligent retry logic
-- **10x Faster Recovery**: 1-8 second network issue resolution vs 30+ seconds
-- **Real-time Monitoring**: Live performance statistics and health tracking
-- **Smart Retry Logic**: Exponential backoff with adaptive timeout handling
+### 🛡️ **Reliable Connectivity**
+- **Stable Connections**: Proven TCP connection handling with ser2net compatibility
+- **Automatic Recovery**: Reliable reconnection on network issues
+- **Real-time Updates**: Instant status changes and responsive control
+- **Tested Stability**: Extensively tested and proven in production environments
 
-### 🎛️ **Professional Configuration**
-- **Menu-Driven Options**: Clean interface for connection and platform settings
-- **No-Delete Reconfiguration**: Modify settings without losing historical data
-- **Connection Testing**: Verify settings before applying changes
-- **Configurable Models**: Specify exact AVR model (AVR-3805, AVR-4306, AVR-X4700H, etc.)
+### 🎛️ **Easy Configuration**
+- **Simple Setup**: Straightforward connection configuration
+- **Flexible Options**: Customize name and connection settings
+- **Quick Integration**: Easy addition via Home Assistant Settings → Integrations
+- **Model Support**: Designed for Denon AVR-3805 and compatible models
 
 ### 🌐 **Perfect Entity Naming**
 - **Media Player**: Clean device name only (`denon`)
@@ -231,6 +234,18 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 This project was generated from [@oncleben31](https://github.com/oncleben31)'s [Home Assistant Custom Component Cookiecutter](https://github.com/oncleben31/cookiecutter-homeassistant-custom-component) template.
 
 Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [integration_blueprint][integration_blueprint] template
+
+## 📜 **Version History**
+
+- **v2.0.3** (Current) - **STABLE**: Emergency revert to working v1.9.0 codebase
+- **v2.0.0-v2.0.2** - **BROKEN**: Critical bugs causing complete integration failure (reverted)
+- **v1.9.0** - **STABLE**: Full 26-language support with English entity IDs
+- **Earlier versions** - Progressive multilingual and reliability improvements
+
+**Always use the latest version for the best experience and stability.**
+
+## 🇺🇦 **Slava Ukrajini!**
+*This integration stands in solidarity with Ukraine and the Ukrainian people in their fight for freedom, democracy, and territorial integrity. The Ukrainian language support in this integration is our small contribution to showing support for the brave defenders of Ukraine.*
 
 ---
 
