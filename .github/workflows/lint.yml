@@ -12,8 +12,10 @@ jobs:
     name: JSON Validation
     steps:
       - uses: actions/checkout@v4
-      - name: Remove VS Code files (jsonc format)
-        run: rm -rf .vscode
+      - name: Remove development files (jsonc format)
+        run: |
+          rm -rf .vscode
+          rm -rf .devcontainer
       - uses: home-assistant/actions/helpers/jq@master
 
   sorted:
