@@ -157,29 +157,6 @@ All configuration is done through the **user-friendly interface** with **live co
 - **Platform Control**: Enable/disable sensors, switches, media player
 - **Current Values**: See existing settings before making changes
 
-## 🚀 **Recent Major Releases**
-
-### **v1.8.9 - English Entity Naming Standardization** 🌐
-- ✅ **Consistent English entity names** across all HA language settings
-- ✅ **Enhanced automation portability** for international users
-- ✅ **Perfect naming**: `denon_input` not `denon_inngang`/`denon_eingang`
-- ✅ **Global compatibility** for configuration sharing
-
-### **v1.8.8 - Clean Media Player Naming** 🧹
-- ✅ **Ultimate simplicity**: Media player shows just device name (`denon`)
-- ✅ **No language suffixes**: Eliminated `_mediaspiller`, `_media_player`, etc.
-- ✅ **Automation friendly**: Clean entity references
-
-### **v1.8.6 - Critical Stability Fix** 🛠️
-- ✅ **Resolved setup errors**: Fixed "Config entry has already been setup"
-- ✅ **Intelligent update system**: Optimized platform management
-- ✅ **Enhanced reliability**: Eliminated duplicate setup conflicts
-
-### **v1.8.5 - Massive European Language Expansion** 🌍
-- ✅ **11 additional languages**: Complete European Union coverage
-- ✅ **26 total languages**: Ultimate international accessibility
-- ✅ **Ukrainian solidarity**: Comprehensive support maintained
-
 ## 🎯 **Perfect Entity Examples**
 
 ### **Media Player** (Clean Device Name)
