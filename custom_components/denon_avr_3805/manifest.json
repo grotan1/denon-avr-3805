@@ -1,7 +1,7 @@
 {
   "domain": "denon_avr_3805",
   "name": "Denon AVR-3805",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "documentation": "https://github.com/grotan1/denon-avr-3805",
   "issue_tracker": "https://github.com/grotan1/denon-avr-3805/issues",
   "dependencies": [],
@@ -12,7 +12,6 @@
   "requirements": [],
   "after_dependencies": [],
   "author": "Geir Rune Grøtan",
-  "icon": "mdi:amplifier",
   "integration_type": "device",
   "iot_class": "local_polling",
   "quality_scale": "silver"
