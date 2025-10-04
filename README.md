@@ -18,8 +18,8 @@
 
 Professional Denon AVR control with **26-language multilingual support**, stable connectivity, and consistent entity naming. Built for international users and reliable automation.
 
-### 🔄 **v2.0.3 - Stable Release**
-**Emergency revert completed!** After critical issues in v2.0.0-v2.0.2, we've restored the proven stable codebase. The integration now works reliably with all original functionality intact.
+### � **v3.0.1 - Enhanced Quality & HACS Ready**
+**Hassfest compliance achieved!** Latest release includes automated quality assurance, full Home Assistant standards compliance, and enhanced CI/CD pipeline. Ready for HACS publication with professional-grade validation workflows.
 
 ### 🇺🇦 **Slava Ukrajini!**
 This integration proudly supports Ukraine with full Ukrainian language support and maintains our solidarity through every release.
@@ -237,8 +237,10 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 ## 📜 **Version History**
 
-- **v2.0.3** (Current) - **STABLE**: Emergency revert to working v1.9.0 codebase
-- **v2.0.0-v2.0.2** - **BROKEN**: Critical bugs causing complete integration failure (reverted)
+- **v3.0.1** (Current) - **QUALITY**: Hassfest compliance, automated validation, HACS ready
+- **v3.0.0** - **MAJOR**: Enhanced features with professional validation workflows
+- **v2.0.5** - **STABLE**: Universal icon compatibility and visual improvements
+- **v2.0.3** - **STABLE**: Emergency revert to working v1.9.0 codebase
 - **v1.9.0** - **STABLE**: Full 26-language support with English entity IDs
 - **Earlier versions** - Progressive multilingual and reliability improvements
 
