@@ -17,10 +17,3 @@ jobs:
           rm -rf .vscode
           rm -rf .devcontainer
       - uses: home-assistant/actions/helpers/jq@master
-
-  sorted:
-    runs-on: ubuntu-latest
-    name: File Sorting Check
-    steps:
-      - uses: actions/checkout@v4
-      - uses: home-assistant/actions/helpers/sorted@master
