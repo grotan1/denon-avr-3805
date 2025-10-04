@@ -1,0 +1,22 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+
+jobs:
+  jq:
+    runs-on: ubuntu-latest
+    name: JSON Validation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: home-assistant/actions/helpers/jq@master
+
+  sorted:
+    runs-on: ubuntu-latest
+    name: File Sorting Check
+    steps:
+      - uses: actions/checkout@v4
+      - uses: home-assistant/actions/helpers/sorted@master
