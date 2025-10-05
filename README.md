@@ -21,9 +21,6 @@ Professional Denon AVR control with **26-language multilingual support**, stable
 ### � **v3.0.1 - Enhanced Quality & HACS Ready**
 **Hassfest compliance achieved!** Latest release includes automated quality assurance, full Home Assistant standards compliance, and enhanced CI/CD pipeline. Ready for HACS publication with professional-grade validation workflows.
 
-### 🇺🇦 **Slava Ukrajini!**
-This integration proudly supports Ukraine with full Ukrainian language support and maintains our solidarity through every release.
-
 ## 🎯 **Platforms & Features**
 
 | Platform | Description | Entity Examples |
