@@ -162,8 +162,21 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
         except UpdateFailed:
             # Re-raise UpdateFailed exceptions
             raise
+        except ConnectionError as exception:
+            _LOGGER.warning("Connection failed during update: %s", exception)
+            # Ensure we're properly disconnected
+            try:
+                await self.api.disconnect()
+            except Exception:
+                pass
+            raise UpdateFailed(f"Connection failed: {exception}") from exception
         except Exception as exception:
             _LOGGER.error("Unexpected error during update: %s", exception)
+            # Ensure we're properly disconnected on any error
+            try:
+                await self.api.disconnect()
+            except Exception:
+                pass
             raise UpdateFailed(f"Unexpected error: {exception}") from exception
 
     def get_diagnostics(self):
