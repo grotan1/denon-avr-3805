@@ -1,9 +1,9 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+// See https://containers.dev/guide/dockerfile
 {
   "name": "Denon AVR-3805 integration development",
-  "image": "ghcr.io/ludeeus/devcontainer/integration:latest",
+  "image": "ghcr.io/home-assistant/devcontainer:addons",
   "forwardPorts": [8123],
-  "postCreateCommand": "container install",
+  "postCreateCommand": "script/setup",
   "customizations": {
     "vscode": {
       "extensions": [

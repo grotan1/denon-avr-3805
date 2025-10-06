@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd /workspaces/denon-avr-3805
+
+# Install Home Assistant development dependencies
+pip install -r requirements_dev.txt
+
+# Install the integration in development mode
+pip install -e .
+
+echo "Development environment setup complete!"
