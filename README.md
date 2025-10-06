@@ -1,5 +1,5 @@
-# Denon AVR-3805 🎵🌍
-
+# Denon AVR-3805 🎵### 🔧 **v3.0.3 - Enhanced Connection Detection & Reliability**
+**Connection accuracy perfected!** Latest release fixes connection detection issues, eliminates false "connected" status, and ensures reliable sensor data. Enhanced diagnostics provide comprehensive troubleshooting capabilities for professional deployment.
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]](LICENSE)
@@ -18,9 +18,6 @@
 
 Professional Denon AVR control with **26-language multilingual support**, stable connectivity, and consistent entity naming. Built for international users and reliable automation.
 
-### � **v3.0.1 - Enhanced Quality & HACS Ready**
-**Hassfest compliance achieved!** Latest release includes automated quality assurance, full Home Assistant standards compliance, and enhanced CI/CD pipeline. Ready for HACS publication with professional-grade validation workflows.
-
 ## 🎯 **Platforms & Features**
 
 | Platform | Description | Entity Examples |
@@ -36,11 +33,12 @@ Professional Denon AVR control with **26-language multilingual support**, stable
 Complete European Union language support with **Ukrainian solidarity**:
 🇺🇦 Ukrainian, 🇭🇺 Hungarian, 🇷🇴 Romanian, 🇧🇬 Bulgarian, 🇭🇷 Croatian, 🇸🇮 Slovenian, 🇸🇰 Slovak, 🇱🇻 Latvian, 🇱🇹 Lithuanian, 🇪🇪 Estonian, 🇬🇷 Greek, 🇲🇹 Maltese, 🇨🇿 Czech, 🇩🇰 Danish, 🇩🇪 German, 🇪🇸 Spanish, 🇫🇮 Finnish, 🇫🇷 French, 🇮🇸 Icelandic, 🇮🇹 Italian, 🇳🇴 Norwegian, 🇳🇱 Dutch, 🇵🇱 Polish, 🇵🇹 Portuguese, 🇸🇪 Swedish, 🇺🇸 English
 
-### 🛡️ **Reliable Connectivity**
-- **Stable Connections**: Proven TCP connection handling with ser2net compatibility
-- **Automatic Recovery**: Reliable reconnection on network issues
-- **Real-time Updates**: Instant status changes and responsive control
-- **Tested Stability**: Extensively tested and proven in production environments
+### 🛡️ **Enhanced Connection Detection**
+- **Accurate Status**: Advanced detection requiring actual AVR responses (no false positives)
+- **Rich Diagnostics**: TCP vs serial connection health with success rate monitoring
+- **Reliable Sensors**: Volume, power, input sensors show proper values (no "unknown" states)
+- **Smart Recovery**: Automatic reconnection with proper error handling and cleanup
+- **Professional Monitoring**: Comprehensive diagnostic attributes for troubleshooting
 
 ### 🎛️ **Easy Configuration**
 - **Simple Setup**: Straightforward connection configuration
@@ -211,7 +209,9 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 ## 📜 **Version History**
 
-- **v3.0.1** (Current) - **QUALITY**: Hassfest compliance, automated validation, HACS ready
+- **v3.0.3** (Current) - **RELIABILITY**: Enhanced connection detection, sensor accuracy, diagnostics
+- **v3.0.2** - **DEVENV**: Modern devcontainer, development environment improvements
+- **v3.0.1** - **QUALITY**: Hassfest compliance, automated validation, HACS ready
 - **v3.0.0** - **MAJOR**: Enhanced features with professional validation workflows
 - **v2.0.5** - **STABLE**: Universal icon compatibility and visual improvements
 - **v2.0.3** - **STABLE**: Emergency revert to working v1.9.0 codebase
