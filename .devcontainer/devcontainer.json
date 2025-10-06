@@ -2,7 +2,9 @@
 {
   "name": "Denon AVR-3805 integration development",
   "image": "ghcr.io/home-assistant/devcontainer:addons",
-  "forwardPorts": [8123],
+  "forwardPorts": [
+    8123
+  ],
   "postCreateCommand": "script/setup",
   "customizations": {
     "vscode": {
