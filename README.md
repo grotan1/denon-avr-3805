@@ -1,4 +1,7 @@
-# Denon AVR-3805 🎵### � **v3.0.4 - Instant Mute/Unmute Feedback**
+# Denon AVR-3805 🎵
+
+### v3.0.4 - Instant Mute/Unmute Feedback
+
 **Mute/unmute now updates instantly!** This release fixes slow, unreliable mute/unmute feedback in the UI, corrects a diagnostics status bug, and ships a fully rewritten test suite covering the API client, config flow, coordinator, and switches.
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
