@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Kui vajate abi konfiguratsiooni osas, vaadake siit: https://github.com/grotan1/denon-avr-3805",
+                "description": "Seadistage oma Denon AVR-3805 vastuvõtja. Sisestage oma seadme IP-aadress ja port.",
                 "data": {
                     "host": "Host",
                     "port": "Port",

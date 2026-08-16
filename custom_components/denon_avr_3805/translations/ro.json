@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Dacă aveți nevoie de ajutor cu configurarea, uitați-vă aici: https://github.com/grotan1/denon-avr-3805",
+                "description": "Configurați receptorul Denon AVR-3805. Introduceți adresa IP și portul dispozitivului dvs.",
                 "data": {
                     "host": "Gazdă",
                     "port": "Port",

@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Jos tarvitset apua konfiguroinnissa, katso tästä: https://github.com/grotan1/denon-avr-3805",
+                "description": "Määritä Denon AVR-3805-vastaanottimesi. Anna laitteesi IP-osoite ja portti.",
                 "data": {
                     "host": "Isäntä",
                     "port": "Portti",

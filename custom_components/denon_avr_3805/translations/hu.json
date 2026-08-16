@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Ha segítségre van szüksége a konfigurációval, tekintse meg itt: https://github.com/grotan1/denon-avr-3805",
+                "description": "Konfigurálja a Denon AVR-3805 vevőkészülékét. Adja meg az eszköz IP-címét és portját.",
                 "data": {
                     "host": "Kiszolgáló",
                     "port": "Port",

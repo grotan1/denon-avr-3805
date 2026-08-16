@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Якщо вам потрібна допомога з налаштуванням, подивіться тут: https://github.com/grotan1/denon-avr-3805",
+                "description": "Налаштуйте ваш ресивер Denon AVR-3805. Введіть IP-адресу та порт вашого пристрою.",
                 "data": {
                     "host": "Хост",
                     "port": "Порт",

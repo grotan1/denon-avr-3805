@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Ja jums ir nepieciešama palīdzība ar konfigurāciju, skatieties šeit: https://github.com/grotan1/denon-avr-3805",
+                "description": "Konfigurējiet savu Denon AVR-3805 uztvērēju. Ievadiet ierīces IP adresi un portu.",
                 "data": {
                     "host": "Saimnieks",
                     "port": "Ports",

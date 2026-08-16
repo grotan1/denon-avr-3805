@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Ef þú þarft aðstoð við uppsetningu, skoðaðu hér: https://github.com/grotan1/denon-avr-3805",
+                "description": "Stilltu Denon AVR-3805 magnarann þinn. Sláðu inn IP-tölu og gátt tækisins þíns.",
                 "data": {
                     "host": "Hýsill",
                     "port": "Gátt",

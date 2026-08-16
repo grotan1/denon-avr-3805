@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Jeśli potrzebujesz pomocy z konfiguracją, spójrz tutaj: https://github.com/grotan1/denon-avr-3805",
+                "description": "Skonfiguruj swój odbiornik Denon AVR-3805. Wprowadź adres IP i port swojego urządzenia.",
                 "data": {
                     "host": "Host",
                     "port": "Port",

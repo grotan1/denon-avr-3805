@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Jekk għandek bżonn għajnuna bil-konfigurazzjoni, ara hawn: https://github.com/grotan1/denon-avr-3805",
+                "description": "Ikkonfigura r-riċevitur Denon AVR-3805 tiegħek. Daħħal l-indirizz IP u l-port tal-apparat tiegħek.",
                 "data": {
                     "host": "Host",
                     "port": "Port",

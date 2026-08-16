@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Če potrebujete pomoč s konfiguracijo, si oglejte tukaj: https://github.com/grotan1/denon-avr-3805",
+                "description": "Konfigurirajte svoj sprejemnik Denon AVR-3805. Vnesite naslov IP in vrata svoje naprave.",
                 "data": {
                     "host": "Gostitelj",
                     "port": "Vrata",

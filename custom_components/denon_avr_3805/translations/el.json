@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Denon AVR-3805",
-                "description": "Εάν χρειάζεστε βοήθεια με τη διαμόρφωση, δείτε εδώ: https://github.com/grotan1/denon-avr-3805",
+                "description": "Διαμορφώστε τον δέκτη σας Denon AVR-3805. Εισαγάγετε τη διεύθυνση IP και τη θύρα της συσκευής σας.",
                 "data": {
                     "host": "Κεντρικός υπολογιστής",
                     "port": "Θύρα",
