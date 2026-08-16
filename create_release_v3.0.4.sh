@@ -6,7 +6,7 @@ echo "====================================="
 
 # Release Information
 VERSION="v3.0.4"
-TITLE="🔊 v3.0.4 - Instant Mute/Unmute Feedback & Test Suite Overhaul"
+TITLE="v3.0.4 - Instant Mute/Unmute Feedback & Test Suite Overhaul"
 TAG="v3.0.4"
 BODY_FILE="RELEASE_NOTES_v3.0.4.md"
 

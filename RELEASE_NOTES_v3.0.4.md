@@ -1,4 +1,4 @@
-# 🔊 v3.0.4 - Instant Mute/Unmute Feedback & Test Suite Overhaul
+# v3.0.4 - Instant Mute/Unmute Feedback & Test Suite Overhaul
 
 ## 🚀 **Fix: Slow/Unreliable Mute & Unmute in the UI**
 
