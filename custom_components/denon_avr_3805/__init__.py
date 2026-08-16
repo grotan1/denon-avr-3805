@@ -75,6 +75,26 @@ class DenonAvr3805DataUpdateCoordinator(DataUpdateCoordinator):
 
         super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=SCAN_INTERVAL)
 
+    async def async_execute_and_refresh_field(self, command, field, query, settle_delay=0.3):
+        """Send a command, let the AVR settle, then confirm and push the new value immediately.
+
+        Verifying on the same connection avoids waiting for the next poll cycle
+        (and its own reconnect) to reflect the change in the entity state.
+        """
+        await self.api.connect()
+        try:
+            await command()
+            await asyncio.sleep(settle_delay)
+            value = await query()
+        finally:
+            await self.api.disconnect()
+
+        if value is not None:
+            self.async_set_updated_data({**(self.data or {}), field: value})
+        else:
+            # Could not confirm the new state on this connection, fall back to a full poll.
+            await self.async_request_refresh()
+
     async def _async_update_data(self):
         """Enhanced update with better error handling and retry logic."""
         try:

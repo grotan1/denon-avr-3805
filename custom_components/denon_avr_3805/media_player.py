@@ -153,13 +153,16 @@ class DenonAvr3805MediaPlayer(DenonAvr3805Entity, MediaPlayerEntity):
 
     async def async_mute_volume(self, mute):
         """Mute the volume."""
-        await self.coordinator.api.connect()
-        if mute:
-            await self.coordinator.api.async_mute_on()
-        else:
-            await self.coordinator.api.async_mute_off()
-        await self.coordinator.api.disconnect()
-        await self.coordinator.async_request_refresh()
+        command = (
+            self.coordinator.api.async_mute_on
+            if mute
+            else self.coordinator.api.async_mute_off
+        )
+        await self.coordinator.async_execute_and_refresh_field(
+            command,
+            "mute",
+            self.coordinator.api.async_get_mute_status,
+        )
 
     async def async_select_source(self, source):
         """Select input source."""

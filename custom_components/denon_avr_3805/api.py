@@ -309,18 +309,20 @@ class DenonAvr3805ApiClient:
             pass
         except Exception as e:
             _LOGGER.debug("Error draining input: %s", e)
+
+    async def async_get_all_status(self) -> Dict[str, Any]:
         """Get all status information at once (for debugging)."""
         status = {}
         queries = [
-            ("power", "PW?"),
-            ("volume", "MV?"),
-            ("mute", "MU?"),
-            ("input", "SI?"),
+            ("power", "PW?", "PW"),
+            ("volume", "MV?", "MV"),
+            ("mute", "MU?", "MU"),
+            ("input", "SI?", "SI"),
         ]
 
-        for name, command in queries:
+        for name, command, expected_prefix in queries:
             try:
-                response = await self._send_command(command)
+                response = await self._send_command(command, expected_prefix)
                 status[name] = response
                 _LOGGER.debug("Query %s (%s) returned: %s", name, command, response)
             except Exception as e:

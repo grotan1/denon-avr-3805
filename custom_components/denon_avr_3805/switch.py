@@ -76,17 +76,19 @@ class DenonAvr3805MuteSwitch(DenonAvr3805Entity, SwitchEntity):
 
     async def async_turn_on(self, **kwargs):  # pylint: disable=unused-argument
         """Mute the AVR."""
-        await self.coordinator.api.connect()
-        await self.coordinator.api.async_mute_on()
-        await self.coordinator.api.disconnect()
-        await self.coordinator.async_request_refresh()
+        await self.coordinator.async_execute_and_refresh_field(
+            self.coordinator.api.async_mute_on,
+            "mute",
+            self.coordinator.api.async_get_mute_status,
+        )
 
     async def async_turn_off(self, **kwargs):  # pylint: disable=unused-argument
         """Unmute the AVR."""
-        await self.coordinator.api.connect()
-        await self.coordinator.api.async_mute_off()
-        await self.coordinator.api.disconnect()
-        await self.coordinator.async_request_refresh()
+        await self.coordinator.async_execute_and_refresh_field(
+            self.coordinator.api.async_mute_off,
+            "mute",
+            self.coordinator.api.async_get_mute_status,
+        )
 
     @property
     def translation_key(self):
