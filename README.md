@@ -1,5 +1,5 @@
-# Denon AVR-3805 🎵### 🔧 **v3.0.3 - Enhanced Connection Detection & Reliability**
-**Connection accuracy perfected!** Latest release fixes connection detection issues, eliminates false "connected" status, and ensures reliable sensor data. Enhanced diagnostics provide comprehensive troubleshooting capabilities for professional deployment.
+# Denon AVR-3805 🎵### � **v3.0.4 - Instant Mute/Unmute Feedback**
+**Mute/unmute now updates instantly!** This release fixes slow, unreliable mute/unmute feedback in the UI, corrects a diagnostics status bug, and ships a fully rewritten test suite covering the API client, config flow, coordinator, and switches.
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]](LICENSE)
@@ -209,7 +209,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 ## 📜 **Version History**
 
-- **v3.0.3** (Current) - **RELIABILITY**: Enhanced connection detection, sensor accuracy, diagnostics
+- **v3.0.4** (Current) - **RELIABILITY**: Instant mute/unmute feedback, diagnostics bug fix, rewritten test suite
+- **v3.0.3** - **RELIABILITY**: Enhanced connection detection, sensor accuracy, diagnostics
 - **v3.0.2** - **DEVENV**: Modern devcontainer, development environment improvements
 - **v3.0.1** - **QUALITY**: Hassfest compliance, automated validation, HACS ready
 - **v3.0.0** - **MAJOR**: Enhanced features with professional validation workflows
