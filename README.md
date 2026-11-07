@@ -1,8 +1,9 @@
 # Denon AVR-3805 🎵
 
-### v3.0.5 - Translation Cleanup
+### v3.0.6 - Home Assistant Marketplace Support
 
-**HACS/hassfest compliance fix.** Removed leftover URLs from the config flow description text in all 26 translation files (they no longer matched the simplified English source), and fixed a corrupted character in this README.
+**Marketplace ready.** Home Assistant 2026.11 builds HACS in as the Marketplace. The install instructions now cover the Marketplace (2026.11+) and HACS (2026.10 and older), with one-click My Home Assistant badges, and the integration now declares its category so it is easier to find.
+
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]](LICENSE)
@@ -10,7 +11,7 @@
 [![pre-commit][pre-commit-shield]][pre-commit]
 [![Black][black-shield]][black]
 
-[![hacs][hacsbadge]][hacs]
+[![Marketplace / HACS][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
@@ -97,13 +98,29 @@ In Home Assistant, add the integration and provide:
 
 ## 📦 **Installation**
 
-### **HACS Installation (Recommended)**
-1. **Open HACS** in Home Assistant
-2. **Go to Integrations**
-3. **Click "+ Explore & Download Repositories"**
-4. **Search for** "Denon AVR-3805"
-5. **Download** and restart Home Assistant
-6. **Add Integration**: Settings → Devices & Services → Add Integration → "Denon AVR-3805"
+### **Marketplace Installation (Home Assistant 2026.11+, Recommended)**
+
+[![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=grotan1&repository=denon-avr-3805&category=integration)
+
+1. **Click the badge above**, or open **Settings → Marketplace** and search for "Denon AVR-3805"
+2. **Download** the integration (no restart needed for a first install)
+3. **Add Integration**:
+
+   [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=denon_avr_3805)
+
+   or go to Settings → Devices & Services → Add Integration → "Denon AVR-3805"
+
+> Updates and removals still need a Home Assistant restart. The Marketplace shows a repair with a restart button when one is needed.
+
+### **HACS Installation (Home Assistant 2026.10 and older)**
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=grotan1&repository=denon-avr-3805&category=integration)
+
+1. **Click the badge above**, or open **HACS** and search for "Denon AVR-3805"
+2. **Download** and restart Home Assistant
+3. **Add Integration**: Settings → Devices & Services → Add Integration → "Denon AVR-3805"
+
+Existing HACS installs are migrated to the Marketplace automatically when you upgrade to 2026.11.
 
 ### **Manual Installation**
 1. **Download** the latest release from [GitHub Releases](https://github.com/grotan1/denon-avr-3805/releases)
@@ -212,7 +229,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 
 ## 📜 **Version History**
 
-- **v3.0.5** (Current) - **QUALITY**: Removed stale URLs from translation descriptions, README fixes
+- **v3.0.6** (Current) - **MARKETPLACE**: Home Assistant 2026.11 Marketplace install instructions, My links, integration category
+- **v3.0.5** - **QUALITY**: Removed stale URLs from translation descriptions, README fixes
 - **v3.0.4** - **RELIABILITY**: Instant mute/unmute feedback, diagnostics bug fix, rewritten test suite
 - **v3.0.3** - **RELIABILITY**: Enhanced connection detection, sensor accuracy, diagnostics
 - **v3.0.2** - **DEVENV**: Modern devcontainer, development environment improvements
@@ -237,8 +255,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 [buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/grotan1/denon-avr-3805.svg?style=for-the-badge
 [commits]: https://github.com/grotan1/denon-avr-3805/commits/main
-[hacs]: https://hacs.xyz
-[hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
+[hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=grotan1&repository=denon-avr-3805&category=integration
+[hacsbadge]: https://img.shields.io/badge/Marketplace%20%7C%20HACS-Default-41BDF5.svg?style=for-the-badge
 [discord]: https://discord.gg/Qa5fW2R
 [discord-shield]: https://img.shields.io/discord/330944238910963714.svg?style=for-the-badge
 [exampleimg]: example.png

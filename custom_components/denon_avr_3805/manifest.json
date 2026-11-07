@@ -2,6 +2,9 @@
   "domain": "denon_avr_3805",
   "name": "Denon AVR-3805",
   "after_dependencies": [],
+  "categories": [
+    "media_entertainment.speakers_audio"
+  ],
   "codeowners": [
     "@grotan1"
   ],
@@ -13,5 +16,5 @@
   "issue_tracker": "https://github.com/grotan1/denon-avr-3805/issues",
   "quality_scale": "silver",
   "requirements": [],
-  "version": "3.0.5"
+  "version": "3.0.6"
 }

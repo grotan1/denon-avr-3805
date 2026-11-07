@@ -2,7 +2,7 @@
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]][license]
 
-[![hacs][hacsbadge]][hacs]
+[![Marketplace / HACS][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
@@ -23,8 +23,10 @@
 
 ## Installation
 
-1. Click install.
-1. In the HA UI go to "Configuration" -> "Integrations" click "+" and search for "Denon AVR-3805".
+1. Click download. On Home Assistant 2026.11+ (Marketplace), a first install needs no restart; on HACS (2026.10 and older), restart Home Assistant.
+1. Go to Settings -> Devices & Services -> Add Integration and search for "Denon AVR-3805".
+
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=denon_avr_3805)
 
 {% endif %}
 
@@ -45,8 +47,8 @@ Code template was mainly taken from [@Ludeeus](https://github.com/ludeeus)'s [in
 [buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
 [commits-shield]: https://img.shields.io/github/commit-activity/y/grotan1/denon-avr-3805.svg?style=for-the-badge
 [commits]: https://github.com/grotan1/denon-avr-3805/commits/main
-[hacs]: https://hacs.xyz
-[hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
+[hacs]: https://my.home-assistant.io/redirect/hacs_repository/?owner=grotan1&repository=denon-avr-3805&category=integration
+[hacsbadge]: https://img.shields.io/badge/Marketplace%20%7C%20HACS-Default-41BDF5.svg?style=for-the-badge
 [discord]: https://discord.gg/Qa5fW2R
 [discord-shield]: https://img.shields.io/discord/330944238910963714.svg?style=for-the-badge
 [exampleimg]: example.png
